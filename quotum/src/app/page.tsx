@@ -71,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-ink-soft/40">
+      <section className="border-t border-line bg-ink/50">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
           {pillars.map((item) => (
             <div key={item.title}>
