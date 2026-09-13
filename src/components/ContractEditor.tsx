@@ -16,7 +16,8 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
 
   async function validate() {
     setBusy(true);
-    setValidation(null);
+    setStatus(null);
+    setValidation("Validating…");
     try {
       const res = await fetch("/api/validate", {
         method: "POST",
@@ -24,15 +25,19 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
         body: JSON.stringify(contract),
       });
       const data = await res.json();
-      if (!res.ok) {
+      if (!res.ok || data.valid === false) {
         setValidation(
-          `Invalid — ${JSON.stringify(data.errors?.fieldErrors ?? data.error)}`,
+          `Invalid — ${JSON.stringify(data.errors?.fieldErrors ?? data.error ?? data)}`,
         );
-      } else {
-        setValidation(
-          `Valid · ${data.summary.claims} claims · citation ${data.summary.citationId}`,
-        );
+        return;
       }
+      setValidation(
+        `Valid · ${data.summary.claims} claims · citation ${data.summary.citationId}`,
+      );
+    } catch (err) {
+      setValidation(
+        `Validation request failed — ${err instanceof Error ? err.message : "unknown error"}`,
+      );
     } finally {
       setBusy(false);
     }
@@ -40,7 +45,7 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
 
   async function save() {
     setBusy(true);
-    setStatus(null);
+    setStatus("Saving…");
     try {
       const res = await fetch(`/api/contracts/${contract.id}`, {
         method: "PUT",
@@ -54,6 +59,10 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
         setContract(data.contract);
         setStatus(`Saved ${new Date(data.contract.updatedAt).toLocaleString()}`);
       }
+    } catch (err) {
+      setStatus(
+        `Save request failed — ${err instanceof Error ? err.message : "unknown error"}`,
+      );
     } finally {
       setBusy(false);
     }
@@ -123,36 +132,50 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
           <button
             type="button"
             disabled={busy}
-            onClick={validate}
+            onClick={() => {
+              void validate();
+            }}
             className="rounded-full border border-line px-5 py-2.5 text-sm text-paper hover:border-signal hover:text-signal disabled:opacity-50"
           >
-            Validate
+            {busy && validation?.startsWith("Validating")
+              ? "Validating…"
+              : "Validate"}
           </button>
           <button
             type="button"
             disabled={busy}
-            onClick={save}
+            onClick={() => {
+              void save();
+            }}
             className="rounded-full bg-signal px-5 py-2.5 text-sm font-semibold text-ink hover:brightness-110 disabled:opacity-50"
           >
-            Save contract
+            {busy && status?.startsWith("Saving") ? "Saving…" : "Save contract"}
           </button>
         </div>
-        {validation && (
-          <p
-            className={`rounded-xl px-4 py-3 font-mono text-xs ${
-              validation.startsWith("Valid")
-                ? "bg-signal/15 text-signal"
-                : "bg-ember/15 text-ember"
-            }`}
-          >
-            {validation}
-          </p>
-        )}
-        {status && (
-          <p className="rounded-xl bg-fog/5 px-4 py-3 font-mono text-xs text-muted">
-            {status}
-          </p>
-        )}
+        <div aria-live="polite" className="space-y-2">
+          {validation && (
+            <p
+              data-testid="validation-banner"
+              className={`rounded-xl px-4 py-3 font-mono text-xs ${
+                validation.startsWith("Valid ·")
+                  ? "bg-signal/15 text-signal"
+                  : validation.startsWith("Validating")
+                    ? "bg-fog/10 text-muted"
+                    : "bg-ember/15 text-ember"
+              }`}
+            >
+              {validation}
+            </p>
+          )}
+          {status && (
+            <p
+              data-testid="save-banner"
+              className="rounded-xl bg-fog/5 px-4 py-3 font-mono text-xs text-muted"
+            >
+              {status}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="space-y-5">
