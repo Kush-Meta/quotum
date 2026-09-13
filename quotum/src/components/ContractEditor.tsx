@@ -138,9 +138,21 @@ export function ContractEditor({ initial }: { initial: AnswerContract }) {
           </button>
         </div>
         {validation && (
-          <p className="font-mono text-xs text-signal">{validation}</p>
+          <p
+            className={`rounded-xl px-4 py-3 font-mono text-xs ${
+              validation.startsWith("Valid")
+                ? "bg-signal/15 text-signal"
+                : "bg-ember/15 text-ember"
+            }`}
+          >
+            {validation}
+          </p>
         )}
-        {status && <p className="font-mono text-xs text-muted">{status}</p>}
+        {status && (
+          <p className="rounded-xl bg-fog/5 px-4 py-3 font-mono text-xs text-muted">
+            {status}
+          </p>
+        )}
       </div>
 
       <div className="space-y-5">

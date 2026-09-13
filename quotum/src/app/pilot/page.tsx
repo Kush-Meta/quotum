@@ -1,25 +1,15 @@
-"use client";
+import {
+  baselineProbes,
+  treatmentProbes,
+  pilotMeta,
+} from "@/lib/pilot";
+import {
+  scoreAnswerShare,
+  type AnswerShareBreakdown,
+  type PilotProbe,
+} from "@/lib/schema";
 
-import { useEffect, useState } from "react";
-import type { AnswerShareBreakdown, PilotProbe } from "@/lib/schema";
-
-type PilotResponse = {
-  meta: {
-    vertical: string;
-    brand: string;
-    domain: string;
-    hypothesis: string;
-    treatment: string;
-  };
-  baseline: { score: AnswerShareBreakdown; probes: PilotProbe[] };
-  treatment: { score: AnswerShareBreakdown; probes: PilotProbe[] };
-  delta: {
-    answerShare: number;
-    mentionRate: number;
-    citationRate: number;
-    recommendRate: number;
-  };
-};
+export const dynamic = "force-dynamic";
 
 function pct(n: number) {
   return `${Math.round(n * 100)}%`;
@@ -69,7 +59,7 @@ function ProbeTable({ probes }: { probes: PilotProbe[] }) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-line">
       <table className="min-w-full text-left text-sm">
-        <thead className="bg-ink-soft/80 font-mono text-[11px] uppercase tracking-wider text-muted">
+        <thead className="bg-ink/60 font-mono text-[11px] uppercase tracking-wider text-muted">
           <tr>
             <th className="px-4 py-3">Engine</th>
             <th className="px-4 py-3">Prompt</th>
@@ -97,57 +87,39 @@ function ProbeTable({ probes }: { probes: PilotProbe[] }) {
 }
 
 export default function PilotPage() {
-  const [data, setData] = useState<PilotResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("/api/pilot")
-      .then(async (res) => {
-        if (!res.ok) throw new Error("Failed to load pilot");
-        return res.json();
-      })
-      .then(setData)
-      .catch((err: Error) => setError(err.message));
-  }, []);
-
-  if (error) {
-    return (
-      <div className="mx-auto max-w-6xl px-6 py-12 text-ember">
-        {error}
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="mx-auto max-w-6xl px-6 py-12 text-muted">
-        Loading pilot lab…
-      </div>
-    );
-  }
+  const baseline = scoreAnswerShare(baselineProbes);
+  const treatment = scoreAnswerShare(treatmentProbes);
+  const delta = {
+    answerShare: Number(
+      (treatment.answerShare - baseline.answerShare).toFixed(1),
+    ),
+    mentionRate: treatment.mentionRate - baseline.mentionRate,
+    citationRate: treatment.citationRate - baseline.citationRate,
+    recommendRate: treatment.recommendRate - baseline.recommendRate,
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal">
-        Pilot Lab · {data.meta.vertical}
+        Pilot Lab · {pilotMeta.vertical}
       </p>
       <h1 className="font-display mt-2 text-4xl text-paper md:text-5xl">
         Answer Share experiment
       </h1>
-      <p className="mt-4 max-w-3xl text-fog/75">{data.meta.hypothesis}</p>
+      <p className="mt-4 max-w-3xl text-fog/75">{pilotMeta.hypothesis}</p>
       <p className="mt-2 max-w-3xl text-sm text-muted">
-        Treatment: {data.meta.treatment}
+        Brand: {pilotMeta.brand} · Treatment: {pilotMeta.treatment}
       </p>
 
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         <ScoreCard
           label="Baseline (HTML only)"
-          score={data.baseline.score}
+          score={baseline}
           accent="text-ember"
         />
         <ScoreCard
           label="Treatment (Answer Contracts)"
-          score={data.treatment.score}
+          score={treatment}
           accent="text-signal"
         />
         <div className="panel rounded-2xl p-6">
@@ -155,13 +127,13 @@ export default function PilotPage() {
             Delta
           </div>
           <div className="font-display mt-3 text-5xl text-paper">
-            +{data.delta.answerShare}
+            +{delta.answerShare}
           </div>
           <div className="mt-1 text-sm text-muted">Answer Share points</div>
           <ul className="mt-6 space-y-2 text-sm text-fog/80">
-            <li>Mention +{pct(data.delta.mentionRate)}</li>
-            <li>Recommend +{pct(data.delta.recommendRate)}</li>
-            <li>Citation +{pct(data.delta.citationRate)}</li>
+            <li>Mention +{pct(delta.mentionRate)}</li>
+            <li>Recommend +{pct(delta.recommendRate)}</li>
+            <li>Citation +{pct(delta.citationRate)}</li>
           </ul>
         </div>
       </div>
@@ -173,7 +145,7 @@ export default function PilotPage() {
             Same prompt pack, before publishing contracts.
           </p>
           <div className="mt-4">
-            <ProbeTable probes={data.baseline.probes} />
+            <ProbeTable probes={baselineProbes} />
           </div>
         </div>
         <div>
@@ -183,7 +155,7 @@ export default function PilotPage() {
             engine captures for a real experiment.
           </p>
           <div className="mt-4">
-            <ProbeTable probes={data.treatment.probes} />
+            <ProbeTable probes={treatmentProbes} />
           </div>
         </div>
       </div>
