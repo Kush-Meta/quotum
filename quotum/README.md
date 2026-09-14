@@ -43,11 +43,13 @@ Captured generative-search answers for the product-analytics prompt pack (Bing C
 
 | Brand | Answer Share |
 | --- | ---: |
-| Amplitude | 76.9 |
-| PostHog | 54.8 |
-| Mixpanel | 53.7 |
-| Heap | 34.1 |
+| PostHog | 89.7 |
+| Amplitude | 62.1 |
+| Mixpanel | 36.8 |
+| Heap | 13.2 |
 | **Northline Analytics** | **0** |
+
+Capture engine: Duck.ai (Perplexity blocked by login). Prior Bing/DDG SERP captures kept at `data/live/captures.serp.json` for comparison.
 
 Re-ingest after new captures:
 

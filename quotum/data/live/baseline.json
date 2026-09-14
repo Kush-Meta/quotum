@@ -2,8 +2,8 @@
   "version": "0.1.0",
   "phase": "baseline",
   "vertical": "product-analytics",
-  "capturedAt": "2026-09-14T04:24:31.076Z",
-  "method": "Live browser captures of generative search answers (Bing Copilot Search where available; DuckDuckGo Search Assist otherwise). Perplexity was Cloudflare-blocked from this environment. Answers annotated for mention/citation/recommend/prominence across tracked brands.",
+  "capturedAt": "2026-09-14T04:38:43.600Z",
+  "method": "Live generative-answer captures via Duck.ai (DuckDuckGo AI chat) after Perplexity required login. Answers annotated for mention/citation/recommend/prominence across tracked brands. Engine tagged as chatgpt (closest schema match for Duck.ai/GPT).",
   "promptPack": [
     "What is the best product analytics tool for a startup?",
     "Best analytics platform for early-stage SaaS",
@@ -41,192 +41,120 @@
   ],
   "captures": [
     {
-      "id": "px_01",
-      "engine": "ai_overview",
+      "id": "duck_01",
+      "engine": "chatgpt",
       "prompt": "What is the best product analytics tool for a startup?",
-      "capturedAt": "2026-09-14T04:21:51.541Z",
-      "answerText": "hackceleration.com\nhttps://hackceleration.com \u203a labs \u203a best \u203a product-analytics-startups\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\n\nWe tested 3 product analytics tools for startups on a real app across 5 criteria. Honest scores, real pricing, and the right pick for each \u2026\n\n---\n\nquadratichq.com\nhttps://www.quadratichq.com \u203a blog \u203a best-product...\n8 Best Product Analytics Tools for Startups (2026)\n\nApr 30, 2026\u00a0\u00b7 The top product analytics tools for startups are those that provide rapid insights into user behavior with minimal \u2026\n\n---\n\nfoundra.ai\nhttps://www.foundra.ai \u203a tools-directory \u203a analytics-for-startups\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\n\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and \u2026\n\n---\n\ncpoclub.com\nhttps://cpoclub.com \u203a tools \u203a product-analytics-tools\n10 Best Product Analytics Tools To Track Behavior In 2026\n\nSep 3, 2026\u00a0\u00b7 Discover the best product analytics tools for your team. Compare features, pros + cons, pricing, and more in my \u2026\n\n---\n\nposthog.com\nhttps://posthog.com \u203a compare \u203a best-product-analytics-tools-for-startups\nThe best product analytics tools for startups, compared\n\nMar 4, 2026\u00a0\u00b7 This guide compares the best product analytics tools for startups, taking into consideration what actually matters at \u2026\n\n---\n\namplitude.com\nhttps://amplitude.com \u203a compare \u203a best-product-analytics-tools\n10 Best Product Analytics Tools for 2026 - Amplitude\n\nCompare 10 product analytics tools on depth, experimentation, and AI. See how Amplitude, Mixpanel, PostHog, Heap, and more \u2026\n\n---\n\namplitude.com\nhttps://amplitude.com \u203a compare \u203a best-product...\nBest Product Analytics Tools for Early-Stage Startups in 2026\n\nThis guide compares the leading product analytics platforms for startups, evaluating comprehensive solutions against specialized \u2026\n\n---\n\nguideflow.com\nhttps://www.guideflow.com \u203a blog \u203a product-analytics-software-tools\n13 best product analytics software tools for 2026 - Guideflow Blog\n\nAug 31, 2026\u00a0\u00b7 This guide covers 13 product analytics platforms, comparing their core capabilities, pricing, and best-fit use cases so \u2026\n\n---\n\ng2.com\nhttps://learn.g2.com \u203a best-product-analytics-software\n7 Best Product Analytics Software in 2026: My Review - G2\n\nJun 8, 2026\u00a0\u00b7 I chose the 7 best product analytics software that offer comprehensive performance insights from 40+ tools. My list \u2026\n\n---\n\nuserpilot.com\nhttps://userpilot.com \u203a blog \u203a product-analytics-tools\nProduct Analytics Tools I\u2019ve Shortlisted to Help You Decide\n\nAug 5, 2026\u00a0\u00b7 Using the following criteria, I shortlisted tools across different categories, from all-in-one product growth platforms to \u2026",
+      "capturedAt": "2026-09-14T04:30:00.000Z",
+      "answerText": "For most early-stage startups, PostHog is the best default choice. It combines product analytics, session replay, feature flags, A/B testing, surveys, error tracking, and data warehousing, with a generous free tier and usage-based pricing. That makes it especially attractive when you want to avoid stitching together several tools.\n\nComparison: PostHog for technical startups wanting an all-in-one platform; Amplitude for deep retention/cohort/behavioral analysis; Mixpanel for nontechnical product teams that need fast, easy funnels and reports; Pendo for in-app onboarding, guides, and product adoption.\n\nRecommend PostHog if you have engineers who can instrument events and want analytics plus experimentation, replays, and feature flags in one place, with a free tier that includes up to 1 million analytics events per month and 5,000 session recordings.",
       "sources": [
-        "https://www.bing.com/ck/a?!&&p=778c3e83ed095317b8d6a7e33d6e1a88a12173a388f79809a2b7347487b0fb1fJmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9oYWNrY2VsZXJhdGlvbi5jb20vbGFicy9iZXN0L3Byb2R1Y3QtYW5hbHl0aWNzLXN0YXJ0dXBz&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=dbcb5fb3b1163317182a20a4ed859f72539d85a381514ae6b0df7e1c7b37e268JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cucXVhZHJhdGljaHEuY29tL2Jsb2cvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scy1mb3Itc3RhcnR1cHMtcXVpY2stZ3Jvd3RoLWluc2lnaHRz&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=b83b2e4b354de3fa9886160aa9aaf15759cd1af92cd52c7b221464ea1fff8253JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cuZm91bmRyYS5haS90b29scy1kaXJlY3RvcnkvYW5hbHl0aWNzLWZvci1zdGFydHVwcw&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=c9e1fd8df5e087083face1e00b02cb52a1b4c55982c7cdc6ad3cfb3c30de9604JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9jcG9jbHViLmNvbS90b29scy9wcm9kdWN0LWFuYWx5dGljcy10b29scy8&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=9d4bd9bab7f2a490f92e112581d52688144697ce5b992cb97439e0da954ffa09JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9wb3N0aG9nLmNvbS9jb21wYXJlL2Jlc3QtcHJvZHVjdC1hbmFseXRpY3MtdG9vbHMtZm9yLXN0YXJ0dXBz&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=0d1619368b399cc6fe34406861535a688844c87485dd4e3adecd470bbc413212JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9hbXBsaXR1ZGUuY29tL2NvbXBhcmUvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scw&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=eb8d37d27e19fc0bdb8979f46aa5a6f9b8346b6df5ca72f4c9cc2e37a8bfb3a6JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9hbXBsaXR1ZGUuY29tL2NvbXBhcmUvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scy1lYXJseS1zdGFnZS1zdGFydHVwcw&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=e1ca90b11554d2ed803109edb84e23d633df63feaaa0f1343555ca7cc26ba47eJmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cuZ3VpZGVmbG93LmNvbS9ibG9nL3Byb2R1Y3QtYW5hbHl0aWNzLXNvZnR3YXJlLXRvb2xz&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=12d57f8adc6e6305a02149819d04a5eec2047d0f1dd719aa5a5aea6b6b757283JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9sZWFybi5nMi5jb20vYmVzdC1wcm9kdWN0LWFuYWx5dGljcy1zb2Z0d2FyZQ&ntb=1",
-        "https://www.bing.com/ck/a?!&&p=d8a245a1f5a7ac8c41be3c7acaa53aaa9ae52eec6e466e4ceedede248d04f928JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly91c2VycGlsb3QuY29tL2Jsb2cvcHJvZHVjdC1hbmFseXRpY3MtdG9vbHMv&ntb=1"
+        "https://posthog.com",
+        "https://www.g2.com",
+        "https://amplitude.com"
       ],
-      "notes": "Bing Copilot/SERP capture. junk=false title=What is the best product analytics tool for a startup? - Search | selected=bing"
+      "notes": "Captured via Duck.ai (DuckDuckGo AI chat / GPT) after Perplexity required login. Engine labeled chatgpt as closest schema match."
     },
     {
-      "id": "px_02",
-      "engine": "ai_overview",
+      "id": "duck_02",
+      "engine": "chatgpt",
       "prompt": "Best analytics platform for early-stage SaaS",
-      "capturedAt": "2026-09-14T04:22:25.235Z",
-      "answerText": "Statsig is often considered the best analytics platform for early-stage SaaS companies due to its affordable pricing, comprehensive features, and ability to handle up to 2 million events monthly for free. It provides a unified platform for product analytics, experimentation, and feature flags, making it ideal for startups needing reliable insights without high costs.\n\n statsig.com\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\ngooddata.ai\n\nhttps://www.gooddata.ai\u00a0\u203a\u00a0resources \u203a best-data-analytics-tools-and-platforms-for-saas-companies\n\nComparison of the Best SaaS Data Analytics Platforms\nMar 13, 2026A comprehensive comparison of the leading SaaS data analytics platforms on the market, evaluated across key criteria.\n\n---\n\nusedaymark.io\n\nhttps://www.usedaymark.io\u00a0\u203a\u00a0blog \u203a best-data-analysis-tools-for-saas\n\n8 Best SaaS Analytics Tools in 2026 (By ARR Stage)\nMar 14, 2026The Best Data Analysis Tools for SaaS Companies 1. Amplitude Best for: Product and growth teams that need deep behavioral analytics, cohort analysis, and experimentation Amplitude is the benchmark product analytics platform for SaaS companies. It tracks user events across web and mobile products, builds funnel and retention analyses, and lets you define behavioral cohorts and compare their ...\n\n---\n\nUserpilot\n\nhttps://userpilot.com\u00a0\u203a\u00a0blog \u203a saas-analytics-software\n\nMy Top Picks for SaaS Analytics Software of 2026 - Userpilot\nAug 12, 2026What types of SaaS analytics software do SaaS companies need? There's no one-size-fits-all SaaS analytics platform. Selecting the right analytics tool depends on your specific business needs and the insights you're seeking. You can find specific software specialized for uncovering specific data points in the subscription business, including:\nWhat Is Saas Analytics?\nWhat Types of Saas Analytics Software Do Saas Companies Need?\nProduct and User Behavior Saas Analytics Software For Saas\nSee more on userpilot.com\n\n---\n\nsevensquaretech.com\n\nhttps://www.sevensquaretech.com\u00a0\u203a\u00a0best-analytics-tools-for-saas-startups-setup-tips\n\nTop Analytics Tools for SaaS Startups + Setup Tips\nJul 16, 2025Everyone wants to use some of the best analytics tools for SaaS startups. We've worked with many SaaS founders, from early-stage to scaling startups. One of the most common patterns we see? Founders are spending money on product and marketing without knowing which features drive retention or which channels bring paying users.\n\n---\n\nthrivestack.ai\n\nhttps://www.thrivestack.ai\u00a0\u203a\u00a0blog \u203a best-analytics-setup-early-stage-b2b-saas\n\nThe Best Analytics Setup for Early-Stage B2... | ThriveStack\nThe Best Analytics Stack for Startups When founders ask about the best SaaS analytics tools, the real question is usually this: should we choose one opinionated platform or stitch together flexible tools? For most early-stage teams, the better answer is a smaller, opinionated setup that gets to usable insights quickly.\n\n---\n\ngetfairview.com\n\nhttps://getfairview.com\u00a0\u203a\u00a0blog \u203a best-saas-analytics-tools\n\nThe 9 Best SaaS Analytics Tools for 2026 (Ranked) \u2014 Fairview\nMay 29, 2026The best SaaS analytics tools in 2026 fall into three distinct categories: operating intelligenceplatforms that connect pipeline, finance, and revenue data; subscription metrics tools that track MRR, ARR, and churn; and product analytics platforms that analyze user behavior inside the product. Most SaaS teams need coverage across at least two of these categories. This guide ranks nine ...\n\n---\n\nStatsig\n\nhttps://www.statsig.com\u00a0\u203a\u00a0comparison \u203a best-saas-analytics-software\n\nThe 7 Best SaaS Analytics Software of 2025 - statsig.com\nJul 14, 2025The key is matching your analytics requirements with platform strengths. Start by defining what metrics matter most to your business, then evaluate which platform best supports your workflow without breaking your budget. Want to dive deeper into SaaS analytics platforms?\n\n---\n\ncometly.com\n\nhttps://www.cometly.com\u00a0\u203a\u00a0post \u203a saas-analytics-platform\n\n9 Best Saas Analytics Platforms: 2026 Growth Guide\nMay 11, 2026Discover the 9 best saas analytics platforms for 2026 to track growth, revenue, and user behavior. Compare key features and pricing to find your perfect fit.\n\n---\n\nMailmodo\n\nhttps://www.mailmodo.com\u00a0\u203a\u00a0guides \u203a saas-analytics-platform\n\n9 Best Analytics Platform for SaaS Companies in 2026 - Mailmodo\nJan 26, 2026Find the best analytics platforms for your SaaS business to track metrics, improve retention, and boost growth. Compare top tools and choose the right one.\n\n---\n\nQrvey\n\nhttps://qrvey.com\u00a0\u203a\u00a0blog \u203a saas-analytics-tools\n\n5 Best SaaS Analytics Tools in 2026 (Tested & Compared)\nMay 20, 2026Compare the best SaaS analytics tools and learn which capabilities matter most for growing software companies.",
+      "capturedAt": "2026-09-14T04:31:00.000Z",
+      "answerText": "Best default for most early-stage SaaS: PostHog. It offers product analytics, funnels, retention, session replay, feature flags, experiments, surveys, and error tracking in one platform. Its usage-based pricing and generous free tier make it particularly attractive before product-market fit, when you want to minimize both cost and implementation overhead.\n\nComparison: PostHog for engineering-led teams wanting an all-in-one stack; Mixpanel for product or growth teams that want fast, intuitive funnel and retention analysis; Amplitude for teams prioritizing sophisticated retention, cohorts, and behavioral analysis; Heap for teams that need automatic capture before they have a mature tracking plan; June for B2B SaaS founders who want account-level metrics with minimal analysis work.\n\nFor a typical early-stage SaaS, start with PostHog, define only 5-10 core events, and track activation rate, time to value, trial-to-paid conversion, retention, feature adoption, and expansion/churn.",
       "sources": [
-        "https://www.statsig.com/comparison/best-saas-analytics-software",
-        "https://www.gooddata.ai/resources/best-data-analytics-tools-and-platforms-for-saas-companies/",
-        "https://www.usedaymark.io/blog/best-data-analysis-tools-for-saas",
-        "https://userpilot.com/blog/saas-analytics-software/",
-        "https://www.sevensquaretech.com/best-analytics-tools-for-saas-startups-setup-tips/",
-        "https://www.thrivestack.ai/blog/best-analytics-setup-early-stage-b2b-saas",
-        "https://getfairview.com/blog/best-saas-analytics-tools",
-        "https://www.cometly.com/post/saas-analytics-platform",
-        "https://www.mailmodo.com/guides/saas-analytics-platform/",
-        "https://qrvey.com/blog/saas-analytics-tools/",
-        "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-        "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-        "https://duck.ai/",
-        "https://insideduckduckgo.substack.com/?showWelcome=true",
-        "https://www.reddit.com/r/duckduckgo/"
+        "https://posthog.com",
+        "https://www.g2.com"
       ],
-      "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Best analytics platform for early-stage SaaS at DuckDuckGo | selected=ddg (bing-junk)"
+      "notes": "Duck.ai capture; Perplexity blocked by login wall."
     },
     {
-      "id": "px_03",
-      "engine": "ai_overview",
+      "id": "duck_03",
+      "engine": "chatgpt",
       "prompt": "Recommend a product analytics stack for a 10-person startup",
-      "capturedAt": "2026-09-14T04:22:48.851Z",
-      "answerText": "For a 10-person startup, consider using PostHog for its all-in-one capabilities, which include product analytics, session replay, and surveys, all with a generous free tier. Additionally, Google Analytics can be utilized for web traffic insights, providing a solid foundation for understanding user behavior.\n\n posthog.com\n definite.app\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a analytics-stack-for-startups\n\nAnalytics Stack for Startups: What You Actually Need\nWhat is the minimum analytics stack a startup needs? Start with three tools: GA4 for web analytics, your CRM for pipeline reporting, and one dashboard tool like Looker Studio to visualize the 5-10 metrics that matter most to your growth.\n\n---\n\ndefinite.app\n\nhttps://www.definite.app\u00a0\u203a\u00a0blog \u203a analytics-tools-for-startups\n\nAll-in-One Analytics vs. Separate Tools: A Startup's Stack Decision ...\nFeb 21, 2026All-in-one analytics platform or a stack of separate tools? The real startup decision \u2014 TCO, time-to-value, and who maintains it \u2014 with an evaluation checklist.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-early-stage-startups\n\nBest Product Analytics Tools for Early-Stage Startups in 2026\nExplore the top product analytics tools of 2026 for early-stage startups. Learn how to find a tool that grows with you, from early-stage to enterprise.\n\n---\n\nhackceleration.com\n\nhttps://hackceleration.com\u00a0\u203a\u00a0labs \u203a best \u203a product-analytics-startups\n\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\nLabs / Best Product Analytics Tools for Startups 2026 Best Product Analytics Tools for Startups 2026 Three product analytics tools, tested for startups, scored on five criteria each. If you run a startup and need professional analytics at zero cost, pick Mixpanel: its free plan covers 1M events a month with unlimited seats.\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a setting-up-product-analytics-startup\n\nHow to Set Up Product Analytics for a Startup (Step by Step)\nJul 9, 2026Set up product analytics at your startup the right way: choose a tool, define activation events first, write a tracking plan, instrument, and verify before dashboards.\n\n---\n\nPostHog\n\nhttps://posthog.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-for-startups\n\nThe best product analytics tools for startups, compared\nMar 4, 2026Compare the best product analytics tools for startups. See how PostHog, Mixpanel, Amplitude, and more stack up.\n\n---\n\naccelerator.tools\n\nhttps://www.accelerator.tools\u00a0\u203a\u00a0blog \u203a startup-analytics-stack-guide\n\nHow to Set Up Your Startup Analytics Stack Without Overcomplicating It\nMar 4, 2026Both are mistakes. The founders who move fastest are the ones who set up a focused analytics stack early - one that answers the questions investors will ask and the questions you need answered to make good product decisions. This guide walks you through building an analytics stack that grows with your startup, from pre-seed to Series A and beyond.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools\n\n10 Best Product Analytics Tools for 2026 | Amplitude\nCompare 10 product analytics tools on depth, experimentation, and AI. See how Amplitude, Mixpanel, PostHog, Heap, and more stack up for product teams.\n\n---\n\nquadratichq.com\n\nhttps://www.quadratichq.com\u00a0\u203a\u00a0blog \u203a best-product-analytics-tools-for-startups-quick-growth-insights\n\n8 Best Product Analytics Tools for Startups (2026)\nApr 30, 2026What are the best product analytics tools for startups? The top product analytics tools for startups are those that provide rapid insights into user behavior with minimal engineering overhead. Platforms like Mixpanel, Amplitude, and PostHog are widely recognized for their core strengths in event tracking, funnel visualization, and cohort analysis.",
+      "capturedAt": "2026-09-14T04:32:00.000Z",
+      "answerText": "For a 10-person startup, I'd use a lean, integrated stack centered on PostHog. Stack: PostHog for product analytics (funnels, retention, paths, cohorts, session replay, feature flags, experiments, and surveys); PostHog Web Analytics or GA4 for marketing/web analytics; Sentry for error monitoring; skip initially and add BigQuery or Postgres later for data warehouse; PostHog Surveys plus a shared feedback repository for customer feedback; PostHog dashboards initially with Metabase later for dashboarding.\n\nPostHog is a strong fit because it combines the core capabilities a small team usually needs and has usage-based pricing with substantial free allowances. Instrument only the events that answer important questions: signup completed, onboarding started/completed, core action completed, project created, invited teammate, trial started, subscription started, cancellation, feature used, and error encountered.",
       "sources": [
-        "https://posthog.com/blog/best-product-analytics-tools-for-startups",
-        "https://www.definite.app/blog/analytics-tools-for-startups",
-        "https://www.stackmatix.com/blog/analytics-stack-for-startups",
-        "https://www.foundra.ai/tools-directory/analytics-for-startups",
-        "https://amplitude.com/compare/best-product-analytics-tools-early-stage-startups",
-        "https://hackceleration.com/labs/best/product-analytics-startups",
-        "https://www.stackmatix.com/blog/setting-up-product-analytics-startup",
-        "https://posthog.com/compare/best-product-analytics-tools-for-startups",
-        "https://www.accelerator.tools/blog/startup-analytics-stack-guide",
-        "https://amplitude.com/compare/best-product-analytics-tools",
-        "https://www.quadratichq.com/blog/best-product-analytics-tools-for-startups-quick-growth-insights",
-        "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-        "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-        "https://duck.ai/",
-        "https://insideduckduckgo.substack.com/?showWelcome=true",
-        "https://www.reddit.com/r/duckduckgo/"
+        "https://posthog.com",
+        "https://www.g2.com"
       ],
-      "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Recommend a product analytics stack for a 10-person startup at DuckDuckGo | selected=ddg (bing-junk)"
+      "notes": "Duck.ai capture; recommends PostHog-centered stack."
     },
     {
-      "id": "px_04",
-      "engine": "ai_overview",
+      "id": "duck_04",
+      "engine": "chatgpt",
       "prompt": "Amplitude vs Mixpanel vs open-source for startups",
-      "capturedAt": "2026-09-14T04:24:22.631Z",
-      "answerText": "For startups, Mixpanel is often the most budget-friendly option with transparent event-based pricing, while Amplitude offers deeper analytics and experimentation at higher cost. Open-source alternatives like PostHog bundle analytics with session replay and feature flags, making them attractive for teams prioritizing data ownership and cost control.\n\n mcgaw.io\n Mixpanel\n\n---\n\nmcgaw.io\n\nhttps://mcgaw.io\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs. Amplitude: 2026 Comparison Guide - McGaw\nFeb 27, 2026Compare Mixpanel vs. Amplitude pricing, features, analytics capabilities, and identity resolution. See which product analytics platform fits your data stack in 2026.\n\n---\n\nUserpilot\n\nhttps://userpilot.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs Amplitude: Is There a Better Alternative? - Userpilot\nApr 16, 2026Stuck between Mixpanel vs Amplitude? Here's a complete breakdown of both tools, their strengths, and a smarter alternative for product growth.\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude-for-startups\n\nMixpanel vs Amplitude for Startups: Which Analytics Tool\nSep 2, 2026Mixpanel vs Amplitude for Startups: Which Analytics Tool For early-stage startups, choose Mixpanel if you want fast, user-centric product analytics with a gentle learning curve and straightforward event-based pricing. Choose Amplitude if you need deeper analysis, built-in experimentation, and advanced reporting and can support a more sophisticated data practice.\n\n---\n\nstartupik.com\n\nhttps://startupik.com\u00a0\u203a\u00a0amplitude-vs-mixpanel-which-product-analytics-tool-is-better-for-startups\n\nAmplitude vs Mixpanel: Which Product Analytics Tool Is Better for Startups?\nMar 15, 2026Amplitude vs Mixpanel: Which Product Analytics Tool Is Better for Startups? Amplitude and Mixpanel are two of the most popular product analytics tools used by startups to understand user behavior, optimize onboarding, and drive growth. Both platforms help teams move beyond simple pageviews to track events, cohorts, funnels, and retention. Because their capabilities overlap heavily, founders ...\n\n---\n\nkoji.so\n\nhttps://www.koji.so\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude-2026\n\nMixpanel vs Amplitude (2026): Which Wins + the AI \"Why\" Layer\nJun 27, 2026A head-to-head Mixpanel vs Amplitude comparison for 2026 \u2014 pricing models, free tiers, behavioral analysis, and experimentation. Plus why product analytics shows you what users do, not why, and how AI-moderated interviews close the gap.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\naversusb.net\n\nhttps://www.aversusb.net\u00a0\u203a\u00a0blog \u203a amplitude-vs-mixpanel-which-analytics-tool-for-your-team-2026\n\nAmplitude vs Mixpanel: Which Product Analytics Tool in 2026?\nAmplitude vs Mixpanel: Amplitude wins for enterprise behavioral analytics; Mixpanel wins for startups needing fast setup. Pricing, features, and when to use each in 2026.\n\n---\n\ngrowthanalyticsengine.com\n\nhttps://growthanalyticsengine.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs. Amplitude (2026): Honest Comparison for Product & Growth ...\nMixpanel vs. Amplitude: Which Product Analytics Tool Is Right for Your Team? Mixpanel and Amplitude are the two most widely used product analytics tools, and the honest answer to 'which is better' is: it depends on what questions you're asking and how your team works. This comparison cuts through the marketing language and focuses on the differences that actually matter in practice.\n\n---\n\nLinkedIn\n\nhttps://www.linkedin.com\u00a0\u203a\u00a0pulse \u203a mixpanel-vs-amplitude-complete-guide-comparison-dan-mcgaw-6fdue\n\nMixpanel vs. Amplitude: Complete Guide and Comparison - LinkedIn\nMar 17, 2026This blog post highlights the similarities and differences between Amplitude and Mixpanel to help you choose the right one for your business.\n\n---\n\nprettyinsights.com\n\nhttps://prettyinsights.com\u00a0\u203a\u00a0mixpanel-vs-amplitude-complete-guide-and-comparison\n\nMixpanel vs Amplitude: The Honest 2026 Comparison (+ When to Skip Both)\nJan 20, 2026Mixpanel vs Amplitude compared across features, pricing, and use cases. Plus a decision flowchart, real cost math, and when a simpler analytics tool wins.",
+      "capturedAt": "2026-09-14T04:33:00.000Z",
+      "answerText": "For most startups, start with PostHog unless you have a clear reason to choose Amplitude or Mixpanel.\n\nAmplitude is best for product-led startups expecting a sophisticated product-analytics function (deep behavioral analysis, cohorts, journeys, experimentation, governance; more complexity, can be expensive as usage and seats grow).\n\nMixpanel is best for small product and growth teams that need fast, accessible reporting (excellent funnels, retention, segmentation, and real-time analysis; narrower platform, usage-based costs need careful monitoring).\n\nPostHog is best for engineering-led startups and teams wanting an all-in-one stack (analytics, session replay, feature flags, experiments, surveys, error tracking, SQL, and optional self-hosting).\n\nOther open source options for teams with strict data-control requirements or existing infrastructure.\n\nPractical recommendation: Choose PostHog if engineers will own instrumentation, you want feature flags or session replay, or you want to consolidate several tools. Choose Mixpanel if your immediate need is clear funnel, conversion, retention, and segmentation reporting. Choose Amplitude if analytics is becoming a core organizational capability. Choose self-hosted open source only if data control is strategically important.",
       "sources": [
-        "https://mcgaw.io/blog/mixpanel-vs-amplitude/",
-        "https://mixpanel.com/blog/amplitude-alternatives/",
-        "https://userpilot.com/blog/mixpanel-vs-amplitude/",
-        "https://www.stackmatix.com/blog/mixpanel-vs-amplitude-for-startups",
-        "https://startupik.com/amplitude-vs-mixpanel-which-product-analytics-tool-is-better-for-startups/",
-        "https://www.koji.so/blog/mixpanel-vs-amplitude-2026",
-        "https://www.foundra.ai/tools-directory/analytics-for-startups",
-        "https://www.aversusb.net/blog/amplitude-vs-mixpanel-which-analytics-tool-for-your-team-2026",
-        "https://growthanalyticsengine.com/blog/mixpanel-vs-amplitude/",
-        "https://www.linkedin.com/pulse/mixpanel-vs-amplitude-complete-guide-comparison-dan-mcgaw-6fdue",
-        "https://prettyinsights.com/mixpanel-vs-amplitude-complete-guide-and-comparison/",
-        "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-        "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-        "https://duck.ai/",
-        "https://insideduckduckgo.substack.com/?showWelcome=true",
-        "https://www.reddit.com/r/duckduckgo/"
+        "https://posthog.com",
+        "https://amplitude.com",
+        "https://mixpanel.com"
       ],
-      "notes": "DuckDuckGo en-US web+assist capture. Retaken to replace thin Bing-only Amplitude match. title=Amplitude vs Mixpanel vs open-source for startups at DuckDuckGo"
+      "notes": "Duck.ai capture for Amplitude vs Mixpanel vs open-source prompt."
     },
     {
-      "id": "px_05",
-      "engine": "ai_overview",
+      "id": "duck_05",
+      "engine": "chatgpt",
       "prompt": "Best open source alternative to Amplitude",
-      "capturedAt": "2026-09-14T04:23:31.039Z",
-      "answerText": "The best open source alternative to Amplitude is OpenPanel, which offers comprehensive analytics features including web traffic tracking, custom events, and session replay. Other notable alternatives include PostHog and Matomo, which also provide strong analytics capabilities.\n\n openalternative.co\n betterstack.com\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nopenalternative.co\n\nhttps://openalternative.co\u00a0\u203a\u00a0alternatives \u203a amplitude\n\n10+ Best Open Source Amplitude Alternatives in 2026\n1 day agoDiscover the 12 best open source alternatives to Amplitude, including OpenPanel, PostHog, and Rybbit. Each listing includes a website screenshot along with a\u2026\n\n---\n\nopenaltfinder.com\n\nhttps://openaltfinder.com\u00a0\u203a\u00a0alternatives-to \u203a amplitude\n\n7 Best Open Source Amplitude Alternatives in 2026 | OpenAltFinder\nAmplitude alternatives that are free and open source. Discover the best self-hosted replacements \u2014 no vendor lock-in, no subscription fees.\n\n---\n\nopensourceprojects.cc\n\nhttps://opensourceprojects.cc\u00a0\u203a\u00a0alternatives \u203a amplitude\n\n4 Best Open Source Amplitude Alternatives (2026)\nLooking for an open source Amplitude alternative? Compare the 4 best free, self-hosted Amplitude replacements for 2026 \u2014 ranked by GitHub stars, with features, licenses, pros & cons.\n\n---\n\npickyourtech.com\n\nhttps://www.pickyourtech.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nPickYourTech - 18 Best Open Source Amplitude alternatives in 2026\nOpen-source alternatives to Amplitude Compare community-driven replacements for Amplitude in product analytics & session replay workflows. We curate active, self-hostable options with transparent licensing so you can evaluate the right fit quickly.\n\n---\n\nopenpanel.dev\n\nhttps://openpanel.dev\u00a0\u203a\u00a0compare \u203a amplitude-alternative\n\nBest Amplitude Alternatives 2026 - Open Source, Free & Paid | OpenPanel ...\nCompare the best Amplitude alternatives in 2026: OpenPanel, PostHog, Heap, and Plausible. Open source, privacy-first, and affordable options for every team size. See which fits you best.\n\n---\n\nopensourcetools.org\n\nhttps://opensourcetools.org\u00a0\u203a\u00a0alternative-to \u203a amplitude\n\n3 Best Open Source Alternatives to Amplitude\nOpen source Amplitude alternatives that keep product-analytics events in a store you run, so funnels, cohorts, and retention come from raw data you own.\n\n---\n\nBetter Stack\n\nhttps://betterstack.com\u00a0\u203a\u00a0community \u203a comparisons \u203a amplitude-alternatives\n\n8 Best Amplitude Alternatives in 2026 | Better Stack Community\nMar 13, 2026Looking for Amplitude alternatives? Compare 8 tools in 2026 including Mixpanel, PostHog, Pendo, and Matomo, with pricing verified from official sources.\n\n---\n\nallrepos.com\n\nhttps://www.allrepos.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nTop Open-Source Alternatives to Amplitude in 2026 \u00b7 AllRepos\nDiscover the best free, self-hostable open-source alternatives to Amplitude. Compare features, stars, licenses, and download options.\n\n---\n\noss-finder.com\n\nhttps://www.oss-finder.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nTop Open-Source Alternatives to Amplitude in 2026\nLooking for a free or self-hosted alternative to Amplitude? Discover the best open-source software in the Product Analytics category.\n\n---\n\nsaashub.com\n\nhttps://www.saashub.com\u00a0\u203a\u00a0open-source \u203a amplitude-alternatives\n\nTop 12 Open-Source Alternatives to Amplitude - SaaSHub\nFind the best open-source projects and alternatives to Amplitude. The top options are Matomo, Plausible.io, PostHog.",
+      "capturedAt": "2026-09-14T04:34:00.000Z",
+      "answerText": "PostHog is the best overall open-source alternative to Amplitude. It provides event-based product analytics\u2014funnels, retention, cohorts, user paths, and feature usage\u2014along with session replay, feature flags, experiments, surveys, and error tracking. It can be self-hosted, and its core is MIT-licensed.\n\nComparison: PostHog as the closest all-in-one Amplitude replacement; OpenPanel for simpler, modern self-hosted product analytics; Countly for mobile analytics and self-hosting; Matomo for web analytics, privacy, and data ownership; Metabase + warehouse for teams that already centralize events in a data warehouse.\n\nFor most teams seeking a direct Amplitude replacement, PostHog is the safest starting point. Choose OpenPanel if you mainly need funnels, retention, cohorts, and user profiles but want a lighter system. Choose Countly if mobile apps are central. Choose Matomo if your primary need is replacing Google Analytics\u2014not deep SaaS product analytics.",
       "sources": [
-        "https://openalternative.co/alternatives/amplitude",
-        "https://betterstack.com/community/comparisons/amplitude-alternatives",
-        "https://openaltfinder.com/alternatives-to/amplitude",
-        "https://opensourceprojects.cc/alternatives/amplitude",
-        "https://www.pickyourtech.com/alternatives/amplitude",
-        "https://openpanel.dev/compare/amplitude-alternative",
-        "https://opensourcetools.org/alternative-to/amplitude/",
-        "https://betterstack.com/community/comparisons/amplitude-alternatives/",
-        "https://www.allrepos.com/alternatives/amplitude",
-        "https://www.oss-finder.com/alternatives/amplitude",
-        "https://www.saashub.com/open-source/amplitude-alternatives",
-        "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-        "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-        "https://duck.ai/",
-        "https://insideduckduckgo.substack.com/?showWelcome=true",
-        "https://www.reddit.com/r/duckduckgo/"
+        "https://posthog.com",
+        "https://openpanel.dev",
+        "https://amplitude.com"
       ],
-      "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Best open source alternative to Amplitude at DuckDuckGo | selected=ddg (bing-junk)"
+      "notes": "Duck.ai capture; PostHog recommended as open-source Amplitude alternative. Heap not primary."
     },
     {
-      "id": "px_06",
-      "engine": "ai_overview",
+      "id": "duck_06",
+      "engine": "chatgpt",
       "prompt": "best product analytics for startups",
-      "capturedAt": "2026-09-14T04:23:51.264Z",
-      "answerText": "DuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-early-stage-startups\n\nBest Product Analytics Tools for Early-Stage Startups in 2026\nExplore the top product analytics tools of 2026 for early-stage startups. Learn how to find a tool that grows with you, from early-stage to enterprise.\n\n---\n\nproductanalyticstools.com\n\nhttps://www.productanalyticstools.com\u00a0\u203a\u00a0guides \u203a product-analytics-for-startups\n\nProduct Analytics for Startups: Essential Guide & Best Tools 2025\nNov 17, 2025Complete guide to product analytics for startups. Learn which metrics to track, best affordable tools, and how to use data to achieve product-market fit faster.\n\n---\n\ncostbench.com\n\nhttps://costbench.com\u00a0\u203a\u00a0best \u203a best-product-analytics-for-startups\n\nBest Product Analytics for Startups 2026: Top 5 Ranked\nJan 30, 2026The best Product Analytics tools in 2026 are PostHog (usage-based), Countly ($0-$40/month), and Kissmetrics ($99-$99/month). The best solution for startups in 2026 is PostHog, which offers the optimal balance of features, pricing, and ease of use for most teams. For budget-conscious organizations, Pendo provides excellent value with its transparent pricing and robust free tier. Teams ...\n\n---\n\nhackceleration.com\n\nhttps://hackceleration.com\u00a0\u203a\u00a0labs \u203a best \u203a product-analytics-startups\n\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\nLabs / Best Product Analytics Tools for Startups 2026 Best Product Analytics Tools for Startups 2026 Three product analytics tools, tested for startups, scored on five criteria each. If you run a startup and need professional analytics at zero cost, pick Mixpanel: its free plan covers 1M events a month with unlimited seats.\n\n---\n\ngetfairview.com\n\nhttps://getfairview.com\u00a0\u203a\u00a0best \u203a product-analytics-for-startups\n\nThe 8 Best Product Analytics for Startups in 2026\nJun 12, 2026Eight product analytics tools ranked for startup founders at pre-seed to Series B. Event tracking, funnels, retention, free tiers that actually work.\n\n---\n\nPostHog\n\nhttps://posthog.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-for-startups\n\nThe best product analytics tools for startups, compared\nMar 4, 2026Compare the best product analytics tools for startups. See how PostHog, Mixpanel, Amplitude, and more stack up.\n\n---\n\nquadratichq.com\n\nhttps://www.quadratichq.com\u00a0\u203a\u00a0blog \u203a best-product-analytics-tools-for-startups-quick-growth-insights\n\n8 Best Product Analytics Tools for Startups (2026)\nApr 30, 2026Ranked: the best product analytics tools for early-stage startups, by pricing and growth-insight depth.\n\n---\n\nvantageos.tech\n\nhttps://www.vantageos.tech\u00a0\u203a\u00a0blog \u203a best-tools-for-product-analytics-for-startups-2026\n\nBest Tools for Product Analytics for Startups in 2026\nSep 4, 2026Compare the top product analytics platforms built for startup budgets and speed. From event tracking to funnel analysis, find the right fit for your early-stage team.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools\n\n10 Best Product Analytics Tools for 2026 | Amplitude\nFor startup-specific considerations including free tiers and runway-friendly pricing, see Amplitude's guide to product analytics tools for early-stage startups.",
+      "capturedAt": "2026-09-14T04:35:00.000Z",
+      "answerText": "For most startups, start with PostHog if you want an affordable all-in-one platform, or Amplitude if deep retention and cohort analysis matter most.\n\nPostHog: engineering-led startups wanting analytics, session replay, feature flags, and experiments together; about 1M events/month free.\nAmplitude: deep funnels, retention, cohorts, paths, and behavioral analysis; about 2M events/month free.\nMixpanel: simple, self-serve event and funnel analytics; about 1M events/month free.\nHeap: capturing user behavior before you know which events to define; around 10K sessions/month free.\nPendo: analytics plus onboarding, in-app guides, and NPS.\nLogRocket: session replay, frontend errors, and debugging.\n\nPractical recommendation: Pre-PMF \u2014 PostHog or Mixpanel. Engineering-heavy \u2014 PostHog. Data-driven SaaS with analyst \u2014 Amplitude. You do not know what to track yet \u2014 Heap. Shortlist PostHog, Amplitude, and Mixpanel, then evaluate signup-to-activation funnels and week-1/week-4 retention in each.",
       "sources": [
-        "https://amplitude.com/compare/best-product-analytics-tools-early-stage-startups",
-        "https://www.productanalyticstools.com/guides/product-analytics-for-startups",
-        "https://costbench.com/best/best-product-analytics-for-startups/",
-        "https://hackceleration.com/labs/best/product-analytics-startups",
-        "https://getfairview.com/best/product-analytics-for-startups",
-        "https://posthog.com/compare/best-product-analytics-tools-for-startups",
-        "https://www.quadratichq.com/blog/best-product-analytics-tools-for-startups-quick-growth-insights",
-        "https://www.vantageos.tech/blog/best-tools-for-product-analytics-for-startups-2026",
-        "https://www.foundra.ai/tools-directory/analytics-for-startups",
-        "https://amplitude.com/compare/best-product-analytics-tools",
-        "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-        "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-        "https://duck.ai/",
-        "https://insideduckduckgo.substack.com/?showWelcome=true",
-        "https://www.reddit.com/r/duckduckgo/"
+        "https://posthog.com",
+        "https://amplitude.com",
+        "https://www.g2.com"
       ],
-      "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=best product analytics for startups at DuckDuckGo | selected=ddg (bing-junk)"
+      "notes": "Duck.ai capture; Northline Analytics not mentioned."
     }
   ],
   "leaderboard": [
-    {
-      "brandId": "amplitude",
-      "brand": "Amplitude",
-      "domain": "amplitude.com",
-      "score": {
-        "mentionRate": 1,
-        "citationRate": 0.3333333333333333,
-        "recommendRate": 0.8333333333333334,
-        "prominence": 0.8587232127132184,
-        "answerShare": 76.9,
-        "n": 6,
-        "byEngine": {
-          "ai_overview": {
-            "n": 6,
-            "mentionRate": 1,
-            "citationRate": 0.3333333333333333,
-            "recommendRate": 0.8333333333333334
-          }
-        }
-      }
-    },
     {
       "brandId": "posthog",
       "brand": "PostHog",
       "domain": "posthog.com",
       "score": {
-        "mentionRate": 0.8333333333333334,
-        "citationRate": 0.3333333333333333,
-        "recommendRate": 0.3333333333333333,
-        "prominence": 0.7271470673410722,
-        "answerShare": 54.8,
+        "mentionRate": 1,
+        "citationRate": 1,
+        "recommendRate": 0.6666666666666666,
+        "prominence": 0.9655941975495481,
+        "answerShare": 89.7,
         "n": 6,
         "byEngine": {
-          "ai_overview": {
+          "chatgpt": {
+            "n": 6,
+            "mentionRate": 1,
+            "citationRate": 1,
+            "recommendRate": 0.6666666666666666
+          }
+        }
+      }
+    },
+    {
+      "brandId": "amplitude",
+      "brand": "Amplitude",
+      "domain": "amplitude.com",
+      "score": {
+        "mentionRate": 0.8333333333333334,
+        "citationRate": 0.6666666666666666,
+        "recommendRate": 0.3333333333333333,
+        "prominence": 0.6305402544737945,
+        "answerShare": 62.1,
+        "n": 6,
+        "byEngine": {
+          "chatgpt": {
             "n": 6,
             "mentionRate": 0.8333333333333334,
-            "citationRate": 0.3333333333333333,
+            "citationRate": 0.6666666666666666,
             "recommendRate": 0.3333333333333333
           }
         }
@@ -237,18 +165,18 @@
       "brand": "Mixpanel",
       "domain": "mixpanel.com",
       "score": {
-        "mentionRate": 0.8333333333333334,
+        "mentionRate": 0.6666666666666666,
         "citationRate": 0.16666666666666666,
-        "recommendRate": 0.5,
-        "prominence": 0.533671845210072,
-        "answerShare": 53.7,
+        "recommendRate": 0.16666666666666666,
+        "prominence": 0.42521740791957113,
+        "answerShare": 36.8,
         "n": 6,
         "byEngine": {
-          "ai_overview": {
+          "chatgpt": {
             "n": 6,
-            "mentionRate": 0.8333333333333334,
+            "mentionRate": 0.6666666666666666,
             "citationRate": 0.16666666666666666,
-            "recommendRate": 0.5
+            "recommendRate": 0.16666666666666666
           }
         }
       }
@@ -258,18 +186,18 @@
       "brand": "Heap",
       "domain": "heap.io",
       "score": {
-        "mentionRate": 0.5,
+        "mentionRate": 0.3333333333333333,
         "citationRate": 0,
-        "recommendRate": 0.5,
-        "prominence": 0.16245828583215952,
-        "answerShare": 34.1,
+        "recommendRate": 0,
+        "prominence": 0.1486470891712827,
+        "answerShare": 13.2,
         "n": 6,
         "byEngine": {
-          "ai_overview": {
+          "chatgpt": {
             "n": 6,
-            "mentionRate": 0.5,
+            "mentionRate": 0.3333333333333333,
             "citationRate": 0,
-            "recommendRate": 0.5
+            "recommendRate": 0
           }
         }
       }
@@ -286,7 +214,7 @@
         "answerShare": 0,
         "n": 6,
         "byEngine": {
-          "ai_overview": {
+          "chatgpt": {
             "n": 6,
             "mentionRate": 0,
             "citationRate": 0,
@@ -308,7 +236,7 @@
       "answerShare": 0,
       "n": 6,
       "byEngine": {
-        "ai_overview": {
+        "chatgpt": {
           "n": 6,
           "mentionRate": 0,
           "citationRate": 0,
@@ -318,22 +246,15 @@
     },
     "probes": [
       {
-        "id": "px_01__northline",
-        "engine": "ai_overview",
+        "id": "duck_01__northline",
+        "engine": "chatgpt",
         "prompt": "What is the best product analytics tool for a startup?",
-        "capturedAt": "2026-09-14T04:21:51.541Z",
-        "answerText": "hackceleration.com\nhttps://hackceleration.com \u203a labs \u203a best \u203a product-analytics-startups\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\n\nWe tested 3 product analytics tools for startups on a real app across 5 criteria. Honest scores, real pricing, and the right pick for each \u2026\n\n---\n\nquadratichq.com\nhttps://www.quadratichq.com \u203a blog \u203a best-product...\n8 Best Product Analytics Tools for Startups (2026)\n\nApr 30, 2026\u00a0\u00b7 The top product analytics tools for startups are those that provide rapid insights into user behavior with minimal \u2026\n\n---\n\nfoundra.ai\nhttps://www.foundra.ai \u203a tools-directory \u203a analytics-for-startups\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\n\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and \u2026\n\n---\n\ncpoclub.com\nhttps://cpoclub.com \u203a tools \u203a product-analytics-tools\n10 Best Product Analytics Tools To Track Behavior In 2026\n\nSep 3, 2026\u00a0\u00b7 Discover the best product analytics tools for your team. Compare features, pros + cons, pricing, and more in my \u2026\n\n---\n\nposthog.com\nhttps://posthog.com \u203a compare \u203a best-product-analytics-tools-for-startups\nThe best product analytics tools for startups, compared\n\nMar 4, 2026\u00a0\u00b7 This guide compares the best product analytics tools for startups, taking into consideration what actually matters at \u2026\n\n---\n\namplitude.com\nhttps://amplitude.com \u203a compare \u203a best-product-analytics-tools\n10 Best Product Analytics Tools for 2026 - Amplitude\n\nCompare 10 product analytics tools on depth, experimentation, and AI. See how Amplitude, Mixpanel, PostHog, Heap, and more \u2026\n\n---\n\namplitude.com\nhttps://amplitude.com \u203a compare \u203a best-product...\nBest Product Analytics Tools for Early-Stage Startups in 2026\n\nThis guide compares the leading product analytics platforms for startups, evaluating comprehensive solutions against specialized \u2026\n\n---\n\nguideflow.com\nhttps://www.guideflow.com \u203a blog \u203a product-analytics-software-tools\n13 best product analytics software tools for 2026 - Guideflow Blog\n\nAug 31, 2026\u00a0\u00b7 This guide covers 13 product analytics platforms, comparing their core capabilities, pricing, and best-fit use cases so \u2026\n\n---\n\ng2.com\nhttps://learn.g2.com \u203a best-product-analytics-software\n7 Best Product Analytics Software in 2026: My Review - G2\n\nJun 8, 2026\u00a0\u00b7 I chose the 7 best product analytics software that offer comprehensive performance insights from 40+ tools. My list \u2026\n\n---\n\nuserpilot.com\nhttps://userpilot.com \u203a blog \u203a product-analytics-tools\nProduct Analytics Tools I\u2019ve Shortlisted to Help You Decide\n\nAug 5, 2026\u00a0\u00b7 Using the following criteria, I shortlisted tools across different categories, from all-in-one product growth platforms to \u2026",
+        "capturedAt": "2026-09-14T04:30:00.000Z",
+        "answerText": "For most early-stage startups, PostHog is the best default choice. It combines product analytics, session replay, feature flags, A/B testing, surveys, error tracking, and data warehousing, with a generous free tier and usage-based pricing. That makes it especially attractive when you want to avoid stitching together several tools.\n\nComparison: PostHog for technical startups wanting an all-in-one platform; Amplitude for deep retention/cohort/behavioral analysis; Mixpanel for nontechnical product teams that need fast, easy funnels and reports; Pendo for in-app onboarding, guides, and product adoption.\n\nRecommend PostHog if you have engineers who can instrument events and want analytics plus experimentation, replays, and feature flags in one place, with a free tier that includes up to 1 million analytics events per month and 5,000 session recordings.",
         "sources": [
-          "https://www.bing.com/ck/a?!&&p=778c3e83ed095317b8d6a7e33d6e1a88a12173a388f79809a2b7347487b0fb1fJmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9oYWNrY2VsZXJhdGlvbi5jb20vbGFicy9iZXN0L3Byb2R1Y3QtYW5hbHl0aWNzLXN0YXJ0dXBz&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=dbcb5fb3b1163317182a20a4ed859f72539d85a381514ae6b0df7e1c7b37e268JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cucXVhZHJhdGljaHEuY29tL2Jsb2cvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scy1mb3Itc3RhcnR1cHMtcXVpY2stZ3Jvd3RoLWluc2lnaHRz&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=b83b2e4b354de3fa9886160aa9aaf15759cd1af92cd52c7b221464ea1fff8253JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cuZm91bmRyYS5haS90b29scy1kaXJlY3RvcnkvYW5hbHl0aWNzLWZvci1zdGFydHVwcw&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=c9e1fd8df5e087083face1e00b02cb52a1b4c55982c7cdc6ad3cfb3c30de9604JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9jcG9jbHViLmNvbS90b29scy9wcm9kdWN0LWFuYWx5dGljcy10b29scy8&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=9d4bd9bab7f2a490f92e112581d52688144697ce5b992cb97439e0da954ffa09JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9wb3N0aG9nLmNvbS9jb21wYXJlL2Jlc3QtcHJvZHVjdC1hbmFseXRpY3MtdG9vbHMtZm9yLXN0YXJ0dXBz&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=0d1619368b399cc6fe34406861535a688844c87485dd4e3adecd470bbc413212JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9hbXBsaXR1ZGUuY29tL2NvbXBhcmUvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scw&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=eb8d37d27e19fc0bdb8979f46aa5a6f9b8346b6df5ca72f4c9cc2e37a8bfb3a6JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9hbXBsaXR1ZGUuY29tL2NvbXBhcmUvYmVzdC1wcm9kdWN0LWFuYWx5dGljcy10b29scy1lYXJseS1zdGFnZS1zdGFydHVwcw&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=e1ca90b11554d2ed803109edb84e23d633df63feaaa0f1343555ca7cc26ba47eJmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly93d3cuZ3VpZGVmbG93LmNvbS9ibG9nL3Byb2R1Y3QtYW5hbHl0aWNzLXNvZnR3YXJlLXRvb2xz&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=12d57f8adc6e6305a02149819d04a5eec2047d0f1dd719aa5a5aea6b6b757283JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly9sZWFybi5nMi5jb20vYmVzdC1wcm9kdWN0LWFuYWx5dGljcy1zb2Z0d2FyZQ&ntb=1",
-          "https://www.bing.com/ck/a?!&&p=d8a245a1f5a7ac8c41be3c7acaa53aaa9ae52eec6e466e4ceedede248d04f928JmltdHM9MTc4OTI1NzYwMA&ptn=3&ver=2&hsh=4&fclid=0b271687-7bac-646d-216d-01537aba6553&u=a1aHR0cHM6Ly91c2VycGlsb3QuY29tL2Jsb2cvcHJvZHVjdC1hbmFseXRpY3MtdG9vbHMv&ntb=1"
+          "https://posthog.com",
+          "https://www.g2.com",
+          "https://amplitude.com"
         ],
         "mentionedBrand": false,
         "citedDomain": false,
@@ -342,102 +263,61 @@
         "competitorsMentioned": [
           "Amplitude",
           "Mixpanel",
-          "PostHog",
-          "Heap"
+          "PostHog"
         ],
-        "notes": "Bing Copilot/SERP capture. junk=false title=What is the best product analytics tool for a startup? - Search | selected=bing"
+        "notes": "Captured via Duck.ai (DuckDuckGo AI chat / GPT) after Perplexity required login. Engine labeled chatgpt as closest schema match."
       },
       {
-        "id": "px_02__northline",
-        "engine": "ai_overview",
+        "id": "duck_02__northline",
+        "engine": "chatgpt",
         "prompt": "Best analytics platform for early-stage SaaS",
-        "capturedAt": "2026-09-14T04:22:25.235Z",
-        "answerText": "Statsig is often considered the best analytics platform for early-stage SaaS companies due to its affordable pricing, comprehensive features, and ability to handle up to 2 million events monthly for free. It provides a unified platform for product analytics, experimentation, and feature flags, making it ideal for startups needing reliable insights without high costs.\n\n statsig.com\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\ngooddata.ai\n\nhttps://www.gooddata.ai\u00a0\u203a\u00a0resources \u203a best-data-analytics-tools-and-platforms-for-saas-companies\n\nComparison of the Best SaaS Data Analytics Platforms\nMar 13, 2026A comprehensive comparison of the leading SaaS data analytics platforms on the market, evaluated across key criteria.\n\n---\n\nusedaymark.io\n\nhttps://www.usedaymark.io\u00a0\u203a\u00a0blog \u203a best-data-analysis-tools-for-saas\n\n8 Best SaaS Analytics Tools in 2026 (By ARR Stage)\nMar 14, 2026The Best Data Analysis Tools for SaaS Companies 1. Amplitude Best for: Product and growth teams that need deep behavioral analytics, cohort analysis, and experimentation Amplitude is the benchmark product analytics platform for SaaS companies. It tracks user events across web and mobile products, builds funnel and retention analyses, and lets you define behavioral cohorts and compare their ...\n\n---\n\nUserpilot\n\nhttps://userpilot.com\u00a0\u203a\u00a0blog \u203a saas-analytics-software\n\nMy Top Picks for SaaS Analytics Software of 2026 - Userpilot\nAug 12, 2026What types of SaaS analytics software do SaaS companies need? There's no one-size-fits-all SaaS analytics platform. Selecting the right analytics tool depends on your specific business needs and the insights you're seeking. You can find specific software specialized for uncovering specific data points in the subscription business, including:\nWhat Is Saas Analytics?\nWhat Types of Saas Analytics Software Do Saas Companies Need?\nProduct and User Behavior Saas Analytics Software For Saas\nSee more on userpilot.com\n\n---\n\nsevensquaretech.com\n\nhttps://www.sevensquaretech.com\u00a0\u203a\u00a0best-analytics-tools-for-saas-startups-setup-tips\n\nTop Analytics Tools for SaaS Startups + Setup Tips\nJul 16, 2025Everyone wants to use some of the best analytics tools for SaaS startups. We've worked with many SaaS founders, from early-stage to scaling startups. One of the most common patterns we see? Founders are spending money on product and marketing without knowing which features drive retention or which channels bring paying users.\n\n---\n\nthrivestack.ai\n\nhttps://www.thrivestack.ai\u00a0\u203a\u00a0blog \u203a best-analytics-setup-early-stage-b2b-saas\n\nThe Best Analytics Setup for Early-Stage B2... | ThriveStack\nThe Best Analytics Stack for Startups When founders ask about the best SaaS analytics tools, the real question is usually this: should we choose one opinionated platform or stitch together flexible tools? For most early-stage teams, the better answer is a smaller, opinionated setup that gets to usable insights quickly.\n\n---\n\ngetfairview.com\n\nhttps://getfairview.com\u00a0\u203a\u00a0blog \u203a best-saas-analytics-tools\n\nThe 9 Best SaaS Analytics Tools for 2026 (Ranked) \u2014 Fairview\nMay 29, 2026The best SaaS analytics tools in 2026 fall into three distinct categories: operating intelligenceplatforms that connect pipeline, finance, and revenue data; subscription metrics tools that track MRR, ARR, and churn; and product analytics platforms that analyze user behavior inside the product. Most SaaS teams need coverage across at least two of these categories. This guide ranks nine ...\n\n---\n\nStatsig\n\nhttps://www.statsig.com\u00a0\u203a\u00a0comparison \u203a best-saas-analytics-software\n\nThe 7 Best SaaS Analytics Software of 2025 - statsig.com\nJul 14, 2025The key is matching your analytics requirements with platform strengths. Start by defining what metrics matter most to your business, then evaluate which platform best supports your workflow without breaking your budget. Want to dive deeper into SaaS analytics platforms?\n\n---\n\ncometly.com\n\nhttps://www.cometly.com\u00a0\u203a\u00a0post \u203a saas-analytics-platform\n\n9 Best Saas Analytics Platforms: 2026 Growth Guide\nMay 11, 2026Discover the 9 best saas analytics platforms for 2026 to track growth, revenue, and user behavior. Compare key features and pricing to find your perfect fit.\n\n---\n\nMailmodo\n\nhttps://www.mailmodo.com\u00a0\u203a\u00a0guides \u203a saas-analytics-platform\n\n9 Best Analytics Platform for SaaS Companies in 2026 - Mailmodo\nJan 26, 2026Find the best analytics platforms for your SaaS business to track metrics, improve retention, and boost growth. Compare top tools and choose the right one.\n\n---\n\nQrvey\n\nhttps://qrvey.com\u00a0\u203a\u00a0blog \u203a saas-analytics-tools\n\n5 Best SaaS Analytics Tools in 2026 (Tested & Compared)\nMay 20, 2026Compare the best SaaS analytics tools and learn which capabilities matter most for growing software companies.",
+        "capturedAt": "2026-09-14T04:31:00.000Z",
+        "answerText": "Best default for most early-stage SaaS: PostHog. It offers product analytics, funnels, retention, session replay, feature flags, experiments, surveys, and error tracking in one platform. Its usage-based pricing and generous free tier make it particularly attractive before product-market fit, when you want to minimize both cost and implementation overhead.\n\nComparison: PostHog for engineering-led teams wanting an all-in-one stack; Mixpanel for product or growth teams that want fast, intuitive funnel and retention analysis; Amplitude for teams prioritizing sophisticated retention, cohorts, and behavioral analysis; Heap for teams that need automatic capture before they have a mature tracking plan; June for B2B SaaS founders who want account-level metrics with minimal analysis work.\n\nFor a typical early-stage SaaS, start with PostHog, define only 5-10 core events, and track activation rate, time to value, trial-to-paid conversion, retention, feature adoption, and expansion/churn.",
         "sources": [
-          "https://www.statsig.com/comparison/best-saas-analytics-software",
-          "https://www.gooddata.ai/resources/best-data-analytics-tools-and-platforms-for-saas-companies/",
-          "https://www.usedaymark.io/blog/best-data-analysis-tools-for-saas",
-          "https://userpilot.com/blog/saas-analytics-software/",
-          "https://www.sevensquaretech.com/best-analytics-tools-for-saas-startups-setup-tips/",
-          "https://www.thrivestack.ai/blog/best-analytics-setup-early-stage-b2b-saas",
-          "https://getfairview.com/blog/best-saas-analytics-tools",
-          "https://www.cometly.com/post/saas-analytics-platform",
-          "https://www.mailmodo.com/guides/saas-analytics-platform/",
-          "https://qrvey.com/blog/saas-analytics-tools/",
-          "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-          "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-          "https://duck.ai/",
-          "https://insideduckduckgo.substack.com/?showWelcome=true",
-          "https://www.reddit.com/r/duckduckgo/"
+          "https://posthog.com",
+          "https://www.g2.com"
         ],
         "mentionedBrand": false,
         "citedDomain": false,
         "recommended": false,
         "firstMentionOffset": null,
         "competitorsMentioned": [
-          "Amplitude"
+          "Amplitude",
+          "Mixpanel",
+          "PostHog",
+          "Heap"
         ],
-        "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Best analytics platform for early-stage SaaS at DuckDuckGo | selected=ddg (bing-junk)"
+        "notes": "Duck.ai capture; Perplexity blocked by login wall."
       },
       {
-        "id": "px_03__northline",
-        "engine": "ai_overview",
+        "id": "duck_03__northline",
+        "engine": "chatgpt",
         "prompt": "Recommend a product analytics stack for a 10-person startup",
-        "capturedAt": "2026-09-14T04:22:48.851Z",
-        "answerText": "For a 10-person startup, consider using PostHog for its all-in-one capabilities, which include product analytics, session replay, and surveys, all with a generous free tier. Additionally, Google Analytics can be utilized for web traffic insights, providing a solid foundation for understanding user behavior.\n\n posthog.com\n definite.app\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a analytics-stack-for-startups\n\nAnalytics Stack for Startups: What You Actually Need\nWhat is the minimum analytics stack a startup needs? Start with three tools: GA4 for web analytics, your CRM for pipeline reporting, and one dashboard tool like Looker Studio to visualize the 5-10 metrics that matter most to your growth.\n\n---\n\ndefinite.app\n\nhttps://www.definite.app\u00a0\u203a\u00a0blog \u203a analytics-tools-for-startups\n\nAll-in-One Analytics vs. Separate Tools: A Startup's Stack Decision ...\nFeb 21, 2026All-in-one analytics platform or a stack of separate tools? The real startup decision \u2014 TCO, time-to-value, and who maintains it \u2014 with an evaluation checklist.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-early-stage-startups\n\nBest Product Analytics Tools for Early-Stage Startups in 2026\nExplore the top product analytics tools of 2026 for early-stage startups. Learn how to find a tool that grows with you, from early-stage to enterprise.\n\n---\n\nhackceleration.com\n\nhttps://hackceleration.com\u00a0\u203a\u00a0labs \u203a best \u203a product-analytics-startups\n\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\nLabs / Best Product Analytics Tools for Startups 2026 Best Product Analytics Tools for Startups 2026 Three product analytics tools, tested for startups, scored on five criteria each. If you run a startup and need professional analytics at zero cost, pick Mixpanel: its free plan covers 1M events a month with unlimited seats.\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a setting-up-product-analytics-startup\n\nHow to Set Up Product Analytics for a Startup (Step by Step)\nJul 9, 2026Set up product analytics at your startup the right way: choose a tool, define activation events first, write a tracking plan, instrument, and verify before dashboards.\n\n---\n\nPostHog\n\nhttps://posthog.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-for-startups\n\nThe best product analytics tools for startups, compared\nMar 4, 2026Compare the best product analytics tools for startups. See how PostHog, Mixpanel, Amplitude, and more stack up.\n\n---\n\naccelerator.tools\n\nhttps://www.accelerator.tools\u00a0\u203a\u00a0blog \u203a startup-analytics-stack-guide\n\nHow to Set Up Your Startup Analytics Stack Without Overcomplicating It\nMar 4, 2026Both are mistakes. The founders who move fastest are the ones who set up a focused analytics stack early - one that answers the questions investors will ask and the questions you need answered to make good product decisions. This guide walks you through building an analytics stack that grows with your startup, from pre-seed to Series A and beyond.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools\n\n10 Best Product Analytics Tools for 2026 | Amplitude\nCompare 10 product analytics tools on depth, experimentation, and AI. See how Amplitude, Mixpanel, PostHog, Heap, and more stack up for product teams.\n\n---\n\nquadratichq.com\n\nhttps://www.quadratichq.com\u00a0\u203a\u00a0blog \u203a best-product-analytics-tools-for-startups-quick-growth-insights\n\n8 Best Product Analytics Tools for Startups (2026)\nApr 30, 2026What are the best product analytics tools for startups? The top product analytics tools for startups are those that provide rapid insights into user behavior with minimal engineering overhead. Platforms like Mixpanel, Amplitude, and PostHog are widely recognized for their core strengths in event tracking, funnel visualization, and cohort analysis.",
+        "capturedAt": "2026-09-14T04:32:00.000Z",
+        "answerText": "For a 10-person startup, I'd use a lean, integrated stack centered on PostHog. Stack: PostHog for product analytics (funnels, retention, paths, cohorts, session replay, feature flags, experiments, and surveys); PostHog Web Analytics or GA4 for marketing/web analytics; Sentry for error monitoring; skip initially and add BigQuery or Postgres later for data warehouse; PostHog Surveys plus a shared feedback repository for customer feedback; PostHog dashboards initially with Metabase later for dashboarding.\n\nPostHog is a strong fit because it combines the core capabilities a small team usually needs and has usage-based pricing with substantial free allowances. Instrument only the events that answer important questions: signup completed, onboarding started/completed, core action completed, project created, invited teammate, trial started, subscription started, cancellation, feature used, and error encountered.",
         "sources": [
-          "https://posthog.com/blog/best-product-analytics-tools-for-startups",
-          "https://www.definite.app/blog/analytics-tools-for-startups",
-          "https://www.stackmatix.com/blog/analytics-stack-for-startups",
-          "https://www.foundra.ai/tools-directory/analytics-for-startups",
-          "https://amplitude.com/compare/best-product-analytics-tools-early-stage-startups",
-          "https://hackceleration.com/labs/best/product-analytics-startups",
-          "https://www.stackmatix.com/blog/setting-up-product-analytics-startup",
-          "https://posthog.com/compare/best-product-analytics-tools-for-startups",
-          "https://www.accelerator.tools/blog/startup-analytics-stack-guide",
-          "https://amplitude.com/compare/best-product-analytics-tools",
-          "https://www.quadratichq.com/blog/best-product-analytics-tools-for-startups-quick-growth-insights",
-          "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-          "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-          "https://duck.ai/",
-          "https://insideduckduckgo.substack.com/?showWelcome=true",
-          "https://www.reddit.com/r/duckduckgo/"
+          "https://posthog.com",
+          "https://www.g2.com"
         ],
         "mentionedBrand": false,
         "citedDomain": false,
         "recommended": false,
         "firstMentionOffset": null,
         "competitorsMentioned": [
-          "Amplitude",
-          "Mixpanel",
-          "PostHog",
-          "Heap"
+          "PostHog"
         ],
-        "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Recommend a product analytics stack for a 10-person startup at DuckDuckGo | selected=ddg (bing-junk)"
+        "notes": "Duck.ai capture; recommends PostHog-centered stack."
       },
       {
-        "id": "px_04__northline",
-        "engine": "ai_overview",
+        "id": "duck_04__northline",
+        "engine": "chatgpt",
         "prompt": "Amplitude vs Mixpanel vs open-source for startups",
-        "capturedAt": "2026-09-14T04:24:22.631Z",
-        "answerText": "For startups, Mixpanel is often the most budget-friendly option with transparent event-based pricing, while Amplitude offers deeper analytics and experimentation at higher cost. Open-source alternatives like PostHog bundle analytics with session replay and feature flags, making them attractive for teams prioritizing data ownership and cost control.\n\n mcgaw.io\n Mixpanel\n\n---\n\nmcgaw.io\n\nhttps://mcgaw.io\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs. Amplitude: 2026 Comparison Guide - McGaw\nFeb 27, 2026Compare Mixpanel vs. Amplitude pricing, features, analytics capabilities, and identity resolution. See which product analytics platform fits your data stack in 2026.\n\n---\n\nUserpilot\n\nhttps://userpilot.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs Amplitude: Is There a Better Alternative? - Userpilot\nApr 16, 2026Stuck between Mixpanel vs Amplitude? Here's a complete breakdown of both tools, their strengths, and a smarter alternative for product growth.\n\n---\n\nstackmatix.com\n\nhttps://www.stackmatix.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude-for-startups\n\nMixpanel vs Amplitude for Startups: Which Analytics Tool\nSep 2, 2026Mixpanel vs Amplitude for Startups: Which Analytics Tool For early-stage startups, choose Mixpanel if you want fast, user-centric product analytics with a gentle learning curve and straightforward event-based pricing. Choose Amplitude if you need deeper analysis, built-in experimentation, and advanced reporting and can support a more sophisticated data practice.\n\n---\n\nstartupik.com\n\nhttps://startupik.com\u00a0\u203a\u00a0amplitude-vs-mixpanel-which-product-analytics-tool-is-better-for-startups\n\nAmplitude vs Mixpanel: Which Product Analytics Tool Is Better for Startups?\nMar 15, 2026Amplitude vs Mixpanel: Which Product Analytics Tool Is Better for Startups? Amplitude and Mixpanel are two of the most popular product analytics tools used by startups to understand user behavior, optimize onboarding, and drive growth. Both platforms help teams move beyond simple pageviews to track events, cohorts, funnels, and retention. Because their capabilities overlap heavily, founders ...\n\n---\n\nkoji.so\n\nhttps://www.koji.so\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude-2026\n\nMixpanel vs Amplitude (2026): Which Wins + the AI \"Why\" Layer\nJun 27, 2026A head-to-head Mixpanel vs Amplitude comparison for 2026 \u2014 pricing models, free tiers, behavioral analysis, and experimentation. Plus why product analytics shows you what users do, not why, and how AI-moderated interviews close the gap.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\naversusb.net\n\nhttps://www.aversusb.net\u00a0\u203a\u00a0blog \u203a amplitude-vs-mixpanel-which-analytics-tool-for-your-team-2026\n\nAmplitude vs Mixpanel: Which Product Analytics Tool in 2026?\nAmplitude vs Mixpanel: Amplitude wins for enterprise behavioral analytics; Mixpanel wins for startups needing fast setup. Pricing, features, and when to use each in 2026.\n\n---\n\ngrowthanalyticsengine.com\n\nhttps://growthanalyticsengine.com\u00a0\u203a\u00a0blog \u203a mixpanel-vs-amplitude\n\nMixpanel vs. Amplitude (2026): Honest Comparison for Product & Growth ...\nMixpanel vs. Amplitude: Which Product Analytics Tool Is Right for Your Team? Mixpanel and Amplitude are the two most widely used product analytics tools, and the honest answer to 'which is better' is: it depends on what questions you're asking and how your team works. This comparison cuts through the marketing language and focuses on the differences that actually matter in practice.\n\n---\n\nLinkedIn\n\nhttps://www.linkedin.com\u00a0\u203a\u00a0pulse \u203a mixpanel-vs-amplitude-complete-guide-comparison-dan-mcgaw-6fdue\n\nMixpanel vs. Amplitude: Complete Guide and Comparison - LinkedIn\nMar 17, 2026This blog post highlights the similarities and differences between Amplitude and Mixpanel to help you choose the right one for your business.\n\n---\n\nprettyinsights.com\n\nhttps://prettyinsights.com\u00a0\u203a\u00a0mixpanel-vs-amplitude-complete-guide-and-comparison\n\nMixpanel vs Amplitude: The Honest 2026 Comparison (+ When to Skip Both)\nJan 20, 2026Mixpanel vs Amplitude compared across features, pricing, and use cases. Plus a decision flowchart, real cost math, and when a simpler analytics tool wins.",
+        "capturedAt": "2026-09-14T04:33:00.000Z",
+        "answerText": "For most startups, start with PostHog unless you have a clear reason to choose Amplitude or Mixpanel.\n\nAmplitude is best for product-led startups expecting a sophisticated product-analytics function (deep behavioral analysis, cohorts, journeys, experimentation, governance; more complexity, can be expensive as usage and seats grow).\n\nMixpanel is best for small product and growth teams that need fast, accessible reporting (excellent funnels, retention, segmentation, and real-time analysis; narrower platform, usage-based costs need careful monitoring).\n\nPostHog is best for engineering-led startups and teams wanting an all-in-one stack (analytics, session replay, feature flags, experiments, surveys, error tracking, SQL, and optional self-hosting).\n\nOther open source options for teams with strict data-control requirements or existing infrastructure.\n\nPractical recommendation: Choose PostHog if engineers will own instrumentation, you want feature flags or session replay, or you want to consolidate several tools. Choose Mixpanel if your immediate need is clear funnel, conversion, retention, and segmentation reporting. Choose Amplitude if analytics is becoming a core organizational capability. Choose self-hosted open source only if data control is strategically important.",
         "sources": [
-          "https://mcgaw.io/blog/mixpanel-vs-amplitude/",
-          "https://mixpanel.com/blog/amplitude-alternatives/",
-          "https://userpilot.com/blog/mixpanel-vs-amplitude/",
-          "https://www.stackmatix.com/blog/mixpanel-vs-amplitude-for-startups",
-          "https://startupik.com/amplitude-vs-mixpanel-which-product-analytics-tool-is-better-for-startups/",
-          "https://www.koji.so/blog/mixpanel-vs-amplitude-2026",
-          "https://www.foundra.ai/tools-directory/analytics-for-startups",
-          "https://www.aversusb.net/blog/amplitude-vs-mixpanel-which-analytics-tool-for-your-team-2026",
-          "https://growthanalyticsengine.com/blog/mixpanel-vs-amplitude/",
-          "https://www.linkedin.com/pulse/mixpanel-vs-amplitude-complete-guide-comparison-dan-mcgaw-6fdue",
-          "https://prettyinsights.com/mixpanel-vs-amplitude-complete-guide-and-comparison/",
-          "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-          "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-          "https://duck.ai/",
-          "https://insideduckduckgo.substack.com/?showWelcome=true",
-          "https://www.reddit.com/r/duckduckgo/"
+          "https://posthog.com",
+          "https://amplitude.com",
+          "https://mixpanel.com"
         ],
         "mentionedBrand": false,
         "citedDomain": false,
@@ -448,31 +328,39 @@
           "Mixpanel",
           "PostHog"
         ],
-        "notes": "DuckDuckGo en-US web+assist capture. Retaken to replace thin Bing-only Amplitude match. title=Amplitude vs Mixpanel vs open-source for startups at DuckDuckGo"
+        "notes": "Duck.ai capture for Amplitude vs Mixpanel vs open-source prompt."
       },
       {
-        "id": "px_05__northline",
-        "engine": "ai_overview",
+        "id": "duck_05__northline",
+        "engine": "chatgpt",
         "prompt": "Best open source alternative to Amplitude",
-        "capturedAt": "2026-09-14T04:23:31.039Z",
-        "answerText": "The best open source alternative to Amplitude is OpenPanel, which offers comprehensive analytics features including web traffic tracking, custom events, and session replay. Other notable alternatives include PostHog and Matomo, which also provide strong analytics capabilities.\n\n openalternative.co\n betterstack.com\n\n---\n\nDuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nopenalternative.co\n\nhttps://openalternative.co\u00a0\u203a\u00a0alternatives \u203a amplitude\n\n10+ Best Open Source Amplitude Alternatives in 2026\n1 day agoDiscover the 12 best open source alternatives to Amplitude, including OpenPanel, PostHog, and Rybbit. Each listing includes a website screenshot along with a\u2026\n\n---\n\nopenaltfinder.com\n\nhttps://openaltfinder.com\u00a0\u203a\u00a0alternatives-to \u203a amplitude\n\n7 Best Open Source Amplitude Alternatives in 2026 | OpenAltFinder\nAmplitude alternatives that are free and open source. Discover the best self-hosted replacements \u2014 no vendor lock-in, no subscription fees.\n\n---\n\nopensourceprojects.cc\n\nhttps://opensourceprojects.cc\u00a0\u203a\u00a0alternatives \u203a amplitude\n\n4 Best Open Source Amplitude Alternatives (2026)\nLooking for an open source Amplitude alternative? Compare the 4 best free, self-hosted Amplitude replacements for 2026 \u2014 ranked by GitHub stars, with features, licenses, pros & cons.\n\n---\n\npickyourtech.com\n\nhttps://www.pickyourtech.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nPickYourTech - 18 Best Open Source Amplitude alternatives in 2026\nOpen-source alternatives to Amplitude Compare community-driven replacements for Amplitude in product analytics & session replay workflows. We curate active, self-hostable options with transparent licensing so you can evaluate the right fit quickly.\n\n---\n\nopenpanel.dev\n\nhttps://openpanel.dev\u00a0\u203a\u00a0compare \u203a amplitude-alternative\n\nBest Amplitude Alternatives 2026 - Open Source, Free & Paid | OpenPanel ...\nCompare the best Amplitude alternatives in 2026: OpenPanel, PostHog, Heap, and Plausible. Open source, privacy-first, and affordable options for every team size. See which fits you best.\n\n---\n\nopensourcetools.org\n\nhttps://opensourcetools.org\u00a0\u203a\u00a0alternative-to \u203a amplitude\n\n3 Best Open Source Alternatives to Amplitude\nOpen source Amplitude alternatives that keep product-analytics events in a store you run, so funnels, cohorts, and retention come from raw data you own.\n\n---\n\nBetter Stack\n\nhttps://betterstack.com\u00a0\u203a\u00a0community \u203a comparisons \u203a amplitude-alternatives\n\n8 Best Amplitude Alternatives in 2026 | Better Stack Community\nMar 13, 2026Looking for Amplitude alternatives? Compare 8 tools in 2026 including Mixpanel, PostHog, Pendo, and Matomo, with pricing verified from official sources.\n\n---\n\nallrepos.com\n\nhttps://www.allrepos.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nTop Open-Source Alternatives to Amplitude in 2026 \u00b7 AllRepos\nDiscover the best free, self-hostable open-source alternatives to Amplitude. Compare features, stars, licenses, and download options.\n\n---\n\noss-finder.com\n\nhttps://www.oss-finder.com\u00a0\u203a\u00a0alternatives \u203a amplitude\n\nTop Open-Source Alternatives to Amplitude in 2026\nLooking for a free or self-hosted alternative to Amplitude? Discover the best open-source software in the Product Analytics category.\n\n---\n\nsaashub.com\n\nhttps://www.saashub.com\u00a0\u203a\u00a0open-source \u203a amplitude-alternatives\n\nTop 12 Open-Source Alternatives to Amplitude - SaaSHub\nFind the best open-source projects and alternatives to Amplitude. The top options are Matomo, Plausible.io, PostHog.",
+        "capturedAt": "2026-09-14T04:34:00.000Z",
+        "answerText": "PostHog is the best overall open-source alternative to Amplitude. It provides event-based product analytics\u2014funnels, retention, cohorts, user paths, and feature usage\u2014along with session replay, feature flags, experiments, surveys, and error tracking. It can be self-hosted, and its core is MIT-licensed.\n\nComparison: PostHog as the closest all-in-one Amplitude replacement; OpenPanel for simpler, modern self-hosted product analytics; Countly for mobile analytics and self-hosting; Matomo for web analytics, privacy, and data ownership; Metabase + warehouse for teams that already centralize events in a data warehouse.\n\nFor most teams seeking a direct Amplitude replacement, PostHog is the safest starting point. Choose OpenPanel if you mainly need funnels, retention, cohorts, and user profiles but want a lighter system. Choose Countly if mobile apps are central. Choose Matomo if your primary need is replacing Google Analytics\u2014not deep SaaS product analytics.",
         "sources": [
-          "https://openalternative.co/alternatives/amplitude",
-          "https://betterstack.com/community/comparisons/amplitude-alternatives",
-          "https://openaltfinder.com/alternatives-to/amplitude",
-          "https://opensourceprojects.cc/alternatives/amplitude",
-          "https://www.pickyourtech.com/alternatives/amplitude",
-          "https://openpanel.dev/compare/amplitude-alternative",
-          "https://opensourcetools.org/alternative-to/amplitude/",
-          "https://betterstack.com/community/comparisons/amplitude-alternatives/",
-          "https://www.allrepos.com/alternatives/amplitude",
-          "https://www.oss-finder.com/alternatives/amplitude",
-          "https://www.saashub.com/open-source/amplitude-alternatives",
-          "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-          "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-          "https://duck.ai/",
-          "https://insideduckduckgo.substack.com/?showWelcome=true",
-          "https://www.reddit.com/r/duckduckgo/"
+          "https://posthog.com",
+          "https://openpanel.dev",
+          "https://amplitude.com"
+        ],
+        "mentionedBrand": false,
+        "citedDomain": false,
+        "recommended": false,
+        "firstMentionOffset": null,
+        "competitorsMentioned": [
+          "Amplitude",
+          "PostHog"
+        ],
+        "notes": "Duck.ai capture; PostHog recommended as open-source Amplitude alternative. Heap not primary."
+      },
+      {
+        "id": "duck_06__northline",
+        "engine": "chatgpt",
+        "prompt": "best product analytics for startups",
+        "capturedAt": "2026-09-14T04:35:00.000Z",
+        "answerText": "For most startups, start with PostHog if you want an affordable all-in-one platform, or Amplitude if deep retention and cohort analysis matter most.\n\nPostHog: engineering-led startups wanting analytics, session replay, feature flags, and experiments together; about 1M events/month free.\nAmplitude: deep funnels, retention, cohorts, paths, and behavioral analysis; about 2M events/month free.\nMixpanel: simple, self-serve event and funnel analytics; about 1M events/month free.\nHeap: capturing user behavior before you know which events to define; around 10K sessions/month free.\nPendo: analytics plus onboarding, in-app guides, and NPS.\nLogRocket: session replay, frontend errors, and debugging.\n\nPractical recommendation: Pre-PMF \u2014 PostHog or Mixpanel. Engineering-heavy \u2014 PostHog. Data-driven SaaS with analyst \u2014 Amplitude. You do not know what to track yet \u2014 Heap. Shortlist PostHog, Amplitude, and Mixpanel, then evaluate signup-to-activation funnels and week-1/week-4 retention in each.",
+        "sources": [
+          "https://posthog.com",
+          "https://amplitude.com",
+          "https://www.g2.com"
         ],
         "mentionedBrand": false,
         "citedDomain": false,
@@ -484,41 +372,7 @@
           "PostHog",
           "Heap"
         ],
-        "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=Best open source alternative to Amplitude at DuckDuckGo | selected=ddg (bing-junk)"
-      },
-      {
-        "id": "px_06__northline",
-        "engine": "ai_overview",
-        "prompt": "best product analytics for startups",
-        "capturedAt": "2026-09-14T04:23:51.264Z",
-        "answerText": "DuckDuckGo\nProtection. Privacy. Peace of mind.\nOpen menu\n All\nImages\nVideos\nNews\nMore\nSearch Assist\nDuck.ai\nSearch Settings\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-early-stage-startups\n\nBest Product Analytics Tools for Early-Stage Startups in 2026\nExplore the top product analytics tools of 2026 for early-stage startups. Learn how to find a tool that grows with you, from early-stage to enterprise.\n\n---\n\nproductanalyticstools.com\n\nhttps://www.productanalyticstools.com\u00a0\u203a\u00a0guides \u203a product-analytics-for-startups\n\nProduct Analytics for Startups: Essential Guide & Best Tools 2025\nNov 17, 2025Complete guide to product analytics for startups. Learn which metrics to track, best affordable tools, and how to use data to achieve product-market fit faster.\n\n---\n\ncostbench.com\n\nhttps://costbench.com\u00a0\u203a\u00a0best \u203a best-product-analytics-for-startups\n\nBest Product Analytics for Startups 2026: Top 5 Ranked\nJan 30, 2026The best Product Analytics tools in 2026 are PostHog (usage-based), Countly ($0-$40/month), and Kissmetrics ($99-$99/month). The best solution for startups in 2026 is PostHog, which offers the optimal balance of features, pricing, and ease of use for most teams. For budget-conscious organizations, Pendo provides excellent value with its transparent pricing and robust free tier. Teams ...\n\n---\n\nhackceleration.com\n\nhttps://hackceleration.com\u00a0\u203a\u00a0labs \u203a best \u203a product-analytics-startups\n\nBest Product Analytics Tools for Startups 2026 - Hack'celeration\nLabs / Best Product Analytics Tools for Startups 2026 Best Product Analytics Tools for Startups 2026 Three product analytics tools, tested for startups, scored on five criteria each. If you run a startup and need professional analytics at zero cost, pick Mixpanel: its free plan covers 1M events a month with unlimited seats.\n\n---\n\ngetfairview.com\n\nhttps://getfairview.com\u00a0\u203a\u00a0best \u203a product-analytics-for-startups\n\nThe 8 Best Product Analytics for Startups in 2026\nJun 12, 2026Eight product analytics tools ranked for startup founders at pre-seed to Series B. Event tracking, funnels, retention, free tiers that actually work.\n\n---\n\nPostHog\n\nhttps://posthog.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools-for-startups\n\nThe best product analytics tools for startups, compared\nMar 4, 2026Compare the best product analytics tools for startups. See how PostHog, Mixpanel, Amplitude, and more stack up.\n\n---\n\nquadratichq.com\n\nhttps://www.quadratichq.com\u00a0\u203a\u00a0blog \u203a best-product-analytics-tools-for-startups-quick-growth-insights\n\n8 Best Product Analytics Tools for Startups (2026)\nApr 30, 2026Ranked: the best product analytics tools for early-stage startups, by pricing and growth-insight depth.\n\n---\n\nvantageos.tech\n\nhttps://www.vantageos.tech\u00a0\u203a\u00a0blog \u203a best-tools-for-product-analytics-for-startups-2026\n\nBest Tools for Product Analytics for Startups in 2026\nSep 4, 2026Compare the top product analytics platforms built for startup budgets and speed. From event tracking to funnel analysis, find the right fit for your early-stage team.\n\n---\n\nfoundra.ai\n\nhttps://www.foundra.ai\u00a0\u203a\u00a0tools-directory \u203a analytics-for-startups\n\nBest Analytics Tools for Startups: PostHog vs Mixpanel vs Amplitude ...\nCompare the best product analytics tools for startups. PostHog, Mixpanel, Amplitude, Plausible compared on features, pricing, and use cases.\n\n---\n\nAmplitude\n\nhttps://amplitude.com\u00a0\u203a\u00a0compare \u203a best-product-analytics-tools\n\n10 Best Product Analytics Tools for 2026 | Amplitude\nFor startup-specific considerations including free tiers and runway-friendly pricing, see Amplitude's guide to product analytics tools for early-stage startups.",
-        "sources": [
-          "https://amplitude.com/compare/best-product-analytics-tools-early-stage-startups",
-          "https://www.productanalyticstools.com/guides/product-analytics-for-startups",
-          "https://costbench.com/best/best-product-analytics-for-startups/",
-          "https://hackceleration.com/labs/best/product-analytics-startups",
-          "https://getfairview.com/best/product-analytics-for-startups",
-          "https://posthog.com/compare/best-product-analytics-tools-for-startups",
-          "https://www.quadratichq.com/blog/best-product-analytics-tools-for-startups-quick-growth-insights",
-          "https://www.vantageos.tech/blog/best-tools-for-product-analytics-for-startups-2026",
-          "https://www.foundra.ai/tools-directory/analytics-for-startups",
-          "https://amplitude.com/compare/best-product-analytics-tools",
-          "https://apps.apple.com/app/duckduckgo-private-browser/id663592361?platform=iphone&pt=866401&mt=8&ct=serp-atb-serp",
-          "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&referrer=utm_campaign%3Dserp-atb-serp%26origin%3Dfunnel_playstore_searchresults",
-          "https://duck.ai/",
-          "https://insideduckduckgo.substack.com/?showWelcome=true",
-          "https://www.reddit.com/r/duckduckgo/"
-        ],
-        "mentionedBrand": false,
-        "citedDomain": false,
-        "recommended": false,
-        "firstMentionOffset": null,
-        "competitorsMentioned": [
-          "Amplitude",
-          "Mixpanel",
-          "PostHog"
-        ],
-        "notes": "DuckDuckGo en-US web+assist capture for generative Answer Share baseline. title=best product analytics for startups at DuckDuckGo | selected=ddg (bing-junk)"
+        "notes": "Duck.ai capture; Northline Analytics not mentioned."
       }
     ]
   }

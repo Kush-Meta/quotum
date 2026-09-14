@@ -5,11 +5,7 @@
     "prompt": "What is the best product analytics tool for a startup?",
     "capturedAt": "2026-09-14T04:30:00.000Z",
     "answerText": "For most early-stage startups, PostHog is the best default choice. It combines product analytics, session replay, feature flags, A/B testing, surveys, error tracking, and data warehousing, with a generous free tier and usage-based pricing. That makes it especially attractive when you want to avoid stitching together several tools.\n\nComparison: PostHog for technical startups wanting an all-in-one platform; Amplitude for deep retention/cohort/behavioral analysis; Mixpanel for nontechnical product teams that need fast, easy funnels and reports; Pendo for in-app onboarding, guides, and product adoption.\n\nRecommend PostHog if you have engineers who can instrument events and want analytics plus experimentation, replays, and feature flags in one place, with a free tier that includes up to 1 million analytics events per month and 5,000 session recordings.",
-    "sources": [
-      "https://posthog.com",
-      "https://www.g2.com",
-      "https://amplitude.com"
-    ],
+    "sources": ["https://posthog.com", "https://www.g2.com", "https://amplitude.com"],
     "notes": "Captured via Duck.ai (DuckDuckGo AI chat / GPT) after Perplexity required login. Engine labeled chatgpt as closest schema match."
   },
   {
@@ -18,10 +14,7 @@
     "prompt": "Best analytics platform for early-stage SaaS",
     "capturedAt": "2026-09-14T04:31:00.000Z",
     "answerText": "Best default for most early-stage SaaS: PostHog. It offers product analytics, funnels, retention, session replay, feature flags, experiments, surveys, and error tracking in one platform. Its usage-based pricing and generous free tier make it particularly attractive before product-market fit, when you want to minimize both cost and implementation overhead.\n\nComparison: PostHog for engineering-led teams wanting an all-in-one stack; Mixpanel for product or growth teams that want fast, intuitive funnel and retention analysis; Amplitude for teams prioritizing sophisticated retention, cohorts, and behavioral analysis; Heap for teams that need automatic capture before they have a mature tracking plan; June for B2B SaaS founders who want account-level metrics with minimal analysis work.\n\nFor a typical early-stage SaaS, start with PostHog, define only 5-10 core events, and track activation rate, time to value, trial-to-paid conversion, retention, feature adoption, and expansion/churn.",
-    "sources": [
-      "https://posthog.com",
-      "https://www.g2.com"
-    ],
+    "sources": ["https://posthog.com", "https://www.g2.com"],
     "notes": "Duck.ai capture; Perplexity blocked by login wall."
   },
   {
@@ -30,10 +23,7 @@
     "prompt": "Recommend a product analytics stack for a 10-person startup",
     "capturedAt": "2026-09-14T04:32:00.000Z",
     "answerText": "For a 10-person startup, I'd use a lean, integrated stack centered on PostHog. Stack: PostHog for product analytics (funnels, retention, paths, cohorts, session replay, feature flags, experiments, and surveys); PostHog Web Analytics or GA4 for marketing/web analytics; Sentry for error monitoring; skip initially and add BigQuery or Postgres later for data warehouse; PostHog Surveys plus a shared feedback repository for customer feedback; PostHog dashboards initially with Metabase later for dashboarding.\n\nPostHog is a strong fit because it combines the core capabilities a small team usually needs and has usage-based pricing with substantial free allowances. Instrument only the events that answer important questions: signup completed, onboarding started/completed, core action completed, project created, invited teammate, trial started, subscription started, cancellation, feature used, and error encountered.",
-    "sources": [
-      "https://posthog.com",
-      "https://www.g2.com"
-    ],
+    "sources": ["https://posthog.com", "https://www.g2.com"],
     "notes": "Duck.ai capture; recommends PostHog-centered stack."
   },
   {
@@ -42,11 +32,7 @@
     "prompt": "Amplitude vs Mixpanel vs open-source for startups",
     "capturedAt": "2026-09-14T04:33:00.000Z",
     "answerText": "For most startups, start with PostHog unless you have a clear reason to choose Amplitude or Mixpanel.\n\nAmplitude is best for product-led startups expecting a sophisticated product-analytics function (deep behavioral analysis, cohorts, journeys, experimentation, governance; more complexity, can be expensive as usage and seats grow).\n\nMixpanel is best for small product and growth teams that need fast, accessible reporting (excellent funnels, retention, segmentation, and real-time analysis; narrower platform, usage-based costs need careful monitoring).\n\nPostHog is best for engineering-led startups and teams wanting an all-in-one stack (analytics, session replay, feature flags, experiments, surveys, error tracking, SQL, and optional self-hosting).\n\nOther open source options for teams with strict data-control requirements or existing infrastructure.\n\nPractical recommendation: Choose PostHog if engineers will own instrumentation, you want feature flags or session replay, or you want to consolidate several tools. Choose Mixpanel if your immediate need is clear funnel, conversion, retention, and segmentation reporting. Choose Amplitude if analytics is becoming a core organizational capability. Choose self-hosted open source only if data control is strategically important.",
-    "sources": [
-      "https://posthog.com",
-      "https://amplitude.com",
-      "https://mixpanel.com"
-    ],
+    "sources": ["https://posthog.com", "https://amplitude.com", "https://mixpanel.com"],
     "notes": "Duck.ai capture for Amplitude vs Mixpanel vs open-source prompt."
   },
   {
@@ -54,12 +40,8 @@
     "engine": "chatgpt",
     "prompt": "Best open source alternative to Amplitude",
     "capturedAt": "2026-09-14T04:34:00.000Z",
-    "answerText": "PostHog is the best overall open-source alternative to Amplitude. It provides event-based product analytics\u2014funnels, retention, cohorts, user paths, and feature usage\u2014along with session replay, feature flags, experiments, surveys, and error tracking. It can be self-hosted, and its core is MIT-licensed.\n\nComparison: PostHog as the closest all-in-one Amplitude replacement; OpenPanel for simpler, modern self-hosted product analytics; Countly for mobile analytics and self-hosting; Matomo for web analytics, privacy, and data ownership; Metabase + warehouse for teams that already centralize events in a data warehouse.\n\nFor most teams seeking a direct Amplitude replacement, PostHog is the safest starting point. Choose OpenPanel if you mainly need funnels, retention, cohorts, and user profiles but want a lighter system. Choose Countly if mobile apps are central. Choose Matomo if your primary need is replacing Google Analytics\u2014not deep SaaS product analytics.",
-    "sources": [
-      "https://posthog.com",
-      "https://openpanel.dev",
-      "https://amplitude.com"
-    ],
+    "answerText": "PostHog is the best overall open-source alternative to Amplitude. It provides event-based product analytics—funnels, retention, cohorts, user paths, and feature usage—along with session replay, feature flags, experiments, surveys, and error tracking. It can be self-hosted, and its core is MIT-licensed.\n\nComparison: PostHog as the closest all-in-one Amplitude replacement; OpenPanel for simpler, modern self-hosted product analytics; Countly for mobile analytics and self-hosting; Matomo for web analytics, privacy, and data ownership; Metabase + warehouse for teams that already centralize events in a data warehouse.\n\nFor most teams seeking a direct Amplitude replacement, PostHog is the safest starting point. Choose OpenPanel if you mainly need funnels, retention, cohorts, and user profiles but want a lighter system. Choose Countly if mobile apps are central. Choose Matomo if your primary need is replacing Google Analytics—not deep SaaS product analytics.",
+    "sources": ["https://posthog.com", "https://openpanel.dev", "https://amplitude.com"],
     "notes": "Duck.ai capture; PostHog recommended as open-source Amplitude alternative. Heap not primary."
   },
   {
@@ -67,12 +49,8 @@
     "engine": "chatgpt",
     "prompt": "best product analytics for startups",
     "capturedAt": "2026-09-14T04:35:00.000Z",
-    "answerText": "For most startups, start with PostHog if you want an affordable all-in-one platform, or Amplitude if deep retention and cohort analysis matter most.\n\nPostHog: engineering-led startups wanting analytics, session replay, feature flags, and experiments together; about 1M events/month free.\nAmplitude: deep funnels, retention, cohorts, paths, and behavioral analysis; about 2M events/month free.\nMixpanel: simple, self-serve event and funnel analytics; about 1M events/month free.\nHeap: capturing user behavior before you know which events to define; around 10K sessions/month free.\nPendo: analytics plus onboarding, in-app guides, and NPS.\nLogRocket: session replay, frontend errors, and debugging.\n\nPractical recommendation: Pre-PMF \u2014 PostHog or Mixpanel. Engineering-heavy \u2014 PostHog. Data-driven SaaS with analyst \u2014 Amplitude. You do not know what to track yet \u2014 Heap. Shortlist PostHog, Amplitude, and Mixpanel, then evaluate signup-to-activation funnels and week-1/week-4 retention in each.",
-    "sources": [
-      "https://posthog.com",
-      "https://amplitude.com",
-      "https://www.g2.com"
-    ],
+    "answerText": "For most startups, start with PostHog if you want an affordable all-in-one platform, or Amplitude if deep retention and cohort analysis matter most.\n\nPostHog: engineering-led startups wanting analytics, session replay, feature flags, and experiments together; about 1M events/month free.\nAmplitude: deep funnels, retention, cohorts, paths, and behavioral analysis; about 2M events/month free.\nMixpanel: simple, self-serve event and funnel analytics; about 1M events/month free.\nHeap: capturing user behavior before you know which events to define; around 10K sessions/month free.\nPendo: analytics plus onboarding, in-app guides, and NPS.\nLogRocket: session replay, frontend errors, and debugging.\n\nPractical recommendation: Pre-PMF — PostHog or Mixpanel. Engineering-heavy — PostHog. Data-driven SaaS with analyst — Amplitude. You do not know what to track yet — Heap. Shortlist PostHog, Amplitude, and Mixpanel, then evaluate signup-to-activation funnels and week-1/week-4 retention in each.",
+    "sources": ["https://posthog.com", "https://amplitude.com", "https://www.g2.com"],
     "notes": "Duck.ai capture; Northline Analytics not mentioned."
   }
 ]
