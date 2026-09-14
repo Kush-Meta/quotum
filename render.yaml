@@ -1,0 +1,15 @@
+# Render Blueprint — Quotum public publish surface
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: quotum
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /.well-known/answer-contracts.json
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3847"

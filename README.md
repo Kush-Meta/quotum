@@ -29,6 +29,18 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
 Full docs: [`docs/`](./docs/README.md).
 
+## Public deploy (Phase 2)
+
+Contracts must be on a crawlable host for generative engines to cite them.
+
+- Deploy guide: [`docs/DEPLOY.md`](./docs/DEPLOY.md)
+- Remeasure protocol: [`docs/PHASE2_REMEASURE.md`](./docs/PHASE2_REMEASURE.md)
+- Smoke test: `./scripts/smoke-public.sh https://YOUR_ORIGIN`
+
+Temporary public preview (claim to keep):  
+https://temporary-snappy-cello-o9ij081.vercel.app  
+Claim: https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71d606
+
 ## Pilot vertical
 
 **Product analytics for startups** — fictional brand *Northline Analytics* (`northline.dev`) so we can publish contracts and measure Answer Share without impersonating a real vendor.

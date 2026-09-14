@@ -9,3 +9,5 @@
 | [ARCHITECTURE.md](./ARCHITECTURE.md) | App layout, data flow, publish surfaces |
 | [API.md](./API.md) | HTTP routes and payloads |
 | [RUNBOOK.md](./RUNBOOK.md) | Local setup, ingest, remeasure checklist |
+| [DEPLOY.md](./DEPLOY.md) | Public hosting + claim/durable deploy options |
+| [PHASE2_REMEASURE.md](./PHASE2_REMEASURE.md) | Treatment publish + remeasure protocol |
