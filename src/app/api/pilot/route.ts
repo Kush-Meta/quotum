@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { readLiveBaseline } from "@/lib/liveStore";
 import {
   baselineProbes,
   treatmentProbes,
@@ -7,25 +8,21 @@ import {
 import { scoreAnswerShare } from "@/lib/schema";
 
 export async function GET() {
-  const baseline = scoreAnswerShare(baselineProbes);
-  const treatment = scoreAnswerShare(treatmentProbes);
+  const live = await readLiveBaseline();
+  const simulatedBaseline = scoreAnswerShare(baselineProbes);
+  const simulatedTreatment = scoreAnswerShare(treatmentProbes);
+
   return NextResponse.json({
     meta: pilotMeta,
-    baseline: { score: baseline, probes: baselineProbes },
-    treatment: { score: treatment, probes: treatmentProbes },
-    delta: {
-      answerShare: Number(
-        (treatment.answerShare - baseline.answerShare).toFixed(1),
-      ),
-      mentionRate: Number(
-        (treatment.mentionRate - baseline.mentionRate).toFixed(3),
-      ),
-      citationRate: Number(
-        (treatment.citationRate - baseline.citationRate).toFixed(3),
-      ),
-      recommendRate: Number(
-        (treatment.recommendRate - baseline.recommendRate).toFixed(3),
-      ),
+    simulated: {
+      baseline: { score: simulatedBaseline, probes: baselineProbes },
+      treatment: { score: simulatedTreatment, probes: treatmentProbes },
+      delta: {
+        answerShare: Number(
+          (simulatedTreatment.answerShare - simulatedBaseline.answerShare).toFixed(1),
+        ),
+      },
     },
+    live,
   });
 }
