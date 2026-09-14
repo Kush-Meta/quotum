@@ -28,9 +28,11 @@ npm run dev
 
 Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
+Full docs: [`docs/`](./docs/README.md).
+
 ## Pilot vertical
 
-**Product analytics for startups** — fictional brand *Northline Analytics* so we can publish contracts and measure Answer Share without impersonating a real vendor.
+**Product analytics for startups** — fictional brand *Northline Analytics* (`northline.dev`) so we can publish contracts and measure Answer Share without impersonating a real vendor.
 
 - Studio: edit / validate contracts  
 - Publish: machine-readable graph + `/.well-known/answer-contracts.json`  
@@ -39,19 +41,15 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
 ### Live baseline (Phase 1 — done)
 
-Captured generative-search answers for the product-analytics prompt pack (Bing Copilot Search when available; DuckDuckGo Search Assist otherwise — Perplexity is Cloudflare-blocked in this environment), then scored every tracked brand:
-
 | Brand | Answer Share |
 | --- | ---: |
-| PostHog | 89.7 |
+| PostHog | **89.7** |
 | Amplitude | 62.1 |
 | Mixpanel | 36.8 |
 | Heap | 13.2 |
 | **Northline Analytics** | **0** |
 
-Capture engine: Duck.ai (Perplexity blocked by login). Prior Bing/DDG SERP captures kept at `data/live/captures.serp.json` for comparison.
-
-Re-ingest after new captures:
+Capture engine: Duck.ai (Perplexity blocked by login). Prior Bing/DDG SERP captures kept at `data/live/captures.serp.json`.
 
 ```bash
 npm run ingest:live -- data/live/captures.raw.json
@@ -60,8 +58,6 @@ npm run ingest:live -- data/live/captures.raw.json
 ### Treatment (Phase 2 — next)
 
 Publish Answer Contracts + canonical `/answers/*` pages on a crawlable host, then remeasure the same prompt pack. Localhost cannot produce real generative-engine lift until contracts are publicly discoverable.
-
-Scoring (transparent):
 
 ```
 Answer Share = 100 × (0.35·mention + 0.30·recommend + 0.25·citation + 0.10·prominence)
@@ -76,8 +72,12 @@ Simulated treatment on the demo probe pack still shows **0 → 82.8** for method
 - `GET /.well-known/answer-contracts.json` — discovery index  
 - `GET /api/pilot` — simulated + live baseline scores  
 - `POST /api/validate` — schema validation  
-- `GET/PUT /api/contracts` — studio persistence  
+- `GET/POST /api/contracts` · `GET/PUT /api/contracts/:id` — studio persistence  
 
 ## Stack
 
 Next.js · TypeScript · Tailwind · Zod
+
+## License
+
+See repository root `LICENSE` (MIT unless otherwise noted).
