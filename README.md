@@ -31,3 +31,11 @@ Live Duck.ai baseline (product-analytics prompt pack):
 - PostHog **89.7** · Amplitude **62.1** · Mixpanel **36.8** · Heap **13.2** · **Northline Analytics 0**
 
 See [`quotum/docs/PILOT.md`](./quotum/docs/PILOT.md) for capture method and Phase 2 remeasure plan.
+
+## Public preview (Phase 2)
+
+Temporary Vercel deploy (claim to keep): https://temporary-snappy-cello-o9ij081.vercel.app  
+Claim: https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71d606  
+
+Docs: [`quotum/docs/DEPLOY.md`](./quotum/docs/DEPLOY.md) · [`quotum/docs/PHASE2_REMEASURE.md`](./quotum/docs/PHASE2_REMEASURE.md)
+
