@@ -21,7 +21,6 @@ SEO gave the web sitemaps for pages. Quotum gives companies **contracts for answ
 ## Quick start
 
 ```bash
-cd quotum
 npm install
 npm run dev
 ```
@@ -80,4 +79,4 @@ Next.js · TypeScript · Tailwind · Zod
 
 ## License
 
-See repository root `LICENSE` (MIT unless otherwise noted).
+MIT — see [`LICENSE`](./LICENSE).

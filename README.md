@@ -10,6 +10,8 @@ cd quotum && npm install && npm run dev
 
 App: [http://127.0.0.1:3847](http://127.0.0.1:3847)
 
+GitHub: [https://github.com/Kush-Meta/quotum](https://github.com/Kush-Meta/quotum)
+
 ## Documentation
 
 | Doc | Link |
