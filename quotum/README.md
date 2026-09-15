@@ -10,7 +10,7 @@ SEO gave the web sitemaps for pages. Quotum gives companies **contracts for answ
 | --- | --- |
 | **Answer Contract** | Canonical answer + claims + competitive frame + citation object for one buyer intent |
 | **Publish surface** | Machine index at `/api/publish` (not llms.txt, not a chatbot) |
-| **Pilot Lab** | Baseline vs treatment Answer Share for a product-analytics vertical |
+| **Results** (`/pilot`) | Marketer-readable baseline vs after-publish Answer Share for Northline |
 
 ## What this is not
 

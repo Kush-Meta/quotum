@@ -53,14 +53,14 @@ export default function HomePage() {
               href="/pilot"
               className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-paper transition hover:border-signal hover:text-signal"
             >
-              See the product-analytics pilot
+              View Northline results
             </Link>
           </div>
           <div className="mt-14 grid gap-3 md:grid-cols-3">
             {[
-              ["0 → 82.8", "Answer Share in pilot treatment"],
-              ["6 prompts × 5 engines", "Fixed probe pack"],
-              ["Evidence-hashed claims", "Citations you can audit"],
+              ["0 today", "Northline Answer Share at baseline"],
+              ["Buyer questions", "Same pack remeasured after publish"],
+              ["Clear answers", "Contracts AI can cite with proof"],
             ].map(([k, v]) => (
               <div key={k} className="panel rounded-2xl p-5">
                 <div className="font-display text-2xl text-signal">{k}</div>
@@ -105,18 +105,19 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-16 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="font-display text-3xl text-paper">
-              Pilot vertical: product analytics
+              See the Northline story
             </h2>
             <p className="mt-3 max-w-xl text-fog/75">
-              Northline Analytics (fictional challenger) publishes contracts for
-              category prompts, then we score baseline vs treatment Answer Share.
+              A fictional product-analytics brand that starts invisible in AI
+              answers — then we publish Answer Contracts and measure whether
+              visibility improves.
             </p>
           </div>
           <Link
             href="/pilot"
             className="rounded-full bg-paper px-6 py-3 text-sm font-semibold text-ink transition hover:bg-signal"
           >
-            Open Pilot Lab →
+            Open results →
           </Link>
         </div>
       </section>

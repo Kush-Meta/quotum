@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const links = [
   { href: "/studio", label: "Studio" },
-  { href: "/pilot", label: "Pilot Lab" },
+  { href: "/pilot", label: "Results" },
   { href: "/publish", label: "Publish Surface" },
   { href: "/spec", label: "Spec" },
 ];
@@ -39,7 +39,7 @@ export function SiteHeader() {
           href="/pilot"
           className="rounded-full bg-signal px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110"
         >
-          Run pilot
+          View results
         </Link>
       </div>
     </header>

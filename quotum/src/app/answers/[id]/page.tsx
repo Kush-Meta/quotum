@@ -147,7 +147,7 @@ export default async function AnswerPage({ params }: Props) {
           Discovery index
         </Link>
         <Link href="/pilot" className="text-signal hover:underline">
-          Pilot Lab
+          Results
         </Link>
       </div>
     </article>
