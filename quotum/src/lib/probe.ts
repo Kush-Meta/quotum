@@ -1,14 +1,14 @@
 import type { PilotProbe } from "./schema";
 import { scoreAnswerShare, type AnswerShareBreakdown } from "./schema";
 
-export const LIVE_PROMPT_PACK = [
-  "What is the best product analytics tool for a startup?",
-  "Best analytics platform for early-stage SaaS",
-  "Recommend a product analytics stack for a 10-person startup",
-  "Amplitude vs Mixpanel vs open-source for startups",
-  "Best open source alternative to Amplitude",
-  "best product analytics for startups",
-] as const;
+import {
+  LIVE_PROMPT_PACK as STRUCTURED_LIVE_PROMPT_PACK,
+  findPromptByText,
+  type PromptRole,
+} from "./promptPack";
+
+/** Phase 1 continuity pack (6 prompts). Prefer EXPERIMENT_PROMPT_PACK for Phase 4. */
+export const LIVE_PROMPT_PACK = STRUCTURED_LIVE_PROMPT_PACK;
 
 export const TRACKED_BRANDS = [
   {
@@ -45,6 +45,12 @@ export const TRACKED_BRANDS = [
 
 export type TrackedBrand = (typeof TRACKED_BRANDS)[number];
 
+export type ManualBinaryLabels = {
+  mentionedBrand: boolean;
+  citedDomain: boolean;
+  recommended: boolean;
+};
+
 export type RawLiveCapture = {
   id: string;
   engine: PilotProbe["engine"];
@@ -53,6 +59,13 @@ export type RawLiveCapture = {
   answerText: string;
   sources: string[];
   notes?: string;
+  /** Phase 4 structured pack metadata */
+  promptId?: string;
+  intentId?: string;
+  role?: PromptRole;
+  annotatorId?: string;
+  /** Optional human override of auto heuristics */
+  manualLabels?: ManualBinaryLabels;
 };
 
 function escapeRegExp(value: string) {
@@ -111,13 +124,34 @@ export function annotateProbeForBrand(
   raw: RawLiveCapture,
   brand: TrackedBrand,
 ): PilotProbe {
+  const meta = raw.promptId
+    ? undefined
+    : findPromptByText(raw.prompt);
+  const promptId = raw.promptId ?? meta?.id;
+  const intentId = raw.intentId ?? meta?.intentId;
+  const role = raw.role ?? meta?.role;
+
   const mentionOffset = findBrandMention(raw.answerText, brand);
-  const mentionedBrand = mentionOffset != null;
-  const citedDomain = domainCited(raw.sources, brand.domain);
-  const recommended = isRecommended(raw.answerText, brand, mentionOffset);
+  const autoMentioned = mentionOffset != null;
+  const autoCited = domainCited(raw.sources, brand.domain);
+  const autoRecommended = isRecommended(raw.answerText, brand, mentionOffset);
+
+  const mentionedBrand = raw.manualLabels?.mentionedBrand ?? autoMentioned;
+  const citedDomain = raw.manualLabels?.citedDomain ?? autoCited;
+  const recommended = raw.manualLabels?.recommended ?? autoRecommended;
+
   const competitorsMentioned = TRACKED_BRANDS.filter(
     (b) => b.id !== brand.id && findBrandMention(raw.answerText, b) != null,
   ).map((b) => b.brand);
+
+  const noteParts = [
+    raw.notes,
+    promptId ? `promptId=${promptId}` : null,
+    role ? `role=${role}` : null,
+    intentId ? `intentId=${intentId}` : null,
+    raw.annotatorId ? `annotator=${raw.annotatorId}` : null,
+    raw.manualLabels ? "labels=manual" : "labels=auto",
+  ].filter(Boolean);
 
   return {
     id: `${raw.id}__${brand.id}`,
@@ -131,7 +165,12 @@ export function annotateProbeForBrand(
     recommended,
     firstMentionOffset: mentionOffset,
     competitorsMentioned,
-    notes: raw.notes,
+    notes: noteParts.join(" · "),
+    promptId,
+    intentId,
+    role,
+    annotatorId: raw.annotatorId,
+    labelSource: raw.manualLabels ? "manual" : "auto",
   };
 }
 

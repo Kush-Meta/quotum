@@ -1,0 +1,98 @@
+[
+  {
+    "id": "duck_01",
+    "prompt": "What is the best product analytics tool for a startup?",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  },
+  {
+    "id": "duck_02",
+    "prompt": "Best analytics platform for early-stage SaaS",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  },
+  {
+    "id": "duck_03",
+    "prompt": "Recommend a product analytics stack for a 10-person startup",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  },
+  {
+    "id": "duck_04",
+    "prompt": "Amplitude vs Mixpanel vs open-source for startups",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  },
+  {
+    "id": "duck_05",
+    "prompt": "Best open source alternative to Amplitude",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  },
+  {
+    "id": "duck_06",
+    "prompt": "best product analytics for startups",
+    "engine": "chatgpt",
+    "auto": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "human": {
+      "mentionedBrand": false,
+      "citedDomain": false,
+      "recommended": false
+    },
+    "notes": "Replace human.* on a ≥30% sample; leave identical if you agree with auto."
+  }
+]

@@ -27,5 +27,6 @@ Most GEO tooling measures *mentions* after the fact. Quotum starts one layer ear
 
 - **Phase 1 (done):** live baseline Answer Share for product-analytics prompts  
 - **Phase 3 (done, pre-deploy):** full prompt-pack contract coverage, denser claims, JSON-LD, coverage gate  
+- **Phase 4 (done, pre-deploy):** robust multi-engine experiment harness (15×3 + holdouts, A/A, κ, power)
 - **Phase 2 (next):** durable public host, then remeasure the same prompt pack  
 - Challenger **Northline Analytics** scores **0** at baseline (expected)

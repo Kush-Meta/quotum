@@ -4,7 +4,8 @@ import {
   treatmentProbes,
   pilotMeta,
 } from "@/lib/pilot";
-import { buildPromptCoverage } from "@/lib/coverage";
+import { buildPromptCoverage, buildPhase4Coverage } from "@/lib/coverage";
+import { packStats } from "@/lib/promptPack";
 import { readLiveBaseline, readLiveTreatment } from "@/lib/liveStore";
 import {
   scoreAnswerShare,
@@ -95,6 +96,19 @@ export default async function PilotPage() {
   const liveTreatment = await readLiveTreatment();
   const contracts = await listContracts();
   const coverage = buildPromptCoverage(contracts);
+  const phase4Coverage = buildPhase4Coverage(contracts);
+  const pack = packStats();
+  const experiment = {
+    pack,
+    coverage: {
+      measurementCovered: phase4Coverage.coveredCount,
+      measurementTotal: phase4Coverage.promptCount,
+    },
+    gates: {
+      phase4MeasurementCoverage: phase4Coverage.uncovered.length === 0,
+      holdoutsNotOnContracts: phase4Coverage.holdoutLeaks.length === 0,
+    },
+  };
   const simulatedBaseline = scoreAnswerShare(baselineProbes);
   const simulatedTreatment = scoreAnswerShare(treatmentProbes);
   const simulatedDelta = Number(
@@ -297,6 +311,76 @@ export default async function PilotPage() {
               +{simulatedDelta}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mt-14 border-t border-line pt-10">
+        <h2 className="font-display text-2xl text-paper">
+          Phase 4 · Experiment design
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          Robust multi-engine protocol: 15 measurement prompts (canonical +
+          paraphrases), 4 frozen holdouts, 3 primary engines (target n=45), A/A
+          stability, dual-annotation κ, and power guidance. See{" "}
+          <code className="text-signal">docs/PHASE4_ROBUST.md</code>.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <div className="panel rounded-2xl p-5">
+            <div className="font-mono text-[11px] uppercase tracking-wider text-muted">
+              Measurement pack
+            </div>
+            <div className="font-display mt-2 text-3xl text-paper">
+              {experiment.pack.measurementCount}
+            </div>
+            <p className="mt-2 text-xs text-muted">
+              + {experiment.pack.holdoutCount} holdouts ·{" "}
+              {experiment.pack.primaryEngines.join(" / ")}
+            </p>
+          </div>
+          <div className="panel rounded-2xl p-5">
+            <div className="font-mono text-[11px] uppercase tracking-wider text-muted">
+              Target captures
+            </div>
+            <div className="font-display mt-2 text-3xl text-signal">
+              {experiment.pack.measurementCaptures}
+            </div>
+            <p className="mt-2 text-xs text-muted">
+              Phase 1 n={experiment.pack.phase1Count} (too small alone)
+            </p>
+          </div>
+          <div className="panel rounded-2xl p-5">
+            <div className="font-mono text-[11px] uppercase tracking-wider text-muted">
+              Gates
+            </div>
+            <ul className="mt-3 space-y-2 text-sm text-fog/85">
+              <li>
+                Measurement coverage:{" "}
+                {experiment.gates.phase4MeasurementCoverage ? "PASS" : "FAIL"}
+              </li>
+              <li>
+                Holdout leak check:{" "}
+                {experiment.gates.holdoutsNotOnContracts ? "PASS" : "FAIL"}
+              </li>
+              <li>
+                Covered {experiment.coverage.measurementCovered}/
+                {experiment.coverage.measurementTotal}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+          <Link
+            href="/api/experiment"
+            className="rounded-full border border-line px-4 py-2 text-paper hover:border-signal hover:text-signal"
+          >
+            Experiment JSON
+          </Link>
+          <Link
+            href="/api/coverage"
+            className="rounded-full border border-line px-4 py-2 text-paper hover:border-signal hover:text-signal"
+          >
+            Coverage JSON
+          </Link>
         </div>
       </section>
 

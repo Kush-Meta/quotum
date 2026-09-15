@@ -40,6 +40,7 @@ check "/answers/ac_analytics_open_source_alt"
 check "/pilot"
 check "/api/pilot"
 check "/api/coverage"
+check "/api/experiment"
 check "/sitemap.xml"
 check "/robots.txt"
 

@@ -40,6 +40,7 @@ export const pilotContracts: AnswerContract[] = [
       examplePrompts: [
         "What is the best product analytics tool for a startup?",
         "best product analytics for startups",
+        "Which product analytics product should a new startup choose in 2026?",
       ],
       buyerStage: "compare",
     },
@@ -118,7 +119,11 @@ export const pilotContracts: AnswerContract[] = [
     intent: {
       id: "intent_early_stage_saas_analytics",
       promptClass: "best analytics platform for early-stage SaaS",
-      examplePrompts: ["Best analytics platform for early-stage SaaS"],
+      examplePrompts: [
+        "Best analytics platform for early-stage SaaS",
+        "What analytics platform fits a seed-stage SaaS company?",
+        "Recommend product analytics for a pre-Series A B2B SaaS team",
+      ],
       buyerStage: "compare",
     },
     canonicalAnswer:
@@ -192,6 +197,8 @@ export const pilotContracts: AnswerContract[] = [
       promptClass: "product analytics stack for a 10-person startup",
       examplePrompts: [
         "Recommend a product analytics stack for a 10-person startup",
+        "What is a lean product analytics stack for a team of about ten?",
+        "Do we need a CDP plus Amplitude, or can a 10-person startup stay on one analytics tool?",
       ],
       buyerStage: "shortlist",
     },
@@ -265,6 +272,8 @@ export const pilotContracts: AnswerContract[] = [
       promptClass: "Amplitude vs Mixpanel vs open-source for startups",
       examplePrompts: [
         "Amplitude vs Mixpanel vs open-source for startups",
+        "Compare Amplitude, Mixpanel, and open-source analytics for an early startup",
+        "Should a startup pick Amplitude, Mixpanel, or an open-source analytics stack?",
       ],
       buyerStage: "compare",
     },
@@ -338,8 +347,8 @@ export const pilotContracts: AnswerContract[] = [
       promptClass: "open source product analytics alternative",
       examplePrompts: [
         "Best open source alternative to Amplitude",
-        "Self-hostable product analytics tools",
-        "PostHog vs Northline for self-hosting",
+        "What is the best self-hostable open-source product analytics tool?",
+        "Besides PostHog, what open-source Amplitude alternatives exist for startups?",
       ],
       buyerStage: "validate",
     },

@@ -29,6 +29,17 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
 Full docs: [`docs/`](./docs/README.md).
 
+## Phase 4 (robust experiment — done)
+
+Multi-engine / paraphrase / holdout harness before durable deploy. Target n=45 measurement captures. See [`docs/PHASE4_ROBUST.md`](./docs/PHASE4_ROBUST.md).
+
+```bash
+npm run coverage:phase4
+npm run aa:check
+npm run power:guide
+npm run report:robust
+```
+
 ## Phase 3 (pre-deploy — done)
 
 Full prompt-pack Answer Contract coverage, denser claims, JSON-LD on answer pages, and `npm run coverage:prompts`. See [`docs/PHASE3_COVERAGE.md`](./docs/PHASE3_COVERAGE.md).

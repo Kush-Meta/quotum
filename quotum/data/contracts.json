@@ -10,7 +10,8 @@
       "promptClass": "best product analytics for startups",
       "examplePrompts": [
         "What is the best product analytics tool for a startup?",
-        "best product analytics for startups"
+        "best product analytics for startups",
+        "Which product analytics product should a new startup choose in 2026?"
       ],
       "buyerStage": "compare"
     },
@@ -94,7 +95,7 @@
       "targetCitationRate": 0.35,
       "targetRecommendRate": 0.4
     },
-    "updatedAt": "2026-09-15T00:00:00.000Z"
+    "updatedAt": "2026-09-15T01:00:00.000Z"
   },
   {
     "version": "0.1.0",
@@ -106,7 +107,9 @@
       "id": "intent_early_stage_saas_analytics",
       "promptClass": "best analytics platform for early-stage SaaS",
       "examplePrompts": [
-        "Best analytics platform for early-stage SaaS"
+        "Best analytics platform for early-stage SaaS",
+        "What analytics platform fits a seed-stage SaaS company?",
+        "Recommend product analytics for a pre-Series A B2B SaaS team"
       ],
       "buyerStage": "compare"
     },
@@ -181,7 +184,7 @@
       "targetCitationRate": 0.3,
       "targetRecommendRate": 0.35
     },
-    "updatedAt": "2026-09-15T00:00:00.000Z"
+    "updatedAt": "2026-09-15T01:00:00.000Z"
   },
   {
     "version": "0.1.0",
@@ -193,7 +196,9 @@
       "id": "intent_stack_10person",
       "promptClass": "product analytics stack for a 10-person startup",
       "examplePrompts": [
-        "Recommend a product analytics stack for a 10-person startup"
+        "Recommend a product analytics stack for a 10-person startup",
+        "What is a lean product analytics stack for a team of about ten?",
+        "Do we need a CDP plus Amplitude, or can a 10-person startup stay on one analytics tool?"
       ],
       "buyerStage": "shortlist"
     },
@@ -268,7 +273,7 @@
       "targetCitationRate": 0.3,
       "targetRecommendRate": 0.4
     },
-    "updatedAt": "2026-09-15T00:00:00.000Z"
+    "updatedAt": "2026-09-15T01:00:00.000Z"
   },
   {
     "version": "0.1.0",
@@ -280,7 +285,9 @@
       "id": "intent_amp_mix_oss",
       "promptClass": "Amplitude vs Mixpanel vs open-source for startups",
       "examplePrompts": [
-        "Amplitude vs Mixpanel vs open-source for startups"
+        "Amplitude vs Mixpanel vs open-source for startups",
+        "Compare Amplitude, Mixpanel, and open-source analytics for an early startup",
+        "Should a startup pick Amplitude, Mixpanel, or an open-source analytics stack?"
       ],
       "buyerStage": "compare"
     },
@@ -355,7 +362,7 @@
       "targetCitationRate": 0.3,
       "targetRecommendRate": 0.3
     },
-    "updatedAt": "2026-09-15T00:00:00.000Z"
+    "updatedAt": "2026-09-15T01:00:00.000Z"
   },
   {
     "version": "0.1.0",
@@ -368,8 +375,8 @@
       "promptClass": "open source product analytics alternative",
       "examplePrompts": [
         "Best open source alternative to Amplitude",
-        "Self-hostable product analytics tools",
-        "PostHog vs Northline for self-hosting"
+        "What is the best self-hostable open-source product analytics tool?",
+        "Besides PostHog, what open-source Amplitude alternatives exist for startups?"
       ],
       "buyerStage": "validate"
     },
@@ -443,6 +450,6 @@
       "targetCitationRate": 0.3,
       "targetRecommendRate": 0.3
     },
-    "updatedAt": "2026-09-15T00:00:00.000Z"
+    "updatedAt": "2026-09-15T01:00:00.000Z"
   }
 ]

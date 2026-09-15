@@ -1,0 +1,60 @@
+{
+  "version": "0.4.0",
+  "phase": "phase4",
+  "id": "quotum-northline-product-analytics-v4",
+  "title": "Northline Answer Contracts — robust multi-engine experiment",
+  "registeredAt": "2026-09-15T00:56:00.000Z",
+  "vertical": "product-analytics",
+  "challenger": {
+    "brandId": "northline",
+    "brand": "Northline Analytics",
+    "domain": "northline.dev"
+  },
+  "hypothesis": "Publishing intent-bound Answer Contracts (evidence-hashed claims + citation objects + canonical /answers pages) increases Northline Answer Share on category prompts versus an unpublished baseline, with lift that generalizes across paraphrases and held-out prompts.",
+  "design": {
+    "measurementPrompts": 15,
+    "holdoutPrompts": 4,
+    "intents": 5,
+    "paraphrasesPerIntent": 2,
+    "primaryEngines": ["duckai", "chatgpt", "perplexity"],
+    "targetMeasurementCaptures": 45,
+    "targetTotalCaptures": 57,
+    "annotation": {
+      "primary": "automatic-heuristics",
+      "secondary": "human-dual-label-on-disputed-or-sample",
+      "dualSampleFraction": 0.3,
+      "agreementMetric": "cohen-kappa-binary"
+    }
+  },
+  "successCriteria": {
+    "primary": "Northline Answer Share on measurement set > 0 after treatment (Phase 1 = 0)",
+    "secondary": [
+      "Lift appears on ≥2 primary engines",
+      "Lift appears on ≥1 paraphrase per intent for intents with any lift",
+      "Holdout Northline Answer Share does not collapse to 0 if measurement lift > 0 (generalization check)",
+      "Inter-rater κ on dual-labeled binary fields ≥ 0.6 when dual sample present",
+      "A/A re-ingest of identical captures yields identical Answer Share"
+    ]
+  },
+  "powerGuidance": {
+    "note": "Rule-of-thumb for detecting mention-rate lift from ~0 to ≥0.2 at α≈0.05 with moderate power: prefer n≥30–45 brand-probe observations (15 measurement prompts × 2–3 engines).",
+    "minimumRecommendedN": 30,
+    "targetN": 45,
+    "phase1N": 6
+  },
+  "holdoutPolicy": "Holdout prompts are frozen. Do not add them to Answer Contract examplePrompts until after treatment scoring and the robustness report.",
+  "slices": [
+    "measurement",
+    "holdout",
+    "by-engine",
+    "by-intent",
+    "phase1-continuity"
+  ],
+  "artifacts": {
+    "promptPack": "src/lib/promptPack.ts",
+    "captureTemplate": "data/live/captures.phase4.template.json",
+    "dualAnnotationTemplate": "data/live/annotations.dual.template.json",
+    "rubric": "docs/ANNOTATION_RUBRIC.md",
+    "protocol": "docs/PHASE4_ROBUST.md"
+  }
+}
