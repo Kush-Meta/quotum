@@ -1,0 +1,56 @@
+[
+  {
+    "id": "phase2_01",
+    "engine": "chatgpt",
+    "prompt": "What is the best product analytics tool for a startup?",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure. Record PUBLIC_ORIGIN used for treatment publish."
+  },
+  {
+    "id": "phase2_02",
+    "engine": "chatgpt",
+    "prompt": "Best analytics platform for early-stage SaaS",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure"
+  },
+  {
+    "id": "phase2_03",
+    "engine": "chatgpt",
+    "prompt": "Recommend a product analytics stack for a 10-person startup",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure"
+  },
+  {
+    "id": "phase2_04",
+    "engine": "chatgpt",
+    "prompt": "Amplitude vs Mixpanel vs open-source for startups",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure"
+  },
+  {
+    "id": "phase2_05",
+    "engine": "chatgpt",
+    "prompt": "Best open source alternative to Amplitude",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure"
+  },
+  {
+    "id": "phase2_06",
+    "engine": "chatgpt",
+    "prompt": "best product analytics for startups",
+    "capturedAt": "REPLACE_ISO_TIMESTAMP",
+    "answerText": "REPLACE_WITH_FULL_ENGINE_ANSWER",
+    "sources": [],
+    "notes": "Phase 2 remeasure"
+  }
+]

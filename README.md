@@ -10,7 +10,7 @@ SEO gave the web sitemaps for pages. Quotum gives companies **contracts for answ
 | --- | --- |
 | **Answer Contract** | Canonical answer + claims + competitive frame + citation object for one buyer intent |
 | **Publish surface** | Machine index at `/api/publish` (not llms.txt, not a chatbot) |
-| **Pilot Lab** | Baseline vs treatment Answer Share for a product-analytics vertical |
+| **Results** (`/pilot`) | Marketer-readable baseline vs after-publish Answer Share for Northline |
 
 ## What this is not
 
@@ -29,6 +29,21 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
 Full docs: [`docs/`](./docs/README.md).
 
+## Phase 4 (robust experiment — done)
+
+Multi-engine / paraphrase / holdout harness before durable deploy. Target n=45 measurement captures. See [`docs/PHASE4_ROBUST.md`](./docs/PHASE4_ROBUST.md).
+
+```bash
+npm run coverage:phase4
+npm run aa:check
+npm run power:guide
+npm run report:robust
+```
+
+## Phase 3 (pre-deploy — done)
+
+Full prompt-pack Answer Contract coverage, denser claims, JSON-LD on answer pages, and `npm run coverage:prompts`. See [`docs/PHASE3_COVERAGE.md`](./docs/PHASE3_COVERAGE.md).
+
 ## Public deploy (Phase 2)
 
 Contracts must be on a crawlable host for generative engines to cite them.
@@ -36,10 +51,12 @@ Contracts must be on a crawlable host for generative engines to cite them.
 - Deploy guide: [`docs/DEPLOY.md`](./docs/DEPLOY.md)
 - Remeasure protocol: [`docs/PHASE2_REMEASURE.md`](./docs/PHASE2_REMEASURE.md)
 - Smoke test: `./scripts/smoke-public.sh https://YOUR_ORIGIN`
+- Set `PUBLIC_ORIGIN=https://your-host` so `/sitemap.xml`, `/robots.txt`, and discovery indexes emit absolute URLs
 
-Temporary public preview (claim to keep):  
-https://temporary-snappy-cello-o9ij081.vercel.app  
-Claim: https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71d606
+**Live tunnel (ephemeral, while this agent VM runs):**  
+https://wright-contain-futures-ends.trycloudflare.com  
+
+For a durable host: `npx vercel login && npx vercel --prod` (or Render Blueprint — see `docs/DEPLOY.md`).
 
 ## Pilot vertical
 
@@ -48,7 +65,8 @@ Claim: https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71
 - Studio: edit / validate contracts  
 - Publish: machine-readable graph + `/.well-known/answer-contracts.json`  
 - Canonical answers: `/answers/<contract-id>`  
-- Pilot Lab: **live baseline** + simulated treatment reference  
+- Results: **live baseline** story for marketers + Phase 2 treatment slot + simulated reference  
+ 
 
 ### Live baseline (Phase 1 — done)
 
@@ -66,9 +84,17 @@ Capture engine: Duck.ai (Perplexity blocked by login). Prior Bing/DDG SERP captu
 npm run ingest:live -- data/live/captures.raw.json
 ```
 
-### Treatment (Phase 2 — next)
+### Treatment (Phase 2 — tooling ready)
 
-Publish Answer Contracts + canonical `/answers/*` pages on a crawlable host, then remeasure the same prompt pack. Localhost cannot produce real generative-engine lift until contracts are publicly discoverable.
+1. Keep a public crawlable origin up (tunnel or durable host).
+2. Wait for discovery (document window in `docs/PHASE2_REMEASURE.md`).
+3. Fill `data/live/captures.phase2.template.json` → `captures.phase2.json`.
+4. Ingest and compare:
+
+```bash
+npm run ingest:live -- data/live/captures.phase2.json --phase treatment
+npm run compare:phases
+```
 
 ```
 Answer Share = 100 × (0.35·mention + 0.30·recommend + 0.25·citation + 0.10·prominence)

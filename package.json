@@ -8,7 +8,14 @@
     "start": "next start --port 3847",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "ingest:live": "tsx scripts/ingest-live-baseline.ts"
+    "ingest:live": "tsx scripts/ingest-live-baseline.ts",
+    "compare:phases": "tsx scripts/compare-phases.ts",
+    "coverage:prompts": "tsx scripts/check-prompt-coverage.ts",
+    "coverage:phase4": "tsx scripts/check-phase4-coverage.ts",
+    "aa:check": "tsx scripts/check-aa-stability.ts",
+    "power:guide": "tsx scripts/power-guidance.ts",
+    "interrater": "tsx scripts/score-interrater.ts",
+    "report:robust": "tsx scripts/report-robustness.ts"
   },
   "dependencies": {
     "date-fns": "^4.4.0",

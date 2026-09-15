@@ -11,3 +11,6 @@
 | [RUNBOOK.md](./RUNBOOK.md) | Local setup, ingest, remeasure checklist |
 | [DEPLOY.md](./DEPLOY.md) | Public hosting + claim/durable deploy options |
 | [PHASE2_REMEASURE.md](./PHASE2_REMEASURE.md) | Treatment publish + remeasure protocol |
+| [PHASE3_COVERAGE.md](./PHASE3_COVERAGE.md) | Pre-deploy prompt-pack coverage + denser contracts |
+| [PHASE4_ROBUST.md](./PHASE4_ROBUST.md) | Multi-engine / paraphrase / holdout experiment design |
+| [ANNOTATION_RUBRIC.md](./ANNOTATION_RUBRIC.md) | Dual-label rubric for inter-rater checks |

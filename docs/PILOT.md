@@ -60,6 +60,21 @@ Northline mention / citation / recommend / prominence = **0%** on every probe. T
 
 Demo probe pack in `src/lib/pilot.ts` still shows **0 → 82.8** Answer Share for methodology comparison. It is **not** a live engine result.
 
+## Phase 3 — Coverage hardening (done, pre-deploy)
+
+Expanded to **5 contracts / 6 live prompts**, denser claims, JSON-LD, and a coverage gate (`npm run coverage:prompts`). Details: [`PHASE3_COVERAGE.md`](./PHASE3_COVERAGE.md).
+
+## Phase 4 — Robust experiment (done, pre-deploy)
+
+Expanded measurement design before durable publish:
+
+- 15 measurement prompts (canonical + paraphrases) across 5 intents
+- 4 frozen holdouts (must not appear on contracts)
+- Multi-engine capture matrix (duckai / chatgpt / perplexity), target n=45
+- A/A stability, dual-annotation κ, power guidance, robustness report
+
+Details: [`PHASE4_ROBUST.md`](./PHASE4_ROBUST.md).
+
 ## Phase 2 — Treatment (next)
 
 1. Host Quotum publish surfaces on a **publicly crawlable** origin (`/.well-known/answer-contracts.json`, `/api/publish`, `/answers/*`).  

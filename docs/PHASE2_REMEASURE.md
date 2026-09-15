@@ -24,14 +24,13 @@ Seeded contract ids (from `data/contracts.json`):
 Record the public origin here:
 
 ```
-PUBLIC_ORIGIN=https://temporary-snappy-cello-o9ij081.vercel.app
-DEPLOYED_AT=2026-09-14T04:56:00Z
-DEPLOY_METHOD=vercel-temporary   # claim ASAP — see docs/DEPLOY.md
-TUNNEL_BACKUP=https://scheduling-cosmetic-justify-kent.trycloudflare.com
-CLAIM_URL=https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71d606
+PUBLIC_ORIGIN=https://wright-contain-futures-ends.trycloudflare.com
+DEPLOYED_AT=2026-09-15T00:29:00Z
+DEPLOY_METHOD=cloudflare-quick-tunnel
+DURABLE_NEXT=vercel-login-or-render-blueprint   # see docs/DEPLOY.md
 ```
 
-Smoke results (2026-09-14): all required surfaces returned **200**, discovery lists 2 Northline contracts, `/api/pilot` live leaderboard shows Northline **0**.
+Smoke results (2026-09-15): all required surfaces **200** on the tunnel; discovery emits **absolute** contract URLs; `/sitemap.xml` + `/robots.txt` live; `/api/pilot` shows Northline **0**.
 
 ### Smoke commands
 
@@ -58,19 +57,30 @@ INDEX_WAIT_ENDED=
 NOTES=
 ```
 
-## C. Remeasure protocol (same as Phase 1)
+## Phase 2 workflow (after public deploy)
 
-1. Use the **same** prompt pack (`LIVE_PROMPT_PACK` in `src/lib/probe.ts`).
-2. Capture generative answers from the **same** engine family when possible (Duck.ai / GPT-class; add Perplexity if unlocked).
-3. Write `RawLiveCapture[]` JSON → e.g. `data/live/captures.phase2.json`.
-4. Ingest:
+1. Confirm smoke: `./scripts/smoke-public.sh https://YOUR_ORIGIN`
+2. Wait for discovery (document window in this file).
+3. Copy template → captures:
 
 ```bash
-npm run ingest:live -- data/live/captures.phase2.json
-# Review data/live/baseline.json (or copy to baseline.phase2.json before overwrite)
+cp data/live/captures.phase2.template.json data/live/captures.phase2.json
+# Fill answerText / sources / capturedAt for each prompt
 ```
 
-5. Do **not** change scoring weights between phases.
+4. Ingest as treatment (does **not** overwrite Phase 1 baseline):
+
+```bash
+npm run ingest:live -- data/live/captures.phase2.json --phase treatment
+```
+
+5. Compare:
+
+```bash
+npm run compare:phases
+```
+
+6. Review `/pilot` Phase 2 section + `data/live/treatment.json`.
 
 ### Capture shape
 

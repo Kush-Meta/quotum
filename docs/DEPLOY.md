@@ -2,51 +2,53 @@
 
 Answer Share lift requires a **publicly crawlable** origin. Localhost is not enough.
 
-## Current public surfaces
+## Current public surface (2026-09-15)
 
 | Host | URL | Notes |
 | --- | --- | --- |
-| **Vercel (temporary)** | https://temporary-snappy-cello-o9ij081.vercel.app | Anonymous deploy — **claim within ~60 minutes** to keep it |
-| **Claim link** | https://vercel.com/claim-deployment?code=be9de08c-a308-4b94-a20d-711bdd71d606 | Converts the temporary deploy into your Vercel account |
-| **Cloudflare quick tunnel** | https://scheduling-cosmetic-justify-kent.trycloudflare.com | Live while the cloud agent VM + `cloudflared` session run |
+| **Cloudflare quick tunnel** | https://wright-contain-futures-ends.trycloudflare.com | Live while this cloud agent VM + `cloudflared` run |
+| **GitHub** | https://github.com/Kush-Meta/quotum | Source of truth for durable deploys |
 
-Verified 200s on both hosts:
+Anonymous Vercel temporary deploys are **exhausted** until someone runs `npx vercel login` and deploys under an account (or connects the GitHub repo in the Vercel dashboard).
+
+Verified 200s on the tunnel (absolute discovery URLs included):
 
 - `/`
-- `/.well-known/answer-contracts.json`
+- `/.well-known/answer-contracts.json` (emits absolute `href` / `answerPage`)
 - `/api/publish`
 - `/api/publish/contracts/ac_analytics_best_for_startups`
 - `/answers/ac_analytics_best_for_startups`
 - `/answers/ac_analytics_open_source_alt`
+- `/sitemap.xml` · `/robots.txt`
 - `/pilot` (live baseline: Northline **0**)
 
-## Recommended durable path
+## Durable deploy (do this next)
 
-### Option A — Claim the Vercel temporary deploy (fastest)
-
-1. Open the claim link above while logged into Vercel.  
-2. Keep the project; optionally add a custom domain (e.g. `contracts.northline.dev`).  
-3. From `quotum/` thereafter:
+### Option A — Vercel (recommended for Next.js)
 
 ```bash
+cd quotum
 npx vercel login
 npx vercel --prod
+# optional: vercel env add PUBLIC_ORIGIN
 ```
+
+Or: Vercel Dashboard → Add New Project → import `Kush-Meta/quotum`.
+
+Set env `PUBLIC_ORIGIN=https://your-domain` so sitemap/robots stay stable.
 
 ### Option B — Render Blueprint
 
-1. Push this repo to GitHub (already at https://github.com/Kush-Meta/quotum).  
-2. In Render → New → Blueprint → select the repo.  
-3. Uses `render.yaml` + `Dockerfile`.
+1. Render → New → Blueprint → select `Kush-Meta/quotum`.  
+2. Uses `render.yaml` + `Dockerfile`.  
+3. Set `PUBLIC_ORIGIN` to the Render URL.
 
 ### Option C — Docker anywhere
 
 ```bash
 docker build -t quotum .
-docker run --rm -p 3847:3847 quotum
+docker run --rm -p 3847:3847 -e PUBLIC_ORIGIN=https://contracts.example.com quotum
 ```
-
-Put TLS termination (Caddy, nginx, Cloudflare) in front.
 
 ## Smoke test
 
@@ -56,4 +58,4 @@ Put TLS termination (Caddy, nginx, Cloudflare) in front.
 
 ## After deploy
 
-Follow [`PHASE2_REMEASURE.md`](./PHASE2_REMEASURE.md) — wait for discovery, remeasure the same prompt pack, compare to `data/live/baseline.json`.
+Follow [`PHASE2_REMEASURE.md`](./PHASE2_REMEASURE.md) — wait for discovery, capture the same prompt pack, ingest as `--phase treatment`, run `npm run compare:phases`.

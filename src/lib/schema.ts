@@ -62,6 +62,7 @@ export type Claim = z.infer<typeof ClaimSchema>;
 export const PilotProbeSchema = z.object({
   id: z.string(),
   engine: z.enum([
+    "duckai",
     "chatgpt",
     "perplexity",
     "gemini",
@@ -78,6 +79,12 @@ export const PilotProbeSchema = z.object({
   firstMentionOffset: z.number().nullable(),
   competitorsMentioned: z.array(z.string()),
   notes: z.string().optional(),
+  /** Phase 4 experiment metadata */
+  promptId: z.string().optional(),
+  intentId: z.string().optional(),
+  role: z.enum(["canonical", "paraphrase", "holdout"]).optional(),
+  annotatorId: z.string().optional(),
+  labelSource: z.enum(["auto", "manual"]).optional(),
 });
 
 export type PilotProbe = z.infer<typeof PilotProbeSchema>;
