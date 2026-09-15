@@ -12,7 +12,7 @@ Most GEO tooling measures *mentions* after the fact. Quotum starts one layer ear
 2. **Publish surface** — machine-readable index + discovery document (not a chatbot, not `llms.txt`)  
 3. **Canonical answer pages** — human + crawler readable `/answers/<id>`  
 4. **Answer Share** — transparent score across mention / recommend / citation / prominence  
-5. **Pilot Lab** — baseline vs treatment measurement for one vertical
+5. **Results** — marketer-readable baseline vs after-publish measurement for one vertical (`/pilot`)
 
 ## What Quotum is not
 
