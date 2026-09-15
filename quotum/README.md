@@ -65,7 +65,8 @@ For a durable host: `npx vercel login && npx vercel --prod` (or Render Blueprint
 - Studio: edit / validate contracts  
 - Publish: machine-readable graph + `/.well-known/answer-contracts.json`  
 - Canonical answers: `/answers/<contract-id>`  
-- Pilot Lab: **live baseline** + Phase 2 treatment slot + simulated reference  
+- Results: **live baseline** story for marketers + Phase 2 treatment slot + simulated reference  
+ 
 
 ### Live baseline (Phase 1 — done)
 
