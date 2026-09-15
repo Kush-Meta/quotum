@@ -33,9 +33,24 @@ check "/answers/ac_analytics_best_for_startups"
 check "/answers/ac_analytics_open_source_alt"
 check "/pilot"
 check "/api/pilot"
+check "/sitemap.xml"
+check "/robots.txt"
 
 echo "--- discovery excerpt ---"
 curl -sS "$ORIGIN/.well-known/answer-contracts.json" | head -c 500
 echo
+echo "--- robots ---"
+curl -sS "$ORIGIN/robots.txt"
+echo
+
+# Fail if sitemap still points at localhost while ORIGIN is public
+if [[ "$ORIGIN" != http://127.0.0.1* && "$ORIGIN" != http://localhost* ]]; then
+  if curl -sS "$ORIGIN/sitemap.xml" | grep -q "127.0.0.1\|localhost"; then
+    echo "FAIL sitemap still contains localhost — set PUBLIC_ORIGIN=$ORIGIN on the server" >&2
+    fail=1
+  else
+    echo "OK  sitemap uses non-localhost URLs"
+  fi
+fi
 
 exit "$fail"

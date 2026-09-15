@@ -56,8 +56,11 @@ export async function saveContract(
   return { ok: true, contract: parsed.data };
 }
 
-export async function publishIndex() {
+export async function publishIndex(origin: string | null = null) {
   const contracts = await listContracts();
+  const abs = (path: string) =>
+    origin ? `${origin}${path.startsWith("/") ? path : `/${path}`}` : path;
+
   return {
     version: "0.1.0",
     generatedAt: new Date().toISOString(),
@@ -66,9 +69,11 @@ export async function publishIndex() {
       "Machine-native Answer Contracts for generative engines. Not llms.txt. Not a chatbot. Intent-bound claims with evidence hashes and citation objects.",
     brand: contracts[0]?.brand ?? null,
     domain: contracts[0]?.domain ?? null,
+    origin,
     contracts: contracts.map((c) => ({
       id: c.id,
-      href: `/api/publish/contracts/${c.id}`,
+      href: abs(`/api/publish/contracts/${c.id}`),
+      answerPage: abs(`/answers/${c.id}`),
       intent: c.intent.promptClass,
       buyerStage: c.intent.buyerStage,
       updatedAt: c.updatedAt,

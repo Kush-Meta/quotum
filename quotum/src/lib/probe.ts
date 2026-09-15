@@ -160,7 +160,7 @@ export function scoreCategoryShare(
 
 export type LiveBaselineReport = {
   version: "0.1.0";
-  phase: "baseline";
+  phase: "baseline" | "treatment";
   vertical: "product-analytics";
   capturedAt: string;
   method: string;

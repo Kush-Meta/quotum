@@ -1,8 +1,8 @@
 /**
- * Ingest raw live captures into a scored baseline report.
+ * Ingest raw live captures into a scored baseline or treatment report.
  *
  * Usage:
- *   npx tsx scripts/ingest-live-baseline.ts path/to/captures.json
+ *   npx tsx scripts/ingest-live-baseline.ts path/to/captures.json [--phase baseline|treatment]
  *
  * Capture file shape: RawLiveCapture[]
  */
@@ -18,9 +18,20 @@ import {
 } from "../src/lib/probe";
 
 async function main() {
-  const input = process.argv[2];
-  if (!input) {
-    console.error("Usage: npx tsx scripts/ingest-live-baseline.ts <captures.json>");
+  const args = process.argv.slice(2);
+  const input = args.find((a) => !a.startsWith("--"));
+  const phaseArg = args.find((a) => a.startsWith("--phase="));
+  const phaseFlagIdx = args.indexOf("--phase");
+  const phase =
+    (phaseArg?.split("=")[1] as "baseline" | "treatment" | undefined) ??
+    (phaseFlagIdx >= 0
+      ? (args[phaseFlagIdx + 1] as "baseline" | "treatment")
+      : "baseline");
+
+  if (!input || (phase !== "baseline" && phase !== "treatment")) {
+    console.error(
+      "Usage: npx tsx scripts/ingest-live-baseline.ts <captures.json> [--phase baseline|treatment]",
+    );
     process.exit(1);
   }
 
@@ -42,11 +53,13 @@ async function main() {
 
   const report: LiveBaselineReport = {
     version: "0.1.0",
-    phase: "baseline",
+    phase,
     vertical: "product-analytics",
     capturedAt: new Date().toISOString(),
     method:
-      "Live browser captures against generative engines, annotated for mention/citation/recommend/prominence across tracked brands.",
+      phase === "treatment"
+        ? "Phase 2 treatment remeasure after public Answer Contract publish. Same prompt pack and annotation pipeline as baseline."
+        : "Live browser captures against generative engines, annotated for mention/citation/recommend/prominence across tracked brands.",
     promptPack: [...LIVE_PROMPT_PACK],
     trackedBrands: TRACKED_BRANDS.map(({ id, brand, domain }) => ({
       id,
@@ -66,8 +79,17 @@ async function main() {
 
   const outDir = path.join(process.cwd(), "data", "live");
   await fs.mkdir(outDir, { recursive: true });
-  const outPath = path.join(outDir, "baseline.json");
+  const outName = phase === "treatment" ? "treatment.json" : "baseline.json";
+  const outPath = path.join(outDir, outName);
   await fs.writeFile(outPath, JSON.stringify(report, null, 2), "utf8");
+
+  // Keep a dated copy for audit
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  await fs.writeFile(
+    path.join(outDir, `${phase}.${stamp}.json`),
+    JSON.stringify(report, null, 2),
+    "utf8",
+  );
 
   console.log(`Wrote ${outPath}`);
   console.log("Leaderboard:");

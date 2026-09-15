@@ -4,7 +4,7 @@ import {
   treatmentProbes,
   pilotMeta,
 } from "@/lib/pilot";
-import { readLiveBaseline } from "@/lib/liveStore";
+import { readLiveBaseline, readLiveTreatment } from "@/lib/liveStore";
 import {
   scoreAnswerShare,
   type AnswerShareBreakdown,
@@ -90,11 +90,21 @@ function ProbeTable({ probes }: { probes: PilotProbe[] }) {
 
 export default async function PilotPage() {
   const live = await readLiveBaseline();
+  const liveTreatment = await readLiveTreatment();
   const simulatedBaseline = scoreAnswerShare(baselineProbes);
   const simulatedTreatment = scoreAnswerShare(treatmentProbes);
   const simulatedDelta = Number(
     (simulatedTreatment.answerShare - simulatedBaseline.answerShare).toFixed(1),
   );
+  const liveDelta =
+    live && liveTreatment
+      ? Number(
+          (
+            liveTreatment.challenger.score.answerShare -
+            live.challenger.score.answerShare
+          ).toFixed(1),
+        )
+      : null;
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
@@ -137,7 +147,8 @@ export default async function PilotPage() {
               </div>
               <p className="mt-2">{live.method}</p>
               <p className="mt-1 text-muted">
-                {live.captures.length} captures · {live.promptPack.length} prompts
+                {live.captures.length} captures · {live.promptPack.length}{" "}
+                prompts
               </p>
             </div>
 
@@ -191,6 +202,67 @@ export default async function PilotPage() {
               Waiting for `data/live/baseline.json`. Simulated reference remains
               below.
             </p>
+          </div>
+        )}
+      </section>
+
+      <section className="mt-14 border-t border-line pt-10">
+        <h2 className="font-display text-2xl text-paper">
+          Phase 2 · Live treatment
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          Remeasure after Answer Contracts are on a crawlable host. Ingest with{" "}
+          <code className="text-signal">
+            npm run ingest:live -- data/live/captures.phase2.json --phase
+            treatment
+          </code>
+          .
+        </p>
+        {liveTreatment ? (
+          <div className="mt-6 space-y-6">
+            <div className="panel rounded-2xl p-5 text-sm text-fog/80">
+              <div className="font-mono text-[11px] uppercase tracking-wider text-signal">
+                Captured {new Date(liveTreatment.capturedAt).toLocaleString()}
+              </div>
+              <p className="mt-2">{liveTreatment.method}</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <ScoreCard
+                label="Northline live treatment"
+                score={liveTreatment.challenger.score}
+                accent="text-signal"
+              />
+              <div className="panel rounded-2xl p-6">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                  Live delta
+                </div>
+                <div className="font-display mt-3 text-5xl text-paper">
+                  {liveDelta != null && liveDelta > 0 ? "+" : ""}
+                  {liveDelta ?? "—"}
+                </div>
+              </div>
+              <div className="panel rounded-2xl p-6">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                  Treatment leaderboard #1
+                </div>
+                <div className="mt-3 text-paper">
+                  {liveTreatment.leaderboard[0]?.brand ?? "—"}
+                </div>
+                <div className="font-display text-3xl text-signal">
+                  {liveTreatment.leaderboard[0]?.score.answerShare ?? "—"}
+                </div>
+              </div>
+            </div>
+            <ProbeTable probes={liveTreatment.challenger.probes} />
+          </div>
+        ) : (
+          <div className="panel mt-6 rounded-2xl p-6 text-sm text-muted">
+            No `data/live/treatment.json` yet. Keep the public deploy live, wait
+            for discovery, fill{" "}
+            <code className="text-signal">
+              data/live/captures.phase2.template.json
+            </code>
+            , then ingest as treatment.
           </div>
         )}
       </section>
