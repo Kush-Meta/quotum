@@ -4,12 +4,14 @@ import {
   treatmentProbes,
   pilotMeta,
 } from "@/lib/pilot";
+import { buildPromptCoverage } from "@/lib/coverage";
 import { readLiveBaseline, readLiveTreatment } from "@/lib/liveStore";
 import {
   scoreAnswerShare,
   type AnswerShareBreakdown,
   type PilotProbe,
 } from "@/lib/schema";
+import { listContracts } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
@@ -91,6 +93,8 @@ function ProbeTable({ probes }: { probes: PilotProbe[] }) {
 export default async function PilotPage() {
   const live = await readLiveBaseline();
   const liveTreatment = await readLiveTreatment();
+  const contracts = await listContracts();
+  const coverage = buildPromptCoverage(contracts);
   const simulatedBaseline = scoreAnswerShare(baselineProbes);
   const simulatedTreatment = scoreAnswerShare(treatmentProbes);
   const simulatedDelta = Number(
@@ -296,6 +300,36 @@ export default async function PilotPage() {
         </div>
       </section>
 
+      <section className="mt-14 border-t border-line pt-10">
+        <h2 className="font-display text-2xl text-paper">
+          Phase 3 · Prompt-pack coverage
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          Pre-deploy gate: every live prompt maps to at least one Answer Contract
+          with denser claims and JSON-LD on answer pages. Run{" "}
+          <code className="text-signal">npm run coverage:prompts</code>.
+        </p>
+        <div className="panel mt-6 rounded-2xl p-5 text-sm">
+          <div className="font-mono text-[11px] uppercase tracking-wider text-signal">
+            Covered {coverage.coveredCount}/{coverage.promptCount} ·{" "}
+            {coverage.contracts.length} contracts
+          </div>
+          <ul className="mt-4 space-y-3">
+            {coverage.rows.map((row) => (
+              <li
+                key={row.prompt}
+                className="flex flex-col gap-1 border-t border-line/60 pt-3 first:border-0 first:pt-0 md:flex-row md:items-center md:justify-between"
+              >
+                <span className="text-fog/85">{row.prompt}</span>
+                <span className="font-mono text-xs text-signal">
+                  {row.covered ? row.contractIds.join(", ") : "uncovered"}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="mt-14">
         <h2 className="font-display text-2xl text-paper">Published intervention</h2>
         <p className="mt-2 text-sm text-muted">
@@ -307,6 +341,12 @@ export default async function PilotPage() {
             className="rounded-full bg-signal px-4 py-2 text-sm font-semibold text-ink"
           >
             Open canonical answer page
+          </Link>
+          <Link
+            href="/api/coverage"
+            className="rounded-full border border-line px-4 py-2 text-sm text-paper hover:border-signal hover:text-signal"
+          >
+            Coverage JSON
           </Link>
           <Link
             href="/publish"

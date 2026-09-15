@@ -9,7 +9,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "ingest:live": "tsx scripts/ingest-live-baseline.ts",
-    "compare:phases": "tsx scripts/compare-phases.ts"
+    "compare:phases": "tsx scripts/compare-phases.ts",
+    "coverage:prompts": "tsx scripts/check-prompt-coverage.ts"
   },
   "dependencies": {
     "date-fns": "^4.4.0",

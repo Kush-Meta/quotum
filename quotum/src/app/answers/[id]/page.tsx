@@ -16,8 +16,49 @@ export default async function AnswerPage({ params }: Props) {
   const contract = await getContract(id);
   if (!contract) notFound();
 
+  const origin =
+    process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
+  const pageUrl = `${origin}/answers/${contract.id}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: contract.intent.promptClass,
+    url: pageUrl,
+    dateModified: contract.updatedAt,
+    about: {
+      "@type": "SoftwareApplication",
+      name: contract.brand,
+      url: `https://${contract.domain}`,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+    },
+    mainEntity: {
+      "@type": "Answer",
+      text: contract.canonicalAnswer,
+      dateCreated: contract.policy.lastReviewed,
+      author: {
+        "@type": "Organization",
+        name: contract.brand,
+        url: `https://${contract.domain}`,
+      },
+      citation: contract.citation.quotable,
+      url: contract.citation.preferredUrl,
+    },
+    hasPart: contract.claims.map((claim) => ({
+      "@type": "Claim",
+      identifier: claim.id,
+      text: claim.statement,
+      appearance: claim.evidenceUrl,
+      datePublished: claim.asOf,
+    })),
+  };
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal">
         Canonical answer · {contract.intent.buyerStage}
       </p>
@@ -93,10 +134,16 @@ export default async function AnswerPage({ params }: Props) {
       </section>
 
       <div className="mt-10 flex flex-wrap gap-3 text-sm">
-        <Link href={`/api/publish/contracts/${contract.id}`} className="text-signal hover:underline">
+        <Link
+          href={`/api/publish/contracts/${contract.id}`}
+          className="text-signal hover:underline"
+        >
           Machine contract JSON
         </Link>
-        <Link href="/.well-known/answer-contracts.json" className="text-signal hover:underline">
+        <Link
+          href="/.well-known/answer-contracts.json"
+          className="text-signal hover:underline"
+        >
           Discovery index
         </Link>
         <Link href="/pilot" className="text-signal hover:underline">

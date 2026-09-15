@@ -29,6 +29,10 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
 Full docs: [`docs/`](./docs/README.md).
 
+## Phase 3 (pre-deploy — done)
+
+Full prompt-pack Answer Contract coverage, denser claims, JSON-LD on answer pages, and `npm run coverage:prompts`. See [`docs/PHASE3_COVERAGE.md`](./docs/PHASE3_COVERAGE.md).
+
 ## Public deploy (Phase 2)
 
 Contracts must be on a crawlable host for generative engines to cite them.
