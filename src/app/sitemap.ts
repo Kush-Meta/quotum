@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { listContracts, listSealedContracts } from "@/lib/store";
+import { siteOrigin } from "@/lib/publicOrigin";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const origin =
-    process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
+  const origin = siteOrigin();
   const contracts = await listContracts();
   const sealed = await listSealedContracts();
   const now = new Date();

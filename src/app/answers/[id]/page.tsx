@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSealedContract, listContracts } from "@/lib/store";
+import { siteOrigin } from "@/lib/publicOrigin";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +17,7 @@ export default async function AnswerPage({ params }: Props) {
   const contract = await getSealedContract(id);
   if (!contract) notFound();
 
-  const origin =
-    process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
+  const origin = siteOrigin();
   const pageUrl = `${origin}/answers/${contract.id}`;
   const attributionUrl = `${origin}/t/${contract.seal.attributionToken}`;
   const jsonLd = {
