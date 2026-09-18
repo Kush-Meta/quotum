@@ -3,7 +3,15 @@ import { promises as fs } from "fs";
 import path from "path";
 import type { AnswerContract } from "./schema";
 
-const keysDir = path.join(process.cwd(), "data", "keys");
+const keysDir = process.env.VERCEL
+  ? "/tmp/quotum-data/keys"
+  : path.join(process.cwd(), "data", "keys");
+const bundledPublicPath = path.join(
+  process.cwd(),
+  "data",
+  "keys",
+  "ed25519.public.pem",
+);
 const privatePath = path.join(keysDir, "ed25519.private.pem");
 const publicPath = path.join(keysDir, "ed25519.public.pem");
 
@@ -48,19 +56,32 @@ export async function ensureKeyPair(): Promise<{
   privateKeyPem: string;
   keyId: string;
 }> {
-  await fs.mkdir(keysDir, { recursive: true });
-  let privateKeyPem: string;
-  let publicKeyPem: string;
+  await fs.mkdir(keysDir, { recursive: true }).catch(() => undefined);
+  let privateKeyPem: string | null = null;
+  let publicKeyPem: string | null = null;
   try {
     privateKeyPem = await fs.readFile(privatePath, "utf8");
     publicKeyPem = await fs.readFile(publicPath, "utf8");
   } catch {
+    try {
+      publicKeyPem = await fs.readFile(bundledPublicPath, "utf8");
+    } catch {
+      publicKeyPem = null;
+    }
+  }
+
+  if (!privateKeyPem || !publicKeyPem) {
     const { privateKey, publicKey } = generateKeyPairSync("ed25519");
     privateKeyPem = privateKey.export({ type: "pkcs8", format: "pem" }).toString();
     publicKeyPem = publicKey.export({ type: "spki", format: "pem" }).toString();
-    await fs.writeFile(privatePath, privateKeyPem, { mode: 0o600 });
-    await fs.writeFile(publicPath, publicKeyPem, "utf8");
+    try {
+      await fs.writeFile(privatePath, privateKeyPem, { mode: 0o600 });
+      await fs.writeFile(publicPath, publicKeyPem, "utf8");
+    } catch (err) {
+      console.error("[seal] key write failed (ok on read-only hosts)", err);
+    }
   }
+
   const keyId = createHash("sha256")
     .update(publicKeyPem)
     .digest("hex")
@@ -76,7 +97,7 @@ export async function getPublicKeyDocument() {
     alg: "Ed25519",
     keyId,
     publicKeyPem,
-    verifyPath: "/api/agentspace/verify",
+    verifyEndpoint: "/api/agentspace/verify",
     wellKnown: "/.well-known/quotum-pubkey.json",
   };
 }

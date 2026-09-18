@@ -14,14 +14,18 @@ export default async function AttributionLanding({
   const sealed = await findByAttributionToken(token);
   const h = await headers();
 
-  await recordHit({
-    token,
-    contractId: sealed?.id ?? null,
-    path: `/t/${token}`,
-    referrer: h.get("referer"),
-    userAgent: h.get("user-agent"),
-    source: "attribution_landing",
-  });
+  try {
+    await recordHit({
+      token,
+      contractId: sealed?.id ?? null,
+      path: `/t/${token}`,
+      referrer: h.get("referer"),
+      userAgent: h.get("user-agent"),
+      source: "attribution_landing",
+    });
+  } catch (err) {
+    console.error("[attribution] recordHit failed", err);
+  }
 
   if (!sealed) {
     redirect("/agentspace");

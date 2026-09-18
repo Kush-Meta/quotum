@@ -79,7 +79,12 @@ export async function listSealedContracts(): Promise<SealedContract[]> {
   } catch {
     /* reseal below */
   }
-  return resealAll();
+  try {
+    return await resealAll();
+  } catch (err) {
+    console.error("[store] resealAll failed", err);
+    return [];
+  }
 }
 
 export async function getSealedContract(

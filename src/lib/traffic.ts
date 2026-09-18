@@ -1,7 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-const trafficPath = path.join(process.cwd(), "data", "live", "traffic.json");
+function trafficPaths(): string[] {
+  const bundled = path.join(process.cwd(), "data", "live", "traffic.json");
+  if (process.env.VERCEL) {
+    return ["/tmp/quotum-data/traffic.json", bundled];
+  }
+  return [bundled];
+}
 
 export type TrafficHit = {
   id: string;
@@ -21,17 +27,27 @@ export type TrafficStore = {
 };
 
 async function readStore(): Promise<TrafficStore> {
-  try {
-    const raw = await fs.readFile(trafficPath, "utf8");
-    return JSON.parse(raw) as TrafficStore;
-  } catch {
-    return { updatedAt: new Date().toISOString(), hits: [] };
+  for (const file of trafficPaths()) {
+    try {
+      const raw = await fs.readFile(file, "utf8");
+      const parsed = JSON.parse(raw) as TrafficStore;
+      if (parsed && Array.isArray(parsed.hits)) return parsed;
+    } catch {
+      /* try next */
+    }
   }
+  return { updatedAt: new Date().toISOString(), hits: [] };
 }
 
 async function writeStore(store: TrafficStore) {
-  await fs.mkdir(path.dirname(trafficPath), { recursive: true });
-  await fs.writeFile(trafficPath, JSON.stringify(store, null, 2), "utf8");
+  const primary = trafficPaths()[0];
+  try {
+    await fs.mkdir(path.dirname(primary), { recursive: true });
+    await fs.writeFile(primary, JSON.stringify(store, null, 2), "utf8");
+  } catch (err) {
+    // Vercel serverless FS can be read-only outside /tmp — never fail the request.
+    console.error("[traffic] write failed", err);
+  }
 }
 
 function guessEngine(ua: string | null, referrer: string | null): string | null {
