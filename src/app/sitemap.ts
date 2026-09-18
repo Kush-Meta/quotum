@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
-import { listContracts } from "@/lib/store";
+import { listContracts, listSealedContracts } from "@/lib/store";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const origin =
     process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
   const contracts = await listContracts();
+  const sealed = await listSealedContracts();
   const now = new Date();
 
   return [
@@ -15,16 +16,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${origin}/agentspace`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1,
+    },
+    {
+      url: `${origin}/experiment`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.95,
+    },
+    {
       url: `${origin}/publish`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-    },
-    {
-      url: `${origin}/pilot`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.8,
     },
     {
       url: `${origin}/.well-known/answer-contracts.json`,
@@ -32,11 +39,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 1,
     },
+    {
+      url: `${origin}/.well-known/quotum-pubkey.json`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
     ...contracts.map((c) => ({
       url: `${origin}/answers/${c.id}`,
       lastModified: new Date(c.updatedAt),
       changeFrequency: "weekly" as const,
       priority: 0.95,
+    })),
+    ...sealed.map((c) => ({
+      url: `${origin}/t/${c.seal.attributionToken}`,
+      lastModified: new Date(c.seal.sealedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     })),
   ];
 }

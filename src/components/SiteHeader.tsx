@@ -1,9 +1,10 @@
 import Link from "next/link";
 
 const links = [
+  { href: "/agentspace", label: "Agentspace" },
+  { href: "/experiment", label: "Experiment" },
   { href: "/studio", label: "Studio" },
-  { href: "/pilot", label: "Results" },
-  { href: "/publish", label: "Publish Surface" },
+  { href: "/publish", label: "Publish" },
   { href: "/spec", label: "Spec" },
 ];
 
@@ -36,10 +37,10 @@ export function SiteHeader() {
           ))}
         </nav>
         <Link
-          href="/pilot"
+          href="/experiment"
           className="rounded-full bg-signal px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110"
         >
-          View results
+          Live experiment
         </Link>
       </div>
     </header>
