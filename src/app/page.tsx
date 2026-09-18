@@ -6,19 +6,13 @@ const pillars = [
     body: "Intent-bound objects: canonical answer, evidence-hashed claims, competitive frame, and a citation object engines can attribute.",
   },
   {
-    title: "Publish Surface",
-    body: "A machine-native index — not llms.txt, not a chatbot, not another HTML page hoping to be scraped correctly.",
+    title: "Agentspace",
+    body: "A machine entrypoint where AI agents fetch sealed contracts, verify Ed25519 signatures, and follow attribution URLs.",
   },
   {
-    title: "Answer Share",
-    body: "Transparent score from mention, recommendation, citation, and prominence across ChatGPT, Perplexity, Gemini, Claude, and AI Overviews.",
+    title: "Answer Share + traffic",
+    body: "Score mention, recommend, citation, and prominence — then measure real visits via attribution tokens.",
   },
-];
-
-const contrasts = [
-  ["llms.txt", "A markdown sitemap hint. Quotum binds answers to buyer intents with proof."],
-  ["NLWeb /ask", "Conversational API over your site. Quotum targets off-site generative answer share."],
-  ["GEO dashboards", "They watch mentions. Quotum publishes the object that should get cited — then measures lift."],
 ];
 
 export default function HomePage() {
@@ -29,38 +23,38 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-signal">
             <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-            Own your share of the answer
+            Live experiment in progress
           </p>
           <h1 className="font-display max-w-4xl text-4xl leading-[1.05] text-paper md:text-6xl">
-            Stop optimizing websites for agents.
+            Publish sealed answers.
             <span className="block text-signal">
-              Publish Answer Contracts instead.
+              Measure citations and traffic.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog/80 md:text-xl">
-            Quotum is a framework for companies that want generative engines to
-            mention, recommend, and cite them — with a publishable contract
-            format and a causal pilot loop that proves lift.
+            Quotum is running a real experiment on itself: sealed Answer
+            Contracts in agentspace, asked across AI chats, scored for Answer
+            Share, and tracked for attribution-token visits.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/studio"
+              href="/agentspace"
               className="rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
             >
-              Open Studio
+              Enter agentspace
             </Link>
             <Link
-              href="/pilot"
+              href="/experiment"
               className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-paper transition hover:border-signal hover:text-signal"
             >
-              View Northline results
+              View live experiment
             </Link>
           </div>
           <div className="mt-14 grid gap-3 md:grid-cols-3">
             {[
-              ["0 today", "Northline Answer Share at baseline"],
-              ["Buyer questions", "Same pack remeasured after publish"],
-              ["Clear answers", "Contracts AI can cite with proof"],
+              ["Ed25519 seals", "Independently verifiable contracts"],
+              ["/t/tokens", "Attribution URLs for traffic proof"],
+              ["Holdouts", "Fair-test prompts stay unpublished"],
             ].map(([k, v]) => (
               <div key={k} className="panel rounded-2xl p-5">
                 <div className="font-display text-2xl text-signal">{k}</div>
@@ -84,40 +78,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="font-display text-3xl text-paper">What this is not</h2>
-        <div className="mt-8 space-y-4">
-          {contrasts.map(([title, body]) => (
-            <div
-              key={title}
-              className="panel flex flex-col gap-2 rounded-2xl p-5 md:flex-row md:items-baseline md:gap-8"
-            >
-              <div className="min-w-40 font-mono text-xs uppercase tracking-wider text-ember">
-                {title}
-              </div>
-              <p className="text-sm leading-relaxed text-fog/80">{body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-16 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="font-display text-3xl text-paper">
-              See the Northline story
+              The experiment subject is Quotum
             </h2>
             <p className="mt-3 max-w-xl text-fog/75">
-              A fictional product-analytics brand that starts invisible in AI
-              answers — then we publish Answer Contracts and measure whether
-              visibility improves.
+              No fictional brand this time. We publish sealed contracts about
+              Answer Contracts / GEO tooling, ask real AI chats those questions,
+              and measure citations plus token traffic.
             </p>
           </div>
           <Link
-            href="/pilot"
+            href="/experiment"
             className="rounded-full bg-paper px-6 py-3 text-sm font-semibold text-ink transition hover:bg-signal"
           >
-            Open results →
+            Open experiment →
           </Link>
         </div>
       </section>

@@ -9,8 +9,9 @@ SEO gave the web sitemaps for pages. Quotum gives companies **contracts for answ
 | Piece | Role |
 | --- | --- |
 | **Answer Contract** | Canonical answer + claims + competitive frame + citation object for one buyer intent |
-| **Publish surface** | Machine index at `/api/publish` (not llms.txt, not a chatbot) |
-| **Results** (`/pilot`) | Marketer-readable baseline vs after-publish Answer Share for Northline |
+| **Agentspace** | Machine entrypoint: sealed contracts, verify API, attribution URLs |
+| **Live experiment** (`/experiment`) | Real Quotum citation + traffic experiment (not fictional) |
+| **Results** (`/pilot`) | Legacy Northline simulated pilot archive |
 
 ## What this is not
 
@@ -27,9 +28,19 @@ npm run dev
 
 Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
+```bash
+npm run seal:real   # write Quotum contracts + Ed25519 seals
+```
+
+Live experiment docs: [`docs/REAL_EXPERIMENT.md`](./docs/REAL_EXPERIMENT.md).
+
 Full docs: [`docs/`](./docs/README.md).
 
-## Phase 4 (robust experiment — done)
+## Real experiment (current)
+
+Quotum is the subject. Sealed contracts live in **agentspace**. Ask AI chats the measurement prompts, verify seals independently, and track `/t/<token>` traffic. See [`docs/REAL_EXPERIMENT.md`](./docs/REAL_EXPERIMENT.md).
+
+## Phase 4 (robust experiment harness — done)
 
 Multi-engine / paraphrase / holdout harness before durable deploy. Target n=45 measurement captures. See [`docs/PHASE4_ROBUST.md`](./docs/PHASE4_ROBUST.md).
 
