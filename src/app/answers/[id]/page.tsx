@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getContract, listContracts } from "@/lib/store";
+import { getSealedContract, listContracts } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
@@ -13,12 +13,13 @@ export async function generateStaticParams() {
 
 export default async function AnswerPage({ params }: Props) {
   const { id } = await params;
-  const contract = await getContract(id);
+  const contract = await getSealedContract(id);
   if (!contract) notFound();
 
   const origin =
     process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
   const pageUrl = `${origin}/answers/${contract.id}`;
+  const attributionUrl = `${origin}/t/${contract.seal.attributionToken}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -60,7 +61,7 @@ export default async function AnswerPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal">
-        Canonical answer · {contract.intent.buyerStage}
+        Canonical answer · {contract.intent.buyerStage} · sealed
       </p>
       <h1
         id={contract.citation.anchor ?? "canonical-answer"}
@@ -80,6 +81,51 @@ export default async function AnswerPage({ params }: Props) {
         <p className="mt-3 text-lg leading-relaxed text-paper">
           {contract.canonicalAnswer}
         </p>
+      </section>
+
+      <section className="panel mt-6 rounded-2xl border border-signal/20 p-6">
+        <h2 className="font-mono text-[11px] uppercase tracking-wider text-signal">
+          Verification seal
+        </h2>
+        <dl className="mt-3 grid gap-2 text-sm md:grid-cols-2">
+          <div>
+            <dt className="text-muted">Algorithm</dt>
+            <dd className="font-mono text-paper">{contract.seal.alg}</dd>
+          </div>
+          <div>
+            <dt className="text-muted">Key ID</dt>
+            <dd className="font-mono text-paper">{contract.seal.keyId}</dd>
+          </div>
+          <div className="md:col-span-2">
+            <dt className="text-muted">Content hash</dt>
+            <dd className="break-all font-mono text-xs text-paper">
+              {contract.seal.contentHash}
+            </dd>
+          </div>
+          <div className="md:col-span-2">
+            <dt className="text-muted">Signature</dt>
+            <dd className="break-all font-mono text-xs text-fog/80">
+              {contract.seal.signature}
+            </dd>
+          </div>
+        </dl>
+        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+          <Link
+            href="/.well-known/quotum-pubkey.json"
+            className="text-signal hover:underline"
+          >
+            Public key
+          </Link>
+          <Link
+            href={`/api/agentspace/contracts/${contract.id}`}
+            className="text-signal hover:underline"
+          >
+            Sealed JSON
+          </Link>
+          <Link href={attributionUrl} className="text-signal hover:underline">
+            Attribution URL
+          </Link>
+        </div>
       </section>
 
       <section className="mt-10">
@@ -135,19 +181,16 @@ export default async function AnswerPage({ params }: Props) {
 
       <div className="mt-10 flex flex-wrap gap-3 text-sm">
         <Link
-          href={`/api/publish/contracts/${contract.id}`}
+          href={`/api/agentspace/contracts/${contract.id}`}
           className="text-signal hover:underline"
         >
-          Machine contract JSON
+          Sealed machine JSON
         </Link>
-        <Link
-          href="/.well-known/answer-contracts.json"
-          className="text-signal hover:underline"
-        >
-          Discovery index
+        <Link href="/agentspace" className="text-signal hover:underline">
+          Agentspace
         </Link>
-        <Link href="/pilot" className="text-signal hover:underline">
-          Results
+        <Link href="/experiment" className="text-signal hover:underline">
+          Live experiment
         </Link>
       </div>
     </article>
