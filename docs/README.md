@@ -2,6 +2,7 @@
 
 | Doc | Contents |
 | --- | --- |
+| [REAL_EXPERIMENT.md](./REAL_EXPERIMENT.md) | Live Quotum citation + sealed-token traffic experiment |
 | [OVERVIEW.md](./OVERVIEW.md) | Product thesis, what Quotum is / is not |
 | [ANSWER_CONTRACTS.md](./ANSWER_CONTRACTS.md) | Contract schema, claims, citation objects |
 | [ANSWER_SHARE.md](./ANSWER_SHARE.md) | Scoring formula and annotation rules |
