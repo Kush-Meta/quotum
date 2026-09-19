@@ -57,7 +57,9 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
           {pillars.map((item) => (
             <div key={item.title}>
-              <h2 className="font-display text-2xl text-paper">{item.title}</h2>
+              <h2 className="font-display text-2xl text-paper">
+                {item.title}
+              </h2>
               <p className="mt-3 text-sm leading-relaxed text-fog/75">
                 {item.body}
               </p>
