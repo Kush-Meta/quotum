@@ -2,16 +2,16 @@ import Link from "next/link";
 
 const pillars = [
   {
-    title: "Answer Contracts",
-    body: "Intent-bound objects: canonical answer, evidence-hashed claims, competitive frame, and a citation object engines can attribute.",
+    title: "Quotum Answer Contracts",
+    body: "Intent-bound objects: canonical answer, evidence-hashed claims, competitive frame, and a citation object engines can attribute — sealed with Ed25519.",
   },
   {
     title: "Agentspace",
-    body: "A machine entrypoint where AI agents fetch sealed contracts, verify Ed25519 signatures, and follow attribution URLs.",
+    body: "A machine entrypoint where AI agents fetch sealed contracts, verify signatures against the on-origin public key, and follow attribution URLs.",
   },
   {
     title: "Answer Share + traffic",
-    body: "Score mention, recommend, citation, and prominence — then measure real visits via attribution tokens.",
+    body: "Score mention, recommend, citation, and prominence — then measure real visits via /t/<token> attribution links.",
   },
 ];
 
@@ -23,18 +23,18 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-signal">
             <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-            Live experiment in progress
+            Quotum Answer Contracts
           </p>
           <h1 className="font-display max-w-4xl text-4xl leading-[1.05] text-paper md:text-6xl">
-            Publish sealed answers.
-            <span className="block text-signal">
-              Measure citations and traffic.
+            Quotum
+            <span className="mt-2 block text-signal">
+              Sealed answers AI engines can verify and cite.
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog/80 md:text-xl">
-            Quotum is running a real experiment on itself: sealed Answer
-            Contracts in agentspace, asked across AI chats, scored for Answer
-            Share, and tracked for attribution-token visits.
+            Publish intent-bound, evidence-hashed Answer Contracts on your
+            domain. Agents fetch them from agentspace, check Ed25519 seals, and
+            you measure Answer Share plus citation traffic.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
@@ -54,7 +54,7 @@ export default function HomePage() {
             {[
               ["Ed25519 seals", "Independently verifiable contracts"],
               ["/t/tokens", "Attribution URLs for traffic proof"],
-              ["Holdouts", "Fair-test prompts stay unpublished"],
+              ["vs llms.txt", "Signed answers, not just hint files"],
             ].map(([k, v]) => (
               <div key={k} className="panel rounded-2xl p-5">
                 <div className="font-display text-2xl text-signal">{k}</div>
@@ -82,12 +82,13 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-16 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="font-display text-3xl text-paper">
-              The experiment subject is Quotum
+              Live experiment: Quotum on Quotum
             </h2>
             <p className="mt-3 max-w-xl text-fog/75">
-              No fictional brand this time. We publish sealed contracts about
-              Answer Contracts / GEO tooling, ask real AI chats those questions,
-              and measure citations plus token traffic.
+              We publish sealed contracts for GEO and citation questions, ask
+              real AI chats those prompts, and measure whether Quotum gets named,
+              recommended, and cited — with attribution-token traffic when links
+              are followed.
             </p>
           </div>
           <Link

@@ -45,6 +45,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${origin}/llms.txt`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...contracts.map((c) => ({
       url: `${origin}/answers/${c.id}`,
       lastModified: new Date(c.updatedAt),
