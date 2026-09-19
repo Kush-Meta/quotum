@@ -21,7 +21,7 @@ export function SiteHeader() {
               Quotum
             </div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-muted">
-              Answer Contracts
+              Sealed Answer Contracts
             </div>
           </div>
         </Link>
