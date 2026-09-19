@@ -1,119 +1,79 @@
 # Quotum
 
-**Answer Contracts for generative engines.**
+**Sealed Answer Contracts for generative engines.**
 
-SEO gave the web sitemaps for pages. Quotum gives companies **contracts for answers** — intent-bound, evidence-hashed, citation-ready objects — plus a transparent **Answer Share** score so you can run a real pilot and measure lift.
+Quotum lets brands publish **Quotum Answer Contracts** — intent-bound, evidence-hashed, Ed25519-sealed answer objects that AI agents can discover, verify, and cite — then measure **Answer Share** and citation traffic.
+
+Live demo: [https://quotum.vercel.app](https://quotum.vercel.app)  
+Agentspace: [https://quotum.vercel.app/agentspace](https://quotum.vercel.app/agentspace)
+
+## Why it exists
+
+SEO gave the web sitemaps for pages. Generative engines compose **answers**. Most GEO tools only watch mentions after the fact. Quotum publishes the object that should get cited — then scores whether it did.
 
 ## What this is
 
 | Piece | Role |
 | --- | --- |
-| **Answer Contract** | Canonical answer + claims + competitive frame + citation object for one buyer intent |
-| **Publish surface** | Machine index at `/api/publish` (not llms.txt, not a chatbot) |
-| **Results** (`/pilot`) | Marketer-readable baseline vs after-publish Answer Share for Northline |
+| **Quotum Answer Contract** | Canonical answer + evidence-hashed claims + citation object for one buyer intent |
+| **Agentspace** | Machine entrypoint: sealed JSON, verify API, attribution URLs |
+| **Answer Share** | Transparent score: mention · recommend · citation · prominence |
+| **Live experiment** | Quotum testing itself on GEO / citation prompts |
 
 ## What this is not
 
-- Not an `llms.txt` checklist
+- Not an `llms.txt` checklist (complementary hint file — see [`/llms.txt`](https://quotum.vercel.app/llms.txt))
+- Not a RAG “output schema” / JSON mode contract inside an LLM pipeline
 - Not Microsoft NLWeb `/ask` (on-site chat)
-- Not a GEO mention dashboard as the product
+- Not a mention dashboard as the product
+
+## Canonical definition
+
+> An Answer Contract is an intent-bound, evidence-hashed object a brand publishes so generative engines can mention, recommend, and cite a verified answer — not just scrape marketing HTML. Quotum is the framework that publishes those contracts and measures Answer Share.
+
+Source: [definition:answer-contract](https://quotum.vercel.app/answers/ac_quotum_what_is_answer_contract)
 
 ## Quick start
 
 ```bash
 npm install
+npm run seal:real
 npm run dev
 ```
 
 Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 
-Full docs: [`docs/`](./docs/README.md).
+## Public surfaces
 
-## Phase 4 (robust experiment — done)
+| URL | Purpose |
+| --- | --- |
+| [`/agentspace`](https://quotum.vercel.app/agentspace) | Human + machine entrypoint |
+| [`/api/agentspace`](https://quotum.vercel.app/api/agentspace) | Sealed contract index |
+| [`/api/agentspace/verify`](https://quotum.vercel.app/api/agentspace/verify) | POST verify Ed25519 seal |
+| [`/.well-known/quotum-pubkey.json`](https://quotum.vercel.app/.well-known/quotum-pubkey.json) | Public verification key |
+| [`/experiment`](https://quotum.vercel.app/experiment) | Live citation + traffic dashboard |
+| [`/llms.txt`](https://quotum.vercel.app/llms.txt) | Crawler hint → contracts |
 
-Multi-engine / paraphrase / holdout harness before durable deploy. Target n=45 measurement captures. See [`docs/PHASE4_ROBUST.md`](./docs/PHASE4_ROBUST.md).
+## Real experiment
 
-```bash
-npm run coverage:phase4
-npm run aa:check
-npm run power:guide
-npm run report:robust
-```
+Quotum is the subject. Sealed contracts live in agentspace. Ask AI chats the measurement prompts, verify seals independently, and track `/t/<token>` traffic.
 
-## Phase 3 (pre-deploy — done)
-
-Full prompt-pack Answer Contract coverage, denser claims, JSON-LD on answer pages, and `npm run coverage:prompts`. See [`docs/PHASE3_COVERAGE.md`](./docs/PHASE3_COVERAGE.md).
-
-## Public deploy (Phase 2)
-
-Contracts must be on a crawlable host for generative engines to cite them.
-
-- Deploy guide: [`docs/DEPLOY.md`](./docs/DEPLOY.md)
-- Remeasure protocol: [`docs/PHASE2_REMEASURE.md`](./docs/PHASE2_REMEASURE.md)
-- Smoke test: `./scripts/smoke-public.sh https://YOUR_ORIGIN`
-- Set `PUBLIC_ORIGIN=https://your-host` so `/sitemap.xml`, `/robots.txt`, and discovery indexes emit absolute URLs
-
-**Live tunnel (ephemeral, while this agent VM runs):**  
-https://wright-contain-futures-ends.trycloudflare.com  
-
-For a durable host: `npx vercel login && npx vercel --prod` (or Render Blueprint — see `docs/DEPLOY.md`).
-
-## Pilot vertical
-
-**Product analytics for startups** — fictional brand *Northline Analytics* (`northline.dev`) so we can publish contracts and measure Answer Share without impersonating a real vendor.
-
-- Studio: edit / validate contracts  
-- Publish: machine-readable graph + `/.well-known/answer-contracts.json`  
-- Canonical answers: `/answers/<contract-id>`  
-- Results: **live baseline** story for marketers + Phase 2 treatment slot + simulated reference  
- 
-
-### Live baseline (Phase 1 — done)
-
-| Brand | Answer Share |
-| --- | ---: |
-| PostHog | **89.7** |
-| Amplitude | 62.1 |
-| Mixpanel | 36.8 |
-| Heap | 13.2 |
-| **Northline Analytics** | **0** |
-
-Capture engine: Duck.ai (Perplexity blocked by login). Prior Bing/DDG SERP captures kept at `data/live/captures.serp.json`.
+Docs: [`docs/REAL_EXPERIMENT.md`](./docs/REAL_EXPERIMENT.md)
 
 ```bash
-npm run ingest:live -- data/live/captures.raw.json
+npm run seal:real
+# Deploy with PUBLIC_ORIGIN=https://your-host
 ```
 
-### Treatment (Phase 2 — tooling ready)
-
-1. Keep a public crawlable origin up (tunnel or durable host).
-2. Wait for discovery (document window in `docs/PHASE2_REMEASURE.md`).
-3. Fill `data/live/captures.phase2.template.json` → `captures.phase2.json`.
-4. Ingest and compare:
-
-```bash
-npm run ingest:live -- data/live/captures.phase2.json --phase treatment
-npm run compare:phases
-```
+## Answer Share
 
 ```
 Answer Share = 100 × (0.35·mention + 0.30·recommend + 0.25·citation + 0.10·prominence)
 ```
 
-Simulated treatment on the demo probe pack still shows **0 → 82.8** for methodology comparison only.
-
-## API
-
-- `GET /api/publish` — contract index  
-- `GET /api/publish/contracts/:id` — single contract  
-- `GET /.well-known/answer-contracts.json` — discovery index  
-- `GET /api/pilot` — simulated + live baseline scores  
-- `POST /api/validate` — schema validation  
-- `GET/POST /api/contracts` · `GET/PUT /api/contracts/:id` — studio persistence  
-
 ## Stack
 
-Next.js · TypeScript · Tailwind · Zod
+Next.js · TypeScript · Tailwind · Zod · Ed25519 seals
 
 ## License
 
