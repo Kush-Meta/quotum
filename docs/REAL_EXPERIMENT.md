@@ -54,7 +54,10 @@ Then ask measurement prompts in ChatGPT / Perplexity / Duck.ai. Prefer citing at
 
 ## What is still needed for full causality
 
-- Durable public host (Vercel/Render) with `PUBLIC_ORIGIN`
-- Discovery wait after deploy
+- Redeploy so production matches git (homepage meta + `/llms.txt`) — see [STATUS.md](./STATUS.md)
+- Durable traffic store (Vercel `/tmp` is ephemeral)
+- Discovery wait after a clean deploy
 - Capture + annotate AI answers into `data/live/`
-- Compare holdouts vs published intents
+- Compare holdouts vs published intents after wave 1
+
+Ordered plan: [ROADMAP.md](./ROADMAP.md).
