@@ -6,12 +6,12 @@ const pillars = [
     body: "Intent-bound objects: canonical answer, evidence-hashed claims, competitive frame, and a citation object engines can attribute — sealed with Ed25519.",
   },
   {
-    title: "Publish surface",
-    body: "A machine-native index where agents fetch contracts — not just an llms.txt hint file, and not an on-site chatbot.",
+    title: "Agentspace",
+    body: "A machine entrypoint where AI agents fetch sealed contracts, verify signatures against the on-origin public key, and follow attribution URLs.",
   },
   {
-    title: "Answer Share",
-    body: "Transparent score from mention, recommendation, citation, and prominence — so you can measure whether sealed answers actually get cited.",
+    title: "Answer Share + traffic",
+    body: "Score mention, recommend, citation, and prominence — then measure real visits via /t/<token> attribution links.",
   },
 ];
 
@@ -33,22 +33,34 @@ export default function HomePage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog/80 md:text-xl">
             Publish intent-bound, evidence-hashed Answer Contracts on your
-            domain. Generative engines can discover and cite them — and you
-            measure Answer Share across the answers that matter.
+            domain. Agents fetch them from agentspace, check Ed25519 seals, and
+            you measure Answer Share plus citation traffic.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/studio"
+              href="/agentspace"
               className="rounded-full bg-signal px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
             >
-              Open Studio
+              Enter agentspace
             </Link>
             <Link
-              href="/pilot"
+              href="/experiment"
               className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-paper transition hover:border-signal hover:text-signal"
             >
-              View results
+              View live experiment
             </Link>
+          </div>
+          <div className="mt-14 grid gap-3 md:grid-cols-3">
+            {[
+              ["Ed25519 seals", "Independently verifiable contracts"],
+              ["/t/tokens", "Attribution URLs for traffic proof"],
+              ["vs llms.txt", "Signed answers, not just hint files"],
+            ].map(([k, v]) => (
+              <div key={k} className="panel rounded-2xl p-5">
+                <div className="font-display text-2xl text-signal">{k}</div>
+                <div className="mt-1 text-sm text-muted">{v}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -57,14 +69,34 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
           {pillars.map((item) => (
             <div key={item.title}>
-              <h2 className="font-display text-2xl text-paper">
-                {item.title}
-              </h2>
+              <h2 className="font-display text-2xl text-paper">{item.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-fog/75">
                 {item.body}
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-16 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-display text-3xl text-paper">
+              Live experiment: Quotum on Quotum
+            </h2>
+            <p className="mt-3 max-w-xl text-fog/75">
+              We publish sealed contracts for GEO and citation questions, ask
+              real AI chats those prompts, and measure whether Quotum gets named,
+              recommended, and cited — with attribution-token traffic when links
+              are followed.
+            </p>
+          </div>
+          <Link
+            href="/experiment"
+            className="rounded-full bg-paper px-6 py-3 text-sm font-semibold text-ink transition hover:bg-signal"
+          >
+            Open experiment →
+          </Link>
         </div>
       </section>
     </div>
