@@ -15,7 +15,8 @@
     "aa:check": "tsx scripts/check-aa-stability.ts",
     "power:guide": "tsx scripts/power-guidance.ts",
     "interrater": "tsx scripts/score-interrater.ts",
-    "report:robust": "tsx scripts/report-robustness.ts"
+    "report:robust": "tsx scripts/report-robustness.ts",
+    "seal:real": "tsx scripts/seal-real-experiment.ts"
   },
   "dependencies": {
     "date-fns": "^4.4.0",
