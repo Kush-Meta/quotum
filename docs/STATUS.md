@@ -1,50 +1,22 @@
 # Status snapshot
 
-Checked: **2026-09-23**
+Checked / updated: **2026-09-23**
 
-## GitHub (`Kush-Meta/quotum`)
+## Moves
 
-| Item | State |
+| Move | State |
 | --- | --- |
-| Default branch `main` README | Sealed Answer Contracts positioning (updated) |
-| Site meta / hero on `main` | Sealed positioning (updated) |
-| `public/llms.txt` on `main` | Present |
-| Experiment branch | `cursor/real-answer-experiment-ebac` — full agentspace + seals |
-| **About description** | Still old: “Answer Contracts for generative engines — measure Answer Share” |
-| **Homepage URL** | Still empty |
-| **Topics** | `answer-contracts`, `generative-engines`, `geo`, `nextjs`, `typescript` (missing answer-share, llm, ai-citation, ed25519, agentspace) |
+| 1. Ship experiment → `main` | **Done** — [PR #1](https://github.com/Kush-Meta/quotum/pull/1) merged. `main` now includes agentspace, experiment, `/t/`, seals, `llms.txt`. |
+| 1b. Production redeploy | **Pending** — Vercel still serves old homepage meta and `/llms.txt` 404 after ~90s. Run on Mac: `cd ~/quotum && git checkout main && git pull && npx vercel --prod` with `PUBLIC_ORIGIN=https://quotum.vercel.app`. |
+| 2. GitHub About | **Pending** — UI paste (no API). See below. |
+| 3. Measurement wave 1 | **Partial** — SERP baseline in [`data/live/wave1.results.json`](../data/live/wave1.results.json). Generative chat scoring still manual. Holdouts unpublished. |
 
-About is edited only in the GitHub UI (gear next to About). Suggested paste:
+## Wave 1 finding
 
-- **Description:** `Sealed Answer Contracts for generative engines — publish verifiable answers agents can cite, then measure Answer Share.`
-- **Website:** `https://quotum.vercel.app`
-- **Topics:** `answer-contracts`, `answer-share`, `geo`, `generative-engines`, `llm`, `ai-citation`, `ed25519`, `nextjs`, `typescript`, `agentspace`
+Unassisted DuckDuckGo for “What is an Answer Contract?” returns **legal** Answer—Contract debt forms, not Quotum (term collision). Brand-assisted queries surface Quotum. Provisional unassisted Answer Share ≈ **0**.
 
-## Production (`https://quotum.vercel.app`)
+## About paste
 
-| Surface | HTTP | Notes |
-| --- | --- |
-| `/` | 200 | **Old** title/description (“Quotum — Answer Contracts”) |
-| `/agentspace` | 200 | Live; 4 sealed contracts |
-| `/experiment` | 200 | Live dashboard |
-| `/api/agentspace` | 200 | Sealed index |
-| `/.well-known/quotum-pubkey.json` | 200 | OK |
-| `/sitemap.xml` | 200 | OK |
-| `/llms.txt` | **404** | On git `main` / experiment, not on this deploy |
-
-Production is an older experiment deploy: agentspace works, homepage meta + `llms.txt` do not match the latest positioning commits.
-
-## Local (when running)
-
-```bash
-cd quotum   # or clone Kush-Meta/quotum
-npm install && npm run seal:real && npm run dev
-# http://127.0.0.1:3847 — sealed meta + /llms.txt
-```
-
-## Immediate gaps
-
-1. Set GitHub About (manual).
-2. Redeploy production from `cursor/real-answer-experiment-ebac` (or merge experiment → `main` and deploy `main`) so meta + `llms.txt` match git.
-3. Durable traffic store (Vercel filesystem is ephemeral — `/t/` hits reset on cold starts).
-4. Run measurement wave 1 (prompts → annotate Answer Share → compare holdouts).
+- Description: `Sealed Answer Contracts for generative engines — publish verifiable answers agents can cite, then measure Answer Share.`
+- Website: `https://quotum.vercel.app`
+- Topics: `answer-contracts`, `answer-share`, `geo`, `generative-engines`, `llm`, `ai-citation`, `ed25519`, `nextjs`, `typescript`, `agentspace`

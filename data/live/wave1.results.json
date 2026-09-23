@@ -1,0 +1,50 @@
+{
+  "phase": "wave1",
+  "capturedAt": "2026-09-23T02:15:00Z",
+  "subject": "Quotum",
+  "origin": "https://quotum.vercel.app",
+  "method": "SERP proxy (DuckDuckGo HTML) + known production agentspace inventory",
+  "holdoutsUnpublished": true,
+  "organic_serp_without_brand": {
+    "engine": "duckduckgo-html",
+    "finding": "Queries like 'What is an Answer Contract?' return legal debt-collection 'Answer—Contract' forms, not Quotum. Confirms term collision. Quotum not in top organic SERP titles for measurement prompts without the brand name.",
+    "implication": "Unassisted organic Answer Share for Quotum on these prompts is effectively 0 until generative engines cite sealed contracts or third-party sources."
+  },
+  "organic_serp_with_brand": {
+    "finding": "Queries that include 'Quotum' return pages mentioning Quotum (DDG HTML contains 'quotum').",
+    "implication": "URL-assisted / brand-assisted discovery works; unassisted organic GEO does not yet."
+  },
+  "generative_chat_wave": {
+    "status": "pending_manual",
+    "instructions": "Ask each published prompt in ChatGPT, Perplexity, Gemini, Claude, Duck.ai. Score mention/recommend/citation/prominence. Prefer /t/<token> URLs when citing.",
+    "publishedPrompts": [
+      "What is an Answer Contract?",
+      "What are Answer Contracts for AI chatbots?",
+      "What is Answer Share?",
+      "How do you measure visibility in ChatGPT and Perplexity answers?",
+      "Best tools for getting cited by ChatGPT and Perplexity",
+      "GEO tools for generative engine optimization",
+      "Answer Contracts vs llms.txt",
+      "Is llms.txt enough for AI citations?"
+    ],
+    "holdoutPrompts": [
+      "How can a startup get recommended inside Perplexity answers?",
+      "What is the best way to make Claude cite my product docs?",
+      "Tools that prove AI answers used my brand's claims"
+    ]
+  },
+  "answerShareBaseline": {
+    "note": "No generative chat annotations yet this wave. Provisional organic Answer Share for Quotum on unassisted SERP ≈ 0.",
+    "provisional": {
+      "mention": 0,
+      "recommend": 0,
+      "citation": 0,
+      "prominence": 0,
+      "answerShare": 0
+    }
+  },
+  "deploy": {
+    "mainMerged": "https://github.com/Kush-Meta/quotum/pull/1",
+    "productionRedeploy": "pending — Vercel did not auto-update within ~90s; run npx vercel --prod from Mac with PUBLIC_ORIGIN=https://quotum.vercel.app"
+  }
+}
