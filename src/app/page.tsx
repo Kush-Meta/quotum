@@ -57,8 +57,12 @@ export default function HomePage() {
               ["vs llms.txt", "Signed answers, not just hint files"],
             ].map(([k, v]) => (
               <div key={k} className="panel rounded-2xl p-5">
-                <div className="font-display text-2xl text-signal">{k}</div>
-                <div className="mt-1 text-sm text-muted">{v}</div>
+                <div className="font-display text-2xl text-signal">
+                  {k}
+                </div>
+                <div className="mt-1 text-sm text-muted">
+                  {v}
+                </div>
               </div>
             ))}
           </div>
@@ -69,7 +73,9 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
           {pillars.map((item) => (
             <div key={item.title}>
-              <h2 className="font-display text-2xl text-paper">{item.title}</h2>
+              <h2 className="font-display text-2xl text-paper">
+                {item.title}
+              </h2>
               <p className="mt-3 text-sm leading-relaxed text-fog/75">
                 {item.body}
               </p>
