@@ -1,10 +1,12 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { pilotContracts } from "./pilot";
+import { realContracts } from "./realExperiment";
+import { ensureKeyPair, sealContract, type SealedContract } from "./seal";
 import { AnswerContractSchema, type AnswerContract } from "./schema";
 
 const dataDir = path.join(process.cwd(), "data");
 const contractsPath = path.join(dataDir, "contracts.json");
+const sealedPath = path.join(dataDir, "sealed-contracts.json");
 
 async function ensureStore() {
   await fs.mkdir(dataDir, { recursive: true });
@@ -13,7 +15,7 @@ async function ensureStore() {
   } catch {
     await fs.writeFile(
       contractsPath,
-      JSON.stringify(pilotContracts, null, 2),
+      JSON.stringify(realContracts, null, 2),
       "utf8",
     );
   }
@@ -53,29 +55,79 @@ export async function saveContract(
   if (idx >= 0) all[idx] = parsed.data;
   else all.push(parsed.data);
   await fs.writeFile(contractsPath, JSON.stringify(all, null, 2), "utf8");
+  await resealAll();
   return { ok: true, contract: parsed.data };
 }
 
-export async function publishIndex(origin: string | null = null) {
+export async function resealAll(): Promise<SealedContract[]> {
+  await ensureKeyPair();
   const contracts = await listContracts();
-  const abs = (path: string) =>
-    origin ? `${origin}${path.startsWith("/") ? path : `/${path}`}` : path;
+  const sealed: SealedContract[] = [];
+  for (const c of contracts) {
+    sealed.push(await sealContract(c));
+  }
+  await fs.mkdir(dataDir, { recursive: true });
+  await fs.writeFile(sealedPath, JSON.stringify(sealed, null, 2), "utf8");
+  return sealed;
+}
+
+export async function listSealedContracts(): Promise<SealedContract[]> {
+  try {
+    const raw = await fs.readFile(sealedPath, "utf8");
+    const parsed = JSON.parse(raw) as SealedContract[];
+    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+  } catch {
+    /* reseal below */
+  }
+  try {
+    return await resealAll();
+  } catch (err) {
+    console.error("[store] resealAll failed", err);
+    return [];
+  }
+}
+
+export async function getSealedContract(
+  id: string,
+): Promise<SealedContract | null> {
+  const all = await listSealedContracts();
+  return all.find((c) => c.id === id) ?? null;
+}
+
+export async function findByAttributionToken(
+  token: string,
+): Promise<SealedContract | null> {
+  const all = await listSealedContracts();
+  return all.find((c) => c.seal.attributionToken === token) ?? null;
+}
+
+export async function publishIndex(origin: string | null = null) {
+  const contracts = await listSealedContracts();
+  const abs = (p: string) =>
+    origin ? `${origin}${p.startsWith("/") ? p : `/${p}`}` : p;
 
   return {
-    version: "0.1.0",
+    version: "0.2.0",
     generatedAt: new Date().toISOString(),
     protocol: "answer-contracts",
+    agentspace: abs("/agentspace"),
+    verify: abs("/api/agentspace/verify"),
+    publicKey: abs("/.well-known/quotum-pubkey.json"),
     description:
-      "Machine-native Answer Contracts for generative engines. Not llms.txt. Not a chatbot. Intent-bound claims with evidence hashes and citation objects.",
+      "Machine-native sealed Answer Contracts for generative engines. Intent-bound claims with evidence hashes, Ed25519 seals, and attribution tokens.",
     brand: contracts[0]?.brand ?? null,
     domain: contracts[0]?.domain ?? null,
     origin,
     contracts: contracts.map((c) => ({
       id: c.id,
       href: abs(`/api/publish/contracts/${c.id}`),
+      sealedHref: abs(`/api/agentspace/contracts/${c.id}`),
       answerPage: abs(`/answers/${c.id}`),
+      attributionUrl: abs(`/t/${c.seal.attributionToken}`),
       intent: c.intent.promptClass,
       buyerStage: c.intent.buyerStage,
+      contentHash: c.seal.contentHash,
+      keyId: c.seal.keyId,
       updatedAt: c.updatedAt,
       claimCount: c.claims.length,
     })),

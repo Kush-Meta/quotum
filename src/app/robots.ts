@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
+import { siteOrigin } from "@/lib/publicOrigin";
 
 export default function robots(): MetadataRoute.Robots {
-  const origin =
-    process.env.PUBLIC_ORIGIN?.replace(/\/$/, "") ?? "http://127.0.0.1:3847";
+  const origin = siteOrigin();
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/answers/", "/api/publish", "/.well-known/"],
+        allow: ["/", "/answers/", "/api/publish", "/.well-known/", "/agentspace", "/api/agentspace"],
         disallow: ["/studio", "/api/contracts", "/api/validate"],
       },
     ],

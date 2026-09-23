@@ -75,7 +75,15 @@
       "targetCitationRate": 0.25,
       "targetRecommendRate": 0.2
     },
-    "updatedAt": "2026-09-18T04:09:20.922Z"
+    "updatedAt": "2026-09-18T04:11:22.134Z",
+    "seal": {
+      "alg": "Ed25519",
+      "keyId": "a20c24d4e44dd76d",
+      "contentHash": "6f6151d872e50be4e095c6ebb8b0076637ba17c64a1ca4c2dcf655fe2b856098",
+      "signature": "nkAhKZ9KANeKyFk-U5dfhe3LEWLEmixiqxjt4YPXEeDXwLs_dWs7CUlqpcZJJo0ztqVyXMlOtwNOjt1t6-_SBw",
+      "sealedAt": "2026-09-18T04:11:22.201Z",
+      "attributionToken": "-XZgNKAeup7u5z3xzs9O0e"
+    }
   },
   {
     "version": "0.1.0",
@@ -141,7 +149,15 @@
       "targetCitationRate": 0.2,
       "targetRecommendRate": 0.15
     },
-    "updatedAt": "2026-09-18T04:09:20.922Z"
+    "updatedAt": "2026-09-18T04:11:22.134Z",
+    "seal": {
+      "alg": "Ed25519",
+      "keyId": "a20c24d4e44dd76d",
+      "contentHash": "ae820cc25bffed0ada8eb4a89f6265a0742e0e410aac42815df2d840a5b816d3",
+      "signature": "UG69KUMM63KK-lswrqw8mQsSEaasYQ-RoqZ83rzSiFLMN92ZSGPckoLq4YRo2MKj55rzQDfN9bGKPkLe1gAqCg",
+      "sealedAt": "2026-09-18T04:11:22.201Z",
+      "attributionToken": "WoTe_Co5gSkGgtzwXZwZOt"
+    }
   },
   {
     "version": "0.1.0",
@@ -217,7 +233,15 @@
       "targetCitationRate": 0.2,
       "targetRecommendRate": 0.25
     },
-    "updatedAt": "2026-09-18T04:09:20.922Z"
+    "updatedAt": "2026-09-18T04:11:22.134Z",
+    "seal": {
+      "alg": "Ed25519",
+      "keyId": "a20c24d4e44dd76d",
+      "contentHash": "a2ad47fe2979169520e6244f59c8fa4671367421359bc22799b12b42adaf2979",
+      "signature": "wPOHgJQSzmyMAZuucQjKr4Lnkl3g2ngwQ1dqAEUHfZnK86Fnh7KFVKnabzAG8ob6rI-qupguzm4JhkGJ1KtZCQ",
+      "sealedAt": "2026-09-18T04:11:22.202Z",
+      "attributionToken": "7dmbXTPuPoGYDbtOAHW00b"
+    }
   },
   {
     "version": "0.1.0",
@@ -284,6 +308,14 @@
       "targetCitationRate": 0.25,
       "targetRecommendRate": 0.2
     },
-    "updatedAt": "2026-09-18T04:09:20.922Z"
+    "updatedAt": "2026-09-18T04:11:22.134Z",
+    "seal": {
+      "alg": "Ed25519",
+      "keyId": "a20c24d4e44dd76d",
+      "contentHash": "96035203e5eb014453bb3828e3d0f6bd3558b63b807fc2357ab4ef3646f857e8",
+      "signature": "aR2gAUecRCuAec8WDU7-xyTzBRGx5vg2BGL21aeMQGL0hF2kDK6UpRLIlck7GFK5IhAX2Vf9z3GFj5v1WdV6CA",
+      "sealedAt": "2026-09-18T04:11:22.203Z",
+      "attributionToken": "xWgukrcUwABFp3DYMmVqkv"
+    }
   }
 ]
