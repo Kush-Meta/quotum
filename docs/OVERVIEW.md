@@ -26,6 +26,6 @@ Most GEO tooling measures *mentions* after the fact. Quotum starts one layer ear
 ## Current status
 
 - **Real experiment (active):** Quotum-as-subject with agentspace, Ed25519 seals, attribution tokens, holdouts — see [REAL_EXPERIMENT.md](./REAL_EXPERIMENT.md)
-- **Phase 1 (archive):** live baseline Answer Share for product-analytics prompts (Northline)
-- **Phase 3–4 (done):** coverage + robust multi-engine harness
-- **Next:** durable public host (`PUBLIC_ORIGIN`), discovery wait, ask measurement prompts, ingest Answer Share + traffic
+- **Live check + gaps:** [STATUS.md](./STATUS.md)
+- **Ordered next steps:** [ROADMAP.md](./ROADMAP.md)
+- **Phase 1–4 (archive):** Northline baseline + coverage / robust harness — methodology only
