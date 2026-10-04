@@ -37,6 +37,13 @@ Or: Vercel Dashboard → Add New Project → import `Kush-Meta/quotum`.
 
 Set env `PUBLIC_ORIGIN=https://your-domain` so sitemap/robots stay stable.
 
+Optional durable attribution traffic (recommended on Vercel — without it, hits live under `/tmp` and reset on cold start):
+
+- `UPSTASH_REDIS_REST_URL`
+- `UPSTASH_REDIS_REST_TOKEN`
+
+Create a free Redis DB at [Upstash](https://upstash.com), copy the REST credentials into the Vercel project env, redeploy.
+
 ### Option B — Render Blueprint
 
 1. Render → New → Blueprint → select `Kush-Meta/quotum`.  

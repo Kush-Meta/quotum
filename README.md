@@ -23,7 +23,7 @@ SEO gave the web sitemaps for pages. Generative engines compose **answers**. Mos
 ## What this is not
 
 - Not an `llms.txt` checklist (complementary hint file — see [`/llms.txt`](https://quotum.vercel.app/llms.txt))
-- Not a RAG “output schema” / JSON mode contract inside an LLM pipeline
+- Not a RAG "output schema" / JSON mode contract inside an LLM pipeline
 - Not Microsoft NLWeb `/ask` (on-site chat)
 - Not a mention dashboard as the product
 
@@ -48,6 +48,7 @@ Open [http://127.0.0.1:3847](http://127.0.0.1:3847).
 | URL | Purpose |
 | --- | --- |
 | [`/agentspace`](https://quotum.vercel.app/agentspace) | Human + machine entrypoint |
+| [`/verify`](https://quotum.vercel.app/verify) | Browser seal check (no account) |
 | [`/api/agentspace`](https://quotum.vercel.app/api/agentspace) | Sealed contract index |
 | [`/api/agentspace/verify`](https://quotum.vercel.app/api/agentspace/verify) | POST verify Ed25519 seal |
 | [`/.well-known/quotum-pubkey.json`](https://quotum.vercel.app/.well-known/quotum-pubkey.json) | Public verification key |
@@ -62,8 +63,14 @@ Docs: [`docs/REAL_EXPERIMENT.md`](./docs/REAL_EXPERIMENT.md)
 
 ```bash
 npm run seal:real
+npm run audit:llmstxt
+# Paste generative answers into data/live/wave1.chats.json then:
+# npm run score:wave -- data/live/wave1.chats.json
 # Deploy with PUBLIC_ORIGIN=https://your-host
+# Optional durable traffic: UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN
 ```
+
+Collaborative deploy + About checklist: [`docs/COLLAB.md`](./docs/COLLAB.md)
 
 ## Answer Share
 

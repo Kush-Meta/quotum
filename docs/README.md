@@ -8,6 +8,7 @@ Live: [https://quotum.vercel.app](https://quotum.vercel.app) · Repo: [Kush-Meta
 
 | Doc | Read when |
 | --- | --- |
+| [COLLAB.md](./COLLAB.md) | **You + agent checklist** (Vercel, About, wave captures) |
 | [STATUS.md](./STATUS.md) | What is live vs git right now |
 | [ROADMAP.md](./ROADMAP.md) | What to do next (ordered) |
 | [OVERVIEW.md](./OVERVIEW.md) | Product thesis — what Quotum is / is not |

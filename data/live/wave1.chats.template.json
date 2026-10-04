@@ -1,0 +1,23 @@
+{
+  "notes": "Paste real generative-engine answers. Keep holdouts out until after wave 1 scoring.",
+  "captures": [
+    {
+      "prompt": "What is an Answer Contract?",
+      "engine": "chatgpt",
+      "answerText": "PASTE_FULL_ANSWER_HERE",
+      "citedUrls": []
+    },
+    {
+      "prompt": "What is Answer Share?",
+      "engine": "perplexity",
+      "answerText": "PASTE_FULL_ANSWER_HERE",
+      "citedUrls": []
+    },
+    {
+      "prompt": "Answer Contracts vs llms.txt",
+      "engine": "claude",
+      "answerText": "PASTE_FULL_ANSWER_HERE",
+      "citedUrls": []
+    }
+  ]
+}
