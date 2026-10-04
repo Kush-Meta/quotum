@@ -1,6 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
 
+const UPSTASH_KEY = "quotum:traffic:v1";
+
 function trafficPaths(): string[] {
   const bundled = path.join(process.cwd(), "data", "live", "traffic.json");
   if (process.env.VERCEL) {
@@ -24,30 +26,104 @@ export type TrafficHit = {
 export type TrafficStore = {
   updatedAt: string;
   hits: TrafficHit[];
+  backend?: "upstash" | "filesystem";
 };
 
-async function readStore(): Promise<TrafficStore> {
+function emptyStore(backend: TrafficStore["backend"] = "filesystem"): TrafficStore {
+  return { updatedAt: new Date().toISOString(), hits: [], backend };
+}
+
+function upstashConfigured(): boolean {
+  return Boolean(
+    process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
+  );
+}
+
+async function upstashGet(): Promise<TrafficStore | null> {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return null;
+  try {
+    const res = await fetch(`${url}/get/${encodeURIComponent(UPSTASH_KEY)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as { result?: string | null };
+    if (!json.result) return emptyStore("upstash");
+    const parsed = JSON.parse(json.result) as TrafficStore;
+    if (!parsed || !Array.isArray(parsed.hits)) return emptyStore("upstash");
+    return { ...parsed, backend: "upstash" };
+  } catch (err) {
+    console.error("[traffic] upstash get failed", err);
+    return null;
+  }
+}
+
+async function upstashSet(store: TrafficStore): Promise<boolean> {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return false;
+  try {
+    const payload = JSON.stringify({ ...store, backend: "upstash" });
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(["SET", UPSTASH_KEY, payload]),
+    });
+    return res.ok;
+  } catch (err) {
+    console.error("[traffic] upstash set failed", err);
+    return false;
+  }
+}
+
+async function readFileStore(): Promise<TrafficStore> {
   for (const file of trafficPaths()) {
     try {
       const raw = await fs.readFile(file, "utf8");
       const parsed = JSON.parse(raw) as TrafficStore;
-      if (parsed && Array.isArray(parsed.hits)) return parsed;
+      if (parsed && Array.isArray(parsed.hits)) {
+        return { ...parsed, backend: "filesystem" };
+      }
     } catch {
       /* try next */
     }
   }
-  return { updatedAt: new Date().toISOString(), hits: [] };
+  return emptyStore("filesystem");
 }
 
-async function writeStore(store: TrafficStore) {
+async function writeFileStore(store: TrafficStore) {
   const primary = trafficPaths()[0];
   try {
     await fs.mkdir(path.dirname(primary), { recursive: true });
-    await fs.writeFile(primary, JSON.stringify(store, null, 2), "utf8");
+    await fs.writeFile(
+      primary,
+      JSON.stringify({ ...store, backend: "filesystem" }, null, 2),
+      "utf8",
+    );
   } catch (err) {
-    // Vercel serverless FS can be read-only outside /tmp — never fail the request.
     console.error("[traffic] write failed", err);
   }
+}
+
+async function readStore(): Promise<TrafficStore> {
+  if (upstashConfigured()) {
+    const remote = await upstashGet();
+    if (remote) return remote;
+  }
+  return readFileStore();
+}
+
+async function writeStore(store: TrafficStore) {
+  if (upstashConfigured()) {
+    const ok = await upstashSet(store);
+    if (ok) return;
+  }
+  await writeFileStore(store);
 }
 
 function guessEngine(ua: string | null, referrer: string | null): string | null {
@@ -103,6 +179,8 @@ export async function trafficSummary() {
   return {
     totalHits: store.hits.length,
     updatedAt: store.updatedAt,
+    backend: store.backend ?? (upstashConfigured() ? "upstash" : "filesystem"),
+    durable: upstashConfigured(),
     byContract,
     bySource,
     byEngine,

@@ -10,7 +10,21 @@ import {
 /** Phase 1 continuity pack (6 prompts). Prefer EXPERIMENT_PROMPT_PACK for Phase 4. */
 export const LIVE_PROMPT_PACK = STRUCTURED_LIVE_PROMPT_PACK;
 
-export const TRACKED_BRANDS = [
+export type TrackedBrand = {
+  id: string;
+  brand: string;
+  domain: string;
+  aliases: string[];
+};
+
+/** Quotum real-experiment subject + archived Northline peer set */
+export const TRACKED_BRANDS: TrackedBrand[] = [
+  {
+    id: "quotum",
+    brand: "Quotum",
+    domain: "quotum.vercel.app",
+    aliases: ["quotum", "quotum answer contract", "quotum answer contracts"],
+  },
   {
     id: "northline",
     brand: "Northline Analytics",
@@ -41,9 +55,9 @@ export const TRACKED_BRANDS = [
     domain: "heap.io",
     aliases: ["heap analytics", "heap.io", "heap"],
   },
-] as const;
+];
 
-export type TrackedBrand = (typeof TRACKED_BRANDS)[number];
+export const QUOTUM_BRAND: TrackedBrand = TRACKED_BRANDS[0];
 
 export type ManualBinaryLabels = {
   mentionedBrand: boolean;
