@@ -16,7 +16,9 @@
     "power:guide": "tsx scripts/power-guidance.ts",
     "interrater": "tsx scripts/score-interrater.ts",
     "report:robust": "tsx scripts/report-robustness.ts",
-    "seal:real": "tsx scripts/seal-real-experiment.ts"
+    "seal:real": "tsx scripts/seal-real-experiment.ts",
+    "audit:llmstxt": "tsx scripts/audit-llmstxt.ts",
+    "score:wave": "tsx scripts/score-wave.ts"
   },
   "dependencies": {
     "date-fns": "^4.4.0",

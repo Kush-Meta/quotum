@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const links = [
   { href: "/agentspace", label: "Agentspace" },
+  { href: "/verify", label: "Verify" },
   { href: "/experiment", label: "Experiment" },
   { href: "/studio", label: "Studio" },
   { href: "/publish", label: "Publish" },
