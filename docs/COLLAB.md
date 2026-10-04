@@ -11,17 +11,22 @@ On your Mac (Vercel CLI already logged in):
 ```bash
 cd ~/quotum   # or fresh clone
 git fetch origin
-git checkout main && git pull origin main
-# After harden PR merges, main has /verify + durable traffic.
-# Until then you can deploy this branch:
-# git checkout cursor/quotum-harden-integrate-ebac && git pull
+git checkout cursor/quotum-harden-integrate-ebac && git pull
 npx vercel --prod
 ```
 
 In Vercel project env, set:
 
 - `PUBLIC_ORIGIN=https://quotum.vercel.app`
+- **Required for seal verify:** `QUOTUM_PRIVATE_KEY_PEM` = contents of the private key that sealed `data/sealed-contracts.json` (same PEM you use locally under `data/keys/ed25519.private.pem`)
 - Optional (durable `/t/` hits): `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` from a free Upstash Redis DB
+
+After changing the private key env, redeploy. Then check:
+
+```bash
+curl -s https://quotum.vercel.app/.well-known/quotum-pubkey.json | jq .keyId
+# must match seal.keyId on a sealed contract
+```
 
 **Done when:**
 
@@ -57,6 +62,7 @@ Leave holdout prompts unpublished until after this wave.
 | `npm run score:wave` | Turns chat captures into Answer Share JSON |
 | `/verify` | Browser seal check against agentspace + pubkey |
 | Quotum in `TRACKED_BRANDS` | Wave scoring targets Quotum, not Northline |
+| `QUOTUM_PRIVATE_KEY_PEM` | Durable seal key on Vercel (no ephemeral keypairs) |
 
 ## After those three
 
