@@ -8,8 +8,8 @@ Checked / updated: **2026-10-04**
 | --- | --- |
 | 1. Ship experiment → `main` | **Done** — [PR #1](https://github.com/Kush-Meta/quotum/pull/1) merged. |
 | 1b. Production redeploy | **Done** — Sealed title, `/llms.txt` 200, `/verify` 200, 4 agentspace contracts. |
-| 1c. Production seal keys | **Broken** — live pubkey `keyId` ≠ sealed contracts. Next fix. |
-| 2. GitHub About | **Done** — description, homepage `https://quotum.vercel.app`, full topic set. |
+| 1c. Production seal keys | **In progress** — `QUOTUM_PRIVATE_KEY_PEM` set on Vercel; code that *reads* it is on `cursor/quotum-harden-integrate-ebac` (redeploy that branch). |
+| 2. GitHub About | **Done** — description, homepage, full topic set. |
 | 3. Harden + integrate prep | **In branch** — `cursor/quotum-harden-integrate-ebac`. |
 | 4. Measurement wave 1 | **Partial** — SERP baseline; generative chats → `npm run score:wave`. |
 
@@ -25,6 +25,6 @@ Unassisted DuckDuckGo for “What is an Answer Contract?” returns **legal** An
 
 ## Your checklist
 
-1. ~~Redeploy~~
-2. ~~GitHub About~~
-3. **Next:** fix prod seal key (1c); optional Upstash + chat captures
+1. ~~Redeploy~~ / ~~About~~
+2. **Now:** pull harden branch + `npx vercel --prod` so `QUOTUM_PRIVATE_KEY_PEM` is actually used
+3. Optional: Upstash + chat captures

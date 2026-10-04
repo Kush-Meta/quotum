@@ -1,4 +1,11 @@
-import { createHash, generateKeyPairSync, sign, verify } from "crypto";
+import {
+  createHash,
+  createPrivateKey,
+  createPublicKey,
+  generateKeyPairSync,
+  sign,
+  verify,
+} from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import type { AnswerContract } from "./schema";
@@ -12,7 +19,9 @@ const bundledPublicPath = path.join(
   "keys",
   "ed25519.public.pem",
 );
-const privatePath = path.join(keysDir, "ed25519.private.pem");
+const privatePath =
+  process.env.QUOTUM_PRIVATE_KEY_PATH ||
+  path.join(keysDir, "ed25519.private.pem");
 const publicPath = path.join(keysDir, "ed25519.public.pem");
 
 export type ContractSeal = {
@@ -51,16 +60,56 @@ export function contentHash(contract: AnswerContract): string {
   return createHash("sha256").update(canonicalBytes(contract)).digest("hex");
 }
 
+/** Vercel env values often store PEM with literal \n instead of real newlines. */
+function normalizePem(pem: string): string {
+  const trimmed = pem.trim().replace(/\\n/g, "\n");
+  if (!trimmed.includes("BEGIN")) {
+    throw new Error("invalid_pem_missing_header");
+  }
+  return trimmed.endsWith("\n") ? trimmed : `${trimmed}\n`;
+}
+
+function keyIdFromPublicPem(publicKeyPem: string): string {
+  return createHash("sha256").update(publicKeyPem).digest("hex").slice(0, 16);
+}
+
+function publicPemFromPrivate(privateKeyPem: string): string {
+  const privateKey = createPrivateKey(privateKeyPem);
+  const publicKey = createPublicKey(privateKey);
+  return publicKey.export({ type: "spki", format: "pem" }).toString();
+}
+
 export async function ensureKeyPair(): Promise<{
   publicKeyPem: string;
   privateKeyPem: string;
   keyId: string;
 }> {
+  // 1) Durable env private key (preferred on Vercel)
+  const envPrivate = process.env.QUOTUM_PRIVATE_KEY_PEM?.trim();
+  if (envPrivate) {
+    const privateKeyPem = normalizePem(envPrivate);
+    const envPublic = process.env.QUOTUM_PUBLIC_KEY_PEM?.trim();
+    const publicKeyPem = envPublic
+      ? normalizePem(envPublic)
+      : publicPemFromPrivate(privateKeyPem);
+    return {
+      privateKeyPem,
+      publicKeyPem,
+      keyId: keyIdFromPublicPem(publicKeyPem),
+    };
+  }
+
   await fs.mkdir(keysDir, { recursive: true }).catch(() => undefined);
   let privateKeyPem: string | null = null;
   let publicKeyPem: string | null = null;
+
   try {
     privateKeyPem = await fs.readFile(privatePath, "utf8");
+  } catch {
+    privateKeyPem = null;
+  }
+
+  try {
     publicKeyPem = await fs.readFile(publicPath, "utf8");
   } catch {
     try {
@@ -70,23 +119,42 @@ export async function ensureKeyPair(): Promise<{
     }
   }
 
-  if (!privateKeyPem || !publicKeyPem) {
-    const { privateKey, publicKey } = generateKeyPairSync("ed25519");
-    privateKeyPem = privateKey.export({ type: "pkcs8", format: "pem" }).toString();
-    publicKeyPem = publicKey.export({ type: "spki", format: "pem" }).toString();
-    try {
-      await fs.writeFile(privatePath, privateKeyPem, { mode: 0o600 });
-      await fs.writeFile(publicPath, publicKeyPem, "utf8");
-    } catch (err) {
-      console.error("[seal] key write failed (ok on read-only hosts)", err);
-    }
+  if (privateKeyPem && !publicKeyPem) {
+    publicKeyPem = publicPemFromPrivate(privateKeyPem);
   }
 
-  const keyId = createHash("sha256")
-    .update(publicKeyPem)
-    .digest("hex")
-    .slice(0, 16);
-  return { publicKeyPem, privateKeyPem, keyId };
+  // 2) Local filesystem keypair
+  if (privateKeyPem && publicKeyPem) {
+    return {
+      privateKeyPem,
+      publicKeyPem,
+      keyId: keyIdFromPublicPem(publicKeyPem),
+    };
+  }
+
+  // 3) Never mint ephemeral keys on Vercel — that breaks sealed contracts.
+  if (process.env.VERCEL) {
+    throw new Error(
+      "Missing QUOTUM_PRIVATE_KEY_PEM on Vercel. Set the PEM that sealed data/sealed-contracts.json.",
+    );
+  }
+
+  // 4) Local bootstrap only
+  const { privateKey, publicKey } = generateKeyPairSync("ed25519");
+  privateKeyPem = privateKey.export({ type: "pkcs8", format: "pem" }).toString();
+  publicKeyPem = publicKey.export({ type: "spki", format: "pem" }).toString();
+  try {
+    await fs.writeFile(privatePath, privateKeyPem, { mode: 0o600 });
+    await fs.writeFile(publicPath, publicKeyPem, "utf8");
+  } catch (err) {
+    console.error("[seal] key write failed (ok on read-only hosts)", err);
+  }
+
+  return {
+    privateKeyPem,
+    publicKeyPem,
+    keyId: keyIdFromPublicPem(publicKeyPem),
+  };
 }
 
 export async function getPublicKeyDocument() {
