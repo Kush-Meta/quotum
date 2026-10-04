@@ -26,8 +26,18 @@ export default function VerifyPage() {
         setStatus("done");
         return;
       }
-      const sealed = await sealedRes.json();
-      const { seal, ...contract } = sealed;
+      const payload = await sealedRes.json();
+      // /api/agentspace/contracts/[id] wraps as { contract, sealed, verify, ... }
+      const sealedContract =
+        payload?.contract && typeof payload.contract === "object"
+          ? payload.contract
+          : payload;
+      const { seal, ...contract } = sealedContract;
+      if (!seal) {
+        setResult({ ok: false, error: "missing_seal_on_contract" });
+        setStatus("done");
+        return;
+      }
       setPreview(JSON.stringify({ id: contract.id, seal }, null, 2));
       const verifyRes = await fetch("/api/agentspace/verify", {
         method: "POST",
