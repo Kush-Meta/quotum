@@ -1,16 +1,17 @@
 # Status snapshot
 
-Checked / updated: **2026-10-04**
+Checked / updated: **2026-10-04** (prod rechecked)
 
 ## Moves
 
 | Move | State |
 | --- | --- |
-| 1. Ship experiment → `main` | **Done** — [PR #1](https://github.com/Kush-Meta/quotum/pull/1) merged. `main` includes agentspace, experiment, `/t/`, seals, `llms.txt`. |
-| 1b. Production redeploy | **Pending** — Vercel still serves old homepage meta and `/llms.txt` 404. You: `npx vercel --prod` with `PUBLIC_ORIGIN=https://quotum.vercel.app`. See [COLLAB.md](./COLLAB.md). |
+| 1. Ship experiment → `main` | **Done** — [PR #1](https://github.com/Kush-Meta/quotum/pull/1) merged. |
+| 1b. Production redeploy | **Done** — `https://quotum.vercel.app` title is Sealed Answer Contracts; `/llms.txt` 200; `/verify` 200; agentspace lists 4 contracts. |
+| 1c. Production seal keys | **Broken** — live pubkey `keyId` ≠ sealed contracts (`signature_invalid`). Private key is gitignored; Vercel generated a different key than the seals were signed with. Fix: set durable `QUOTUM_PRIVATE_KEY_PEM` (or path) on Vercel matching the key that sealed `data/sealed-contracts.json`, redeploy, or re-seal with a fixed prod key. |
 | 2. GitHub About | **Pending** — UI paste (no API). See below. |
-| 3. Harden + integrate prep | **In branch** — `cursor/quotum-harden-integrate-ebac`: durable Upstash traffic, `audit:llmstxt`, `score:wave`, `/verify`, Quotum brand for scoring. |
-| 4. Measurement wave 1 | **Partial** — SERP baseline in [`data/live/wave1.results.json`](../data/live/wave1.results.json). Generative chat scoring: paste into template → `npm run score:wave`. Holdouts unpublished. |
+| 3. Harden + integrate prep | **In branch** — `cursor/quotum-harden-integrate-ebac`. |
+| 4. Measurement wave 1 | **Partial** — SERP baseline in [`data/live/wave1.results.json`](../data/live/wave1.results.json). Generative chats → `npm run score:wave`. |
 
 ## Wave 1 finding
 
@@ -24,4 +25,6 @@ Unassisted DuckDuckGo for “What is an Answer Contract?” returns **legal** An
 
 ## Your checklist
 
-Full steps: [COLLAB.md](./COLLAB.md). Short version: (1) redeploy, (2) About, (3) optional Upstash + chat captures.
+1. ~~Redeploy~~ **done**
+2. **Next:** GitHub About (paste above)
+3. Optional: Upstash env + chat captures; fix prod seal key (1c)
